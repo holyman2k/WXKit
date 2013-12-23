@@ -27,13 +27,38 @@
     [super tearDown];
 }
 
-- (void)testObjectAtIndexOrNil
+- (void)testObjectAtIndexOrNilPass
 {
     NSArray *array = @[@"1", @"2", @"3"];
     
-    id obj0 = [array objectOrNilAtIndex:0];
+    XCTAssertEqual(@"1", [array objectOrNilAtIndex:0], @"object at index 0");
+    XCTAssertEqual(@"3", [array objectOrNilAtIndex:2], @"object at index 2");
+}
+
+- (void)testObjectAtIndexOrNilFail
+{
     
-    XCTAssertEqual(@"1", obj0, @"true");
+    NSArray *array = @[@"1", @"2", @"3"];
+    XCTAssertNil([array objectOrNilAtIndex:3], @"object at index 3 is nil");
+    XCTAssertNil([array objectOrNilAtIndex:-1], @"object at index 3 is nil");
+}
+
+- (void)testObjectAtIndexOrNilArrayNil
+{
+    NSArray *arrayNil = nil;
+    
+    XCTAssertNil([arrayNil objectOrNilAtIndex:2], @"object at nil array is nil");
+}
+
+- (void)testReverse
+{
+    NSArray *array = @[@"1", @"2", @"3"];
+    
+    NSArray *reverseArray = array.reverse;
+    
+    XCTAssertEqual(@"3", [reverseArray objectOrNilAtIndex:0], @"object at index 0 when reversed is 3");
+    XCTAssertEqual(@"2", [reverseArray objectOrNilAtIndex:1], @"object at index 1 when reversed is 2");
+    XCTAssertEqual(@"1", [reverseArray objectOrNilAtIndex:2], @"object at index 2 when reversed is 1");
 }
 
 @end

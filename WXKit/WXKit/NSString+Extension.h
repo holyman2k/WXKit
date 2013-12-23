@@ -10,6 +10,10 @@
 
 @interface NSString (Extension)
 
++ (BOOL)isNilOrEmpty:(NSString *)string;
+
++ (BOOL)isNilOrEmptyOrOnlyWhiteSpace:(NSString *)string;
+
 - (NSString *)trim;
 
 @end

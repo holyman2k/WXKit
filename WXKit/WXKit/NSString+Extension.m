@@ -10,6 +10,18 @@
 
 @implementation NSString (Extension)
 
++ (BOOL)isNilOrEmpty:(NSString *)string
+{
+    return !string || (id)string == [NSNull null] || string.length == 0;
+}
+
++ (BOOL)isNilOrEmptyOrWhiteSpace:(NSString *)string
+{
+    NSString *trimed = string.trim;
+    
+    return [NSString isNilOrEmptyOrWhiteSpace:trimed];
+}
+
 - (NSString *)trim
 {
     NSCharacterSet *trimCharSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
