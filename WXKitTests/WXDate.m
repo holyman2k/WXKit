@@ -40,4 +40,42 @@
     XCTAssertNotEqualObjects(dateFromJSON, [NSDate dateWithTimeIntervalSince1970:timestamp + 1], "convert json back to date");
 }
 
+- (void)testDateToStringLong
+{
+    NSTimeInterval timestamp = 1387846784;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];   // Dec 24 2013, 11:59:44 am
+    
+    XCTAssertEqualObjects(date.dateStringLong, @"Dec 24, 2013", @"long date string");
+    XCTAssertNotEqualObjects(date.dateStringLong, @"Dec 23, 2013", @"not equal short date");
+}
+
+- (void)testDateToStringShort
+{
+    NSTimeInterval timestamp = 1387846784;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];   // Dec 24 2013, 11:59:44 am]
+    
+    XCTAssertEqualObjects(date.dateStringShort, @"Dec 24", @"short date string");
+    XCTAssertNotEqualObjects(date.dateStringLong, @"Dec 23", @"not equal short date");
+}
+
+
+- (void)testDateTimeTostring
+{
+    NSTimeInterval timestamp = 1387846784;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];   // Dec 24 2013, 11:59:44 am]
+    
+    XCTAssertEqualObjects(date.dateTimeString, @"Dec 24, 2013 11:59 AM", @"datetime string");
+    XCTAssertNotEqualObjects(date.dateStringLong, @"Dec 23, 2013 11:59 AM", @"not equal datetimeß date");
+}
+
+
+- (void)testDateFormat
+{
+    NSTimeInterval timestamp = 1387846784;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];   // Dec 24 2013, 11:59:44 am]
+    
+    XCTAssertEqualObjects([date dateToString:@"dd.MM.yy"], @"24.12.13", @"to string");
+    XCTAssertNotEqualObjects([date dateToString:@"dd.MM.yy"], @"Dec 23, 2013 11:59 AM", @"not equal datetimeß date");
+}
+
 @end
