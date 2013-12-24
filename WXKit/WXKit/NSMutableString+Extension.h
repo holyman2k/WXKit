@@ -10,6 +10,6 @@
 
 @interface NSMutableString (Extension)
 
-- (void)trim;
+- (void)trimSelf;
 
 @end

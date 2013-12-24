@@ -10,10 +10,14 @@
 
 @interface NSString (Extension)
 
-+ (BOOL)isNilOrEmpty:(NSString *)string;
++ (BOOL)isEmptyOrNil:(NSString *)string;
 
-+ (BOOL)isNilOrEmptyOrOnlyWhiteSpace:(NSString *)string;
++ (BOOL)isEmptyOrNilOrOnlyWhiteSpace:(NSString *)string;
 
 - (NSString *)trim;
+
+- (CGFloat)heightForFont:(UIFont *)font andWidth:(CGFloat)width;
+
+- (CGFloat)widthForFont:(UIFont *)font;
 
 @end

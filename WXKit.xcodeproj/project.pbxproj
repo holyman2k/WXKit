@@ -35,6 +35,8 @@
 		6F4B5311186842B400F37378 /* NSArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B530018683A9B00F37378 /* NSArray+Extension.m */; };
 		6F4B5312186842B400F37378 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B530418683BFE00F37378 /* UIColor+Extension.m */; };
 		6F4B5313186842B400F37378 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B5308186840B300F37378 /* UIImage+Extension.m */; };
+		6FD550B61869072200FA1277 /* WXNSStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B51869072200FA1277 /* WXNSStringTest.m */; };
+		6FD550B8186913C900FA1277 /* WXDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B7186913C900FA1277 /* WXDate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		6F4B5307186840B300F37378 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Extension.h"; path = "WXKit/UIImage+Extension.h"; sourceTree = "<group>"; };
 		6F4B5308186840B300F37378 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Extension.m"; path = "WXKit/UIImage+Extension.m"; sourceTree = "<group>"; };
 		6F4B530B1868420100F37378 /* WXArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXArrayTest.m; sourceTree = "<group>"; };
+		6FD550B51869072200FA1277 /* WXNSStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXNSStringTest.m; sourceTree = "<group>"; };
+		6FD550B7186913C900FA1277 /* WXDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,8 +167,10 @@
 		6F4B52DB18681E1F00F37378 /* WXKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				6F4B530B1868420100F37378 /* WXArrayTest.m */,
 				6F4B52DC18681E1F00F37378 /* Supporting Files */,
+				6F4B530B1868420100F37378 /* WXArrayTest.m */,
+				6FD550B51869072200FA1277 /* WXNSStringTest.m */,
+				6FD550B7186913C900FA1277 /* WXDate.m */,
 			);
 			path = WXKitTests;
 			sourceTree = "<group>";
@@ -319,10 +325,12 @@
 				6F4B52F81868202900F37378 /* NSDate+Extension.m in Sources */,
 				6F4B52F71868202600F37378 /* NSMutableString+Extension.m in Sources */,
 				6F4B530E186842AF00F37378 /* UILabel+Extension.m in Sources */,
+				6FD550B8186913C900FA1277 /* WXDate.m in Sources */,
 				6F4B5312186842B400F37378 /* UIColor+Extension.m in Sources */,
 				6F4B5313186842B400F37378 /* UIImage+Extension.m in Sources */,
 				6F4B530C1868420100F37378 /* WXArrayTest.m in Sources */,
 				6F4B5311186842B400F37378 /* NSArray+Extension.m in Sources */,
+				6FD550B61869072200FA1277 /* WXNSStringTest.m in Sources */,
 				6F4B52F61868202400F37378 /* NSString+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +528,7 @@
 				6F4B52E718681E1F00F37378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6F4B52E818681E1F00F37378 /* Build configuration list for PBXNativeTarget "WXKitTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +537,7 @@
 				6F4B52EA18681E1F00F37378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

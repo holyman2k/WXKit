@@ -11,7 +11,7 @@
 
 @implementation NSMutableString (Extension)
 
-- (void)trim
+- (void)trimSelf
 {
     NSCharacterSet *trimCharSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     NSString *string = [self stringByTrimmingCharactersInSet:trimCharSet];
