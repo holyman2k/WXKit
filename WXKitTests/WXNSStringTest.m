@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "NSString+Extension.h"
+#import "NSMutableString+Extension.h"
 
 @interface WXNSStringTest : XCTestCase
 
@@ -73,5 +74,26 @@
     UIFont *font = [UIFont systemFontOfSize:17];
     
     XCTAssertTrue([string widthForFont:font] > 490, @"width for one line");
+}
+
+- (void)testMutableString
+{
+    NSMutableString *string;
+    string = @" hello ".mutableCopy;
+    [string trimSelf];
+    
+    XCTAssertEqualObjects(@"hello", string, @"equal after trim");
+    
+    string = @" hello".mutableCopy;
+    [string trimSelf];
+    XCTAssertEqualObjects(@"hello", string, @"equal after trim");
+    
+    string = @"hello ".mutableCopy;
+    [string trimSelf];
+    XCTAssertEqualObjects(@"hello", string, @"equal after trim");
+    
+    string = @"hel  lo".mutableCopy;
+    [string trimSelf];
+    XCTAssertNotEqualObjects(@"hello", string, @"equal after trim");
 }
 @end
