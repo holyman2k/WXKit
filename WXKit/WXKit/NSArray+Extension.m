@@ -20,12 +20,6 @@
 
 - (NSArray *)reverse
 {
-//    NSMutableArray *array = [[NSMutableArray alloc]initWithCapacity:self.count];
-//    
-//    [self enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        [array addObject:obj];
-//    }];
-//    return array.copy;
     return self.reverseObjectEnumerator.allObjects;
 }
 @end
