@@ -20,4 +20,8 @@
 
 - (CGFloat)widthForFont:(UIFont *)font;
 
+- (NSData *)encryptWithKey:(NSString *)key;
+
++ (NSString *)stringWithEncryptedNSData:(NSData *)data withKey:(NSString *)key;
+
 @end

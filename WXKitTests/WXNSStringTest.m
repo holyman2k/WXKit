@@ -96,4 +96,40 @@
     [string trimSelf];
     XCTAssertNotEqualObjects(@"hello", string, @"equal after trim");
 }
+
+- (void)testEncryption
+{
+    NSString *plainText1 = @"hello world !@#&*(";
+    NSString *plainText2 = @"iello world !@#&*(";
+    NSString *key = @"encryption key";
+
+    NSData *encryptedData1 = [plainText1 encryptWithKey:key];
+    NSData *encryptedData2 = [plainText2 encryptWithKey:key];
+    NSString *decryptedText1 = [NSString stringWithEncryptedNSData:encryptedData1 withKey:key];
+    NSString *decryptedText2 = [NSString stringWithEncryptedNSData:encryptedData2 withKey:key];
+
+    XCTAssertEqualObjects(plainText1, decryptedText1, @"equal with encryption then decryption");
+    XCTAssertEqualObjects(plainText2, decryptedText2, @"equal with encryption then decryption");
+
+    XCTAssertNotEqualObjects(decryptedText1, decryptedText2, @"should not equal");
+    XCTAssertNotEqualObjects(encryptedData1, encryptedData2, @"should not equal");
+}
+
+- (void)testEncryption2
+{
+    NSString *plainText = @"hello world !@#&*(";
+    NSString *key1 = @"encryption key";
+    NSString *key2 = @"encryption key 2";
+
+    NSData *encryptedData1 = [plainText encryptWithKey:key1];
+    NSData *encryptedData2 = [plainText encryptWithKey:key2];
+    NSString *decryptedText1 = [NSString stringWithEncryptedNSData:encryptedData1 withKey:key1];
+    NSString *decryptedText2 = [NSString stringWithEncryptedNSData:encryptedData2 withKey:key2];
+
+    XCTAssertEqualObjects(plainText, decryptedText1, @"equal with encryption then decryption");
+    XCTAssertEqualObjects(plainText, decryptedText2, @"equal with encryption then decryption");
+    XCTAssertEqualObjects(decryptedText1, decryptedText2, @"should not equal");
+    
+    XCTAssertNotEqualObjects(encryptedData1, encryptedData2, @"should not equal");
+}
 @end
