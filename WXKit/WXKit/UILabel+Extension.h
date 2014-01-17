@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UILabel (Extension)
-
+- (float)textWidth;
+- (float)textHeight;
 @end
