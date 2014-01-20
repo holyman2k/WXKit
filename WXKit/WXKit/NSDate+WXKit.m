@@ -1,14 +1,14 @@
 //
-//  NSDate+Extension.m
+//  NSDate+WXKit.m
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
 //  Copyright (c) 2013 Charlie Wu. All rights reserved.
 //
 
-#import "NSDate+Extension.h"
+#import "NSDate+WXKit.h"
 
-@implementation NSDate (Extension)
+@implementation NSDate (WXKit)
 
 + (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format
 {

@@ -1,14 +1,14 @@
 //
-//  UIColor+Extension.m
+//  UIColor+WXKit.m
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
 //  Copyright (c) 2013 Charlie Wu. All rights reserved.
 //
 
-#import "UIColor+Extension.h"
+#import "UIColor+WXKit.h"
 
-@implementation UIColor (Extension)
+@implementation UIColor (WXKit)
 
 + (UIColor *)colorWithHexString:(NSString *)hexString withAlpha:(float)alpha
 {

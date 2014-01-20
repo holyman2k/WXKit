@@ -1,5 +1,5 @@
 //
-//  UIDevice+Extension.h
+//  UIDevice+WXKit.h
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIDevice (Extension)
+@interface UIDevice (WXKit)
 
 - (NSString *)deviceModel;
 

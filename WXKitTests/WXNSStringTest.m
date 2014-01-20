@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NSString+Extension.h"
-#import "NSMutableString+Extension.h"
+#import "NSString+WXKit.h"
+#import "NSMutableString+WXKit.h"
 
 @interface WXNSStringTest : XCTestCase
 

@@ -1,5 +1,5 @@
 //
-//  UIDevice+Extension.m
+//  UIDevice+WXKit.m
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
@@ -7,9 +7,9 @@
 //
 
 #import <sys/utsname.h>
-#import "UIDevice+Extension.h"
+#import "UIDevice+WXKit.h"
 
-@implementation UIDevice (Extension)
+@implementation UIDevice (WXKit)
 
 - (NSString *)deviceModel
 {

@@ -1,5 +1,5 @@
 //
-//  UILabel+Extension.h
+//  UIColor+WXKit.h
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UILabel (Extension)
-- (float)textWidth;
-- (float)textHeight;
+@interface UIColor (WXKit)
++ (UIColor *)colorWithHexString:(NSString *)hexString withAlpha:(float)alpha;
 @end

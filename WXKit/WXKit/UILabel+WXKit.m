@@ -1,14 +1,14 @@
 //
-//  UILabel+Extension.m
+//  UILabel+WXKit.m
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
 //  Copyright (c) 2013 Charlie Wu. All rights reserved.
 //
 
-#import "UILabel+Extension.h"
+#import "UILabel+WXKit.h"
 
-@implementation UILabel (Extension)
+@implementation UILabel (WXKit)
 - (float)textWidth
 {
     NSDictionary *attributesDictionary = @{NSFontAttributeName: self.font};

@@ -1,14 +1,14 @@
 //
-//  NSArray+Extension.m
+//  NSArray+WXKit.m
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
 //  Copyright (c) 2013 Charlie Wu. All rights reserved.
 //
 
-#import "NSArray+Extension.h"
+#import "NSArray+WXKit.h"
 
-@implementation NSArray (Extension)
+@implementation NSArray (WXKit)
 
 - (id)objectOrNilAtIndex:(NSUInteger)index
 {

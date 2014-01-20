@@ -1,5 +1,5 @@
 //
-//  NSString+Extension.m
+//  NSString+WXKit.m
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
@@ -7,9 +7,9 @@
 //
 
 #import <CommonCrypto/CommonCryptor.h>
-#import "NSString+Extension.h"
+#import "NSString+WXKit.h"
 
-@implementation NSString (Extension)
+@implementation NSString (WXKit)
 
 + (BOOL)isEmptyOrNil:(NSString *)string
 {

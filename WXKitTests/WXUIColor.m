@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "UIColor+Extension.h"
+#import "UIColor+WXKit.h"
 
 @interface WXUIColor : XCTestCase
 

@@ -1,15 +1,15 @@
 //
-//  NSMutableString+Extension.m
+//  NSMutableString+WXKit.m
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
 //  Copyright (c) 2013 Charlie Wu. All rights reserved.
 //
 
-#import "NSMutableString+Extension.h"
-#import "NSString+Extension.h"
+#import "NSMutableString+WXKit.h"
+#import "NSString+WXKit.h"
 
-@implementation NSMutableString (Extension)
+@implementation NSMutableString (WXKit)
 
 - (void)trimSelf
 {

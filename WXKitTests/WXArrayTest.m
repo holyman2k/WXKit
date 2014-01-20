@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NSArray+Extension.h"
+#import "NSArray+WXKit.h"
 
 @interface WXArrayTest : XCTestCase
 

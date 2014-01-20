@@ -9,13 +9,13 @@
 #ifndef WXKit_WXKit_h
 #define WXKit_WXKit_h
 
-#import "NSString+Extension.h"
-#import "NSMutableString+Extension.h"
-#import "NSDate+Extension.h"
-#import "UIDevice+Extension.h"
-#import "UILabel+Extension.h"
-#import "NSArray+Extension.h"
-#import "UIColor+Extension.h"
-#import "UIImage+Extension.h"
+#import "NSString+WXKit.h"
+#import "NSMutableString+WXKit.h"
+#import "NSDate+WXKit.h"
+#import "UIDevice+WXKit.h"
+#import "UILabel+WXKit.h"
+#import "NSArray+WXKit.h"
+#import "UIColor+WXKit.h"
+#import "UIImage+WXKit.h"
 
 #endif

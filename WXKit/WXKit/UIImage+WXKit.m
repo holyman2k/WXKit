@@ -1,14 +1,14 @@
 //
-//  UIImage+Extension.m
+//  UIImage+WXKit.m
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
 //  Copyright (c) 2013 Charlie Wu. All rights reserved.
 //
 
-#import "UIImage+Extension.h"
+#import "UIImage+WXKit.h"
 
-@implementation UIImage (Extension)
+@implementation UIImage (WXKit)
 
 - (UIImage *)imageScaleToSize:(CGSize)size
 {

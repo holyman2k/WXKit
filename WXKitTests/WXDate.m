@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NSDate+Extension.h"
+#import "NSDate+WXKit.h"
 
 @interface WXDate : XCTestCase
 

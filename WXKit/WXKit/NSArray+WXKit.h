@@ -1,5 +1,5 @@
 //
-//  NSMutableString+Extension.h
+//  NSArray+WXKit.h
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableString (Extension)
+@interface NSArray (WXKit)
 
-- (void)trimSelf;
+- (id)objectOrNilAtIndex:(NSUInteger)index;
+
+- (NSArray *)reverse;
 
 @end

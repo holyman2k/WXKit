@@ -1,5 +1,5 @@
 //
-//  NSDate+Extension.h
+//  NSDate+WXKit.h
 //  WXKit
 //
 //  Created by Charlie Wu on 23/12/2013.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDate (Extension)
+@interface NSDate (WXKit)
 
 + (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format;
 
