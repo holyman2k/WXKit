@@ -74,15 +74,15 @@
     NSTimeInterval timestamp = 1387846784;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];   // Dec 24 2013, 11:59:44 am]
     
-    NSLog(@"%@", [date dateToString:@"e 'day of week' dd.MM.yy hh:mm:ss a"]);
+    NSLog(@"%@", [date dateStringWithFormat:@"e 'day of week' dd.MM.yy hh:mm:ss a"]);
     
-    XCTAssertEqualObjects([date dateToString:@"dd.MM.yy"], @"24.12.13", @"to string");
-    XCTAssertEqualObjects([date dateToString:@"dd.MM.yy hh:mm:ss"], @"24.12.13 11:59:44", @"to string");
-    XCTAssertEqualObjects([date dateToString:@"dd.MM.yy hh:mm:ss a"], @"24.12.13 11:59:44 AM", @"to string");
-    XCTAssertEqualObjects([date dateToString:@"EEEE 'of' dd.MM.yy hh:mm:ss a"], @"Tuesday of 24.12.13 11:59:44 AM", @"to string");
-    XCTAssertEqualObjects([date dateToString:@"e 'day of week' dd.MM.yy hh:mm:ss a"], @"3 day of week 24.12.13 11:59:44 AM", @"to string");
-    XCTAssertEqualObjects([date dateToString:@"e 'day of week' dd.MM.yy hh:mm:ss a"], @"3 day of week 24.12.13 11:59:44 AM", @"to string");
-    XCTAssertNotEqualObjects([date dateToString:@"dd.MM.yy"], @"Dec 23, 2013 11:59 AM", @"not equal datetime date");
+    XCTAssertEqualObjects([date dateStringWithFormat:@"dd.MM.yy"], @"24.12.13", @"to string");
+    XCTAssertEqualObjects([date dateStringWithFormat:@"dd.MM.yy hh:mm:ss"], @"24.12.13 11:59:44", @"to string");
+    XCTAssertEqualObjects([date dateStringWithFormat:@"dd.MM.yy hh:mm:ss a"], @"24.12.13 11:59:44 AM", @"to string");
+    XCTAssertEqualObjects([date dateStringWithFormat:@"EEEE 'of' dd.MM.yy hh:mm:ss a"], @"Tuesday of 24.12.13 11:59:44 AM", @"to string");
+    XCTAssertEqualObjects([date dateStringWithFormat:@"e 'day of week' dd.MM.yy hh:mm:ss a"], @"3 day of week 24.12.13 11:59:44 AM", @"to string");
+    XCTAssertEqualObjects([date dateStringWithFormat:@"e 'day of week' dd.MM.yy hh:mm:ss a"], @"3 day of week 24.12.13 11:59:44 AM", @"to string");
+    XCTAssertNotEqualObjects([date dateStringWithFormat:@"dd.MM.yy"], @"Dec 23, 2013 11:59 AM", @"not equal datetime date");
 }
 
 - (void)testDateFromString

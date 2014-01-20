@@ -22,7 +22,6 @@
 
 - (NSString *)dateTimeString;
 
-- (NSString *)dateToString:(NSString *)format;
-
+- (NSString *)dateStringWithFormat:(NSString *)format;
 
 @end
