@@ -15,6 +15,7 @@
 #import "UIDevice+WXKit.h"
 #import "UILabel+WXKit.h"
 #import "NSArray+WXKit.h"
+#import "NSMutableArray+WXKit.h"
 #import "UIColor+WXKit.h"
 #import "UIImage+WXKit.h"
 

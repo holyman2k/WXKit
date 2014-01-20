@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 WebFM Pty Ltd. All rights reserved.
 //
 
-#import "NSMutableArray+Extension.h"
+#import "NSMutableArray+WXKit.h"
 
-@implementation NSMutableArray (Extension)
+@implementation NSMutableArray (WXKit)
 
 - (id)pop
 {
