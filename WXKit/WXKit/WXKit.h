@@ -18,5 +18,6 @@
 #import "NSMutableArray+WXKit.h"
 #import "UIColor+WXKit.h"
 #import "UIImage+WXKit.h"
+#import "UIImageView+WXKit.h"
 
 #endif
