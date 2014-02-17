@@ -10,7 +10,7 @@
 
 @implementation UIImageView (WXKit)
 
-- (void)fitToSize:(CGSize)size
+- (CGSize)sizeThatFitInSize:(CGSize)size
 {
     double newWidth;
     double newHeight;
@@ -36,9 +36,15 @@
             newHeight = size.height;
         }
     }
+    return CGSizeMake(newWidth, newHeight);
+}
+
+- (void)fitIntoSize:(CGSize)size
+{
+    CGSize fitSize = [self sizeThatFitInSize:size];
     CGRect frame = self.frame;
-    frame.size.width = newWidth;
-    frame.size.height = newHeight;
+    frame.size = fitSize;
     self.frame = frame;
 }
+
 @end

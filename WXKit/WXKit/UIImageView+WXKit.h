@@ -10,6 +10,8 @@
 
 @interface UIImageView (WXKit)
 
-- (void)fitToSize:(CGSize)size;
+- (CGSize)sizeThatFitInSize:(CGSize)size;
+
+- (void)fitIntoSize:(CGSize)size;
 
 @end
