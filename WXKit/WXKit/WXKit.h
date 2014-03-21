@@ -19,5 +19,7 @@
 #import "UIColor+WXKit.h"
 #import "UIImage+WXKit.h"
 #import "UIImageView+WXKit.h"
+#import "NSManagedObject+WXKit.h"
+#import "NSManagedObject+Extension.h"
 
 #endif
