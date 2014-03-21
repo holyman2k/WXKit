@@ -13,7 +13,7 @@
 - (void)deleteInContext:(NSManagedObjectContext *)context
 {
     id instaceInContext = [self instanceInContext:context];
-    if (context.concurrencyType != NSPrivateQueueConcurrencyType) {
+    if (context.concurrencyType == NSPrivateQueueConcurrencyType) {
         [context performBlockAndWait:^{
             [context deleteObject:instaceInContext];
         }];
