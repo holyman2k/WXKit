@@ -20,6 +20,5 @@
 #import "UIImage+WXKit.h"
 #import "UIImageView+WXKit.h"
 #import "NSManagedObject+WXKit.h"
-#import "NSManagedObject+Extension.h"
-
+#import "NSManagedObjectContext+WXKit.h"
 #endif

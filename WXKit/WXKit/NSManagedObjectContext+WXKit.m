@@ -10,4 +10,11 @@
 
 @implementation NSManagedObjectContext (WXKit)
 
+- (void)saveContext
+{
+    NSError *error;
+    [self save:&error];
+    if (error)CLS_LOG(@"save context failed %@", error);
+}
+
 @end
