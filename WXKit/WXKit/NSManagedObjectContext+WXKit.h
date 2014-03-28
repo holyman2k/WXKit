@@ -10,6 +10,4 @@
 
 @interface NSManagedObjectContext (WXKit)
 
-- (void)saveContext;
-
 @end
