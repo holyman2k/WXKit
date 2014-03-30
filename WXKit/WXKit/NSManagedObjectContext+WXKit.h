@@ -10,4 +10,6 @@
 
 @interface NSManagedObjectContext (WXKit)
 
++ (instancetype)createAtUrl:(NSURL *)url mergePolice:(NSMergePolicyType)mergePoliceType andOptions:(NSDictionary *)options;
+
 @end
