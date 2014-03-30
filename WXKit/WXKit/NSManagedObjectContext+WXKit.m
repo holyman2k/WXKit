@@ -10,12 +10,12 @@
 
 @implementation NSManagedObjectContext (WXKit)
 
-+ (instancetype)createAtUrl:(NSURL *)url mergePolice:(NSMergePolicyType)mergePoliceType andOptions:(NSDictionary *)options
++ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolice:(NSMergePolicyType)mergePoliceType andOptions:(NSDictionary *)options
 {
-    // Load Model name
-    BOOL hasModelNameMethod = [[self class] respondsToSelector:@selector(modelName)];
-    NSAssert(!hasModelNameMethod, @"%@  must implement +modelName", NSStringFromClass(self));
-    NSString *modelName = [[self class] performSelector:@selector(modelName)];
+//    // Load Model name
+//    BOOL hasModelNameMethod = [[self class] respondsToSelector:@selector(modelName)];
+//    NSAssert(!hasModelNameMethod, @"%@  must implement +modelName", NSStringFromClass(self));
+//    NSString *modelName = [[self class] performSelector:@selector(modelName)];
 
     // Load Managed Object Model
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:modelName withExtension:@"momd"];
