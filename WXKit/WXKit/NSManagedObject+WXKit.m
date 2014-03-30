@@ -25,6 +25,7 @@
 
 - (instancetype)instanceInContext:(NSManagedObjectContext *)context
 {
+    if (self.managedObjectContext == context) return self;
     NSError *error;
     id object = [context existingObjectWithID:self.objectID error:&error];
     if (!error){
@@ -35,9 +36,24 @@
 
 + (instancetype)createInContext:(NSManagedObjectContext *)context
 {
-    NSString *class = [NSString stringWithFormat:@"%@", [self class]];
-    id instance = [NSEntityDescription insertNewObjectForEntityForName:class inManagedObjectContext:context];
+    __block id instance;
+
+    void(^block)() = ^{
+        instance  = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
+    };
+
+    if (context.concurrencyType != NSPrivateQueueConcurrencyType) {
+        block();
+    } else {
+        [context performBlockAndWait:block];
+    }
+
     return instance;
 
+}
+
++ (NSString *)entityName
+{
+    return NSStringFromClass(self);
 }
 @end

@@ -16,4 +16,6 @@
 
 + (instancetype)createInContext:(NSManagedObjectContext *)context;
 
++ (NSString *)entityName;
+
 @end

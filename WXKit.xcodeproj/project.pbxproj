@@ -38,6 +38,8 @@
 		6FD550B61869072200FA1277 /* WXNSStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B51869072200FA1277 /* WXNSStringTest.m */; };
 		6FD550B8186913C900FA1277 /* WXDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B7186913C900FA1277 /* WXDate.m */; };
 		6FEE33F2186ED43800F084A8 /* WXUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEE33F1186ED43800F084A8 /* WXUIColor.m */; };
+		6FF2DE2418E7E0F1002D88C3 /* NSManagedObject+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF2DE2118E7E0F1002D88C3 /* NSManagedObject+WXKit.m */; };
+		6FF2DE2518E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF2DE2318E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,10 @@
 		6FD550B51869072200FA1277 /* WXNSStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXNSStringTest.m; sourceTree = "<group>"; };
 		6FD550B7186913C900FA1277 /* WXDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDate.m; sourceTree = "<group>"; };
 		6FEE33F1186ED43800F084A8 /* WXUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIColor.m; sourceTree = "<group>"; };
+		6FF2DE2018E7E0F1002D88C3 /* NSManagedObject+WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+WXKit.h"; path = "WXKit/NSManagedObject+WXKit.h"; sourceTree = "<group>"; };
+		6FF2DE2118E7E0F1002D88C3 /* NSManagedObject+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+WXKit.m"; path = "WXKit/NSManagedObject+WXKit.m"; sourceTree = "<group>"; };
+		6FF2DE2218E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+WXKit.h"; path = "WXKit/NSManagedObjectContext+WXKit.h"; sourceTree = "<group>"; };
+		6FF2DE2318E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+WXKit.m"; path = "WXKit/NSManagedObjectContext+WXKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +212,10 @@
 				6F4B530418683BFE00F37378 /* UIColor+WXKit.m */,
 				6F4B5307186840B300F37378 /* UIImage+WXKit.h */,
 				6F4B5308186840B300F37378 /* UIImage+WXKit.m */,
+				6FF2DE2018E7E0F1002D88C3 /* NSManagedObject+WXKit.h */,
+				6FF2DE2118E7E0F1002D88C3 /* NSManagedObject+WXKit.m */,
+				6FF2DE2218E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.h */,
+				6FF2DE2318E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m */,
 				6F4B530618683F3100F37378 /* WXKit.h */,
 			);
 			name = WXKit;
@@ -312,7 +322,9 @@
 				6F4B52FE18682A2800F37378 /* UILabel+WXKit.m in Sources */,
 				6F4B52F51868202100F37378 /* NSDate+WXKit.m in Sources */,
 				6F4B530518683BFE00F37378 /* UIColor+WXKit.m in Sources */,
+				6FF2DE2518E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m in Sources */,
 				6F4B5309186840B300F37378 /* UIImage+WXKit.m in Sources */,
+				6FF2DE2418E7E0F1002D88C3 /* NSManagedObject+WXKit.m in Sources */,
 				6F4B52C918681E1F00F37378 /* main.m in Sources */,
 				6F4B52EE18681F5800F37378 /* NSString+WXKit.m in Sources */,
 				6F4B530118683A9B00F37378 /* NSArray+WXKit.m in Sources */,
