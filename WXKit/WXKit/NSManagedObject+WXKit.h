@@ -18,4 +18,6 @@
 
 + (NSString *)entityName;
 
++ (NSFetchRequest *)fetchRequest;
+
 @end

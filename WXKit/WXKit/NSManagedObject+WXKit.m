@@ -10,6 +10,11 @@
 
 @implementation NSManagedObject (WXKit)
 
++ (NSFetchRequest *)fetchRequest
+{
+    return [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
+}
+
 - (void)deleteInContext:(NSManagedObjectContext *)context
 {
     id instaceInContext = self.managedObjectContext != context ? [self instanceInContext:context] : self;
