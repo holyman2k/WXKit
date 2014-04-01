@@ -46,4 +46,25 @@
     return context;
 }
 
++ (BOOL)storeNeedsMigrationAtURL:(NSURL *)sourceStoreUrl modelName:(NSString *)modelName
+{
+    BOOL compatibile = NO;
+    NSError *error = nil;
+
+    // Load model
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:modelName withExtension:@"momd"];
+    NSAssert(modelURL != nil, @"could not find model name %@", modelName);
+    NSManagedObjectModel *destinationModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+
+    NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:nil URL:sourceStoreUrl error:&error];
+
+    if (sourceMetadata != nil) {
+        compatibile = [destinationModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata];
+    } else {
+        NSLog(@"source meta data missing");
+    }
+
+    return !compatibile;
+}
+
 @end
