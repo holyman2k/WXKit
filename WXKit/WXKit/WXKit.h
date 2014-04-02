@@ -9,6 +9,9 @@
 #ifndef WXKit_WXKit_h
 #define WXKit_WXKit_h
 
+#define IsEqual(x,y) ((x && [x isEqual:y]) || (!x && !y))
+#define equalOrAssign(x,y) if (!IsEqual(x,y)) x = y
+
 #import "NSString+WXKit.h"
 #import "NSMutableString+WXKit.h"
 #import "NSDate+WXKit.h"
