@@ -67,4 +67,12 @@
     return !compatibile;
 }
 
+- (void)performBlockRegardConcurrentTypeAndWait:(void(^)(void))block
+{
+    if (self.concurrencyType != NSPrivateQueueConcurrencyType) {
+        block();
+    } else {
+        [self performBlockAndWait:block];
+    }
+}
 @end

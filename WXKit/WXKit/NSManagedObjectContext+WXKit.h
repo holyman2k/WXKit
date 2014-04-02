@@ -14,4 +14,6 @@
 
 + (BOOL)storeNeedsMigrationAtURL:(NSURL *)sourceStoreUrl modelName:(NSString *)modelName;
 
+- (void)performBlockRegardConcurrentTypeAndWait:(void(^)(void))block;
+
 @end
