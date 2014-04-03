@@ -18,7 +18,7 @@
  * @return managed object context
  * @discussion to use method, sub class NSManagedObjectContext and implement method - (NSString *)modelName
  */
-+ (instancetype)createAtUrl:(NSURL *)url mergePolice:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options;;
++ (instancetype)createAtUrl:(NSURL *)url mergePolice:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options;
 
 /*!
  * @brief create managed context
