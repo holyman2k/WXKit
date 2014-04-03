@@ -19,4 +19,13 @@
                               encoding:NSUTF8StringEncoding];
 }
 
++ (NSString *)currentDeviceModel
+{
+    return [[self currentDevice] deviceModel];
+}
+
++ (CGFloat)currentDeviceSystemVersion
+{
+    return [[self currentDevice] systemVersion].floatValue;
+}
 @end

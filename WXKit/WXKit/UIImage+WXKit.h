@@ -13,4 +13,5 @@
 - (UIImage *)imageScaleToSize:(CGSize)size;
 
 - (UIImage *)imageWithBorderWithColor:(UIColor *)color andThickness:(CGFloat)thickness;
+
 @end

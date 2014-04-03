@@ -17,11 +17,7 @@
 
 + (instancetype)createInContext:(NSManagedObjectContext *)context
 {
-    __block id instance;
-
-    [context performBlockRegardConcurrentTypeAndWait:^{
-        instance  = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
-    }];
+     id instance = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
 
     return instance;
 }
@@ -41,22 +37,31 @@
                      andSortDescripts:(NSArray *)sortDescriptors
                             inContext:(NSManagedObjectContext *)context
 {
-    __block NSArray *instances;
-
-    [context performBlockRegardConcurrentTypeAndWait:^{
-        NSFetchRequest *request = [self fetchRequest];
-        request.predicate = predicate;
-        request.sortDescriptors = sortDescriptors ?  sortDescriptors : @[];
-        instances = [context executeFetchRequest:request error:nil];
-    }];
+    NSFetchRequest *request = [self fetchRequestWithPredicate:predicate andSortDescripts:sortDescriptors];
+    NSArray *instances = [context executeFetchRequest:request error:nil];
 
     return instances;
 }
 
 + (NSFetchRequest *)fetchRequest
 {
-    return [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
+    return [self fetchRequestWithPredicate:nil andSortDescripts:nil];
 }
+
++ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate
+{
+    return [self fetchRequestWithPredicate:predicate andSortDescripts:nil];
+}
+
++ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescripts:(NSArray *)sortDescriptors
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
+    request.predicate = predicate;
+    request.sortDescriptors = sortDescriptors;
+    return request;
+
+}
+
 
 - (void)deleteInContext:(NSManagedObjectContext *)context
 {

@@ -12,4 +12,8 @@
 
 - (NSString *)deviceModel;
 
++ (NSString *)currentDeviceModel;
+
++ (CGFloat)currentDeviceSystemVersion;
+
 @end

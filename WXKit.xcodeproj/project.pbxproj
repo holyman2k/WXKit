@@ -35,6 +35,7 @@
 		6F4B5311186842B400F37378 /* NSArray+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B530018683A9B00F37378 /* NSArray+WXKit.m */; };
 		6F4B5312186842B400F37378 /* UIColor+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B530418683BFE00F37378 /* UIColor+WXKit.m */; };
 		6F4B5313186842B400F37378 /* UIImage+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B5308186840B300F37378 /* UIImage+WXKit.m */; };
+		6F88A6AB18EE1AD600B9F8DA /* WXKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6A918EE1AD600B9F8DA /* WXKit.xcdatamodeld */; };
 		6FD550B61869072200FA1277 /* WXNSStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B51869072200FA1277 /* WXNSStringTest.m */; };
 		6FD550B8186913C900FA1277 /* WXDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B7186913C900FA1277 /* WXDate.m */; };
 		6FEE33F2186ED43800F084A8 /* WXUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEE33F1186ED43800F084A8 /* WXUIColor.m */; };
@@ -86,6 +87,7 @@
 		6F4B5307186840B300F37378 /* UIImage+WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+WXKit.h"; path = "WXKit/UIImage+WXKit.h"; sourceTree = "<group>"; };
 		6F4B5308186840B300F37378 /* UIImage+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+WXKit.m"; path = "WXKit/UIImage+WXKit.m"; sourceTree = "<group>"; };
 		6F4B530B1868420100F37378 /* WXArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXArrayTest.m; sourceTree = "<group>"; };
+		6F88A6AA18EE1AD600B9F8DA /* WXKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WXKit.xcdatamodel; sourceTree = "<group>"; };
 		6FD550B51869072200FA1277 /* WXNSStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXNSStringTest.m; sourceTree = "<group>"; };
 		6FD550B7186913C900FA1277 /* WXDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDate.m; sourceTree = "<group>"; };
 		6FEE33F1186ED43800F084A8 /* WXUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIColor.m; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				6F4B52DC18681E1F00F37378 /* Supporting Files */,
+				6F88A6AC18EE1ADC00B9F8DA /* CoreData */,
 				6F4B530B1868420100F37378 /* WXArrayTest.m */,
 				6FD550B51869072200FA1277 /* WXNSStringTest.m */,
 				6FD550B7186913C900FA1277 /* WXDate.m */,
@@ -219,6 +222,22 @@
 				6F4B530618683F3100F37378 /* WXKit.h */,
 			);
 			name = WXKit;
+			sourceTree = "<group>";
+		};
+		6F88A6AC18EE1ADC00B9F8DA /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6F88A6AD18EE1AED00B9F8DA /* Domains */,
+				6F88A6A918EE1AD600B9F8DA /* WXKit.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		6F88A6AD18EE1AED00B9F8DA /* Domains */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Domains;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +366,7 @@
 				6F4B5311186842B400F37378 /* NSArray+WXKit.m in Sources */,
 				6FD550B61869072200FA1277 /* WXNSStringTest.m in Sources */,
 				6FEE33F2186ED43800F084A8 /* WXUIColor.m in Sources */,
+				6F88A6AB18EE1AD600B9F8DA /* WXKit.xcdatamodeld in Sources */,
 				6F4B52F61868202400F37378 /* NSString+WXKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,6 +570,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6F88A6A918EE1AD600B9F8DA /* WXKit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6F88A6AA18EE1AD600B9F8DA /* WXKit.xcdatamodel */,
+			);
+			currentVersion = 6F88A6AA18EE1AD600B9F8DA /* WXKit.xcdatamodel */;
+			name = WXKit.xcdatamodeld;
+			path = CoreData/WXKit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6F4B52B118681E1E00F37378 /* Project object */;
 }

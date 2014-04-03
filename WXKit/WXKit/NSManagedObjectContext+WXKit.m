@@ -72,4 +72,9 @@
 
     return !compatibile;
 }
+
++ (NSString *)modelName
+{
+    return nil;
+}
 @end

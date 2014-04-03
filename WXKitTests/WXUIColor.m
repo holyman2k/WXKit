@@ -31,10 +31,10 @@
     
 //    UIColor *baseColor = [UIColor colorWithRed:0.2 green:0.475 blue:0.51 alpha:1.0];
     
-    float red;
-    float green;
-    float blue;
-    float alpha;
+    CGFloat red;
+    CGFloat green;
+    CGFloat blue;
+    CGFloat alpha;
     
     [color getRed:&red green:&green blue:&blue alpha:&alpha];
     
