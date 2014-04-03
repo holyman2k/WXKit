@@ -14,8 +14,7 @@
 + (instancetype)createAtUrl:(NSURL *)url mergePolice:(NSMergePolicyType)mergePoliceType andOptions:(NSDictionary *)options
 {
     // Load Model name
-    BOOL hasModelNameMethod = [[self class] respondsToSelector:@selector(modelName)];
-    NSAssert(!hasModelNameMethod, @"%@  must implement +modelName", NSStringFromClass(self));
+    NSAssert(![[self class] respondsToSelector:@selector(modelName)], @"%@  must implement +modelName", NSStringFromClass(self));
     NSString *modelName = [[self class] performSelector:@selector(modelName)];
     NSAssert(modelName, @"must have valid model name");
 
