@@ -29,7 +29,7 @@
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
 
     // Create Persistence Store Coordinator
-    NSString *storeType = url ? NSInMemoryStoreType : NSSQLiteStoreType;
+    NSString *storeType = url ? NSSQLiteStoreType : NSInMemoryStoreType;
     NSError *error = nil;
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
 
