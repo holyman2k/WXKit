@@ -9,7 +9,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WXKitTests/WXDate.m"
+            filePath = "WXKitTests/WXDateTests.m"
             timestampString = "409539913.031419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

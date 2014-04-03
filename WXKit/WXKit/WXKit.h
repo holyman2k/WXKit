@@ -15,6 +15,7 @@
 #import "NSString+WXKit.h"
 #import "NSMutableString+WXKit.h"
 #import "NSDate+WXKit.h"
+#import "NSURL+WXKit.h"
 #import "UIDevice+WXKit.h"
 #import "UILabel+WXKit.h"
 #import "NSArray+WXKit.h"
