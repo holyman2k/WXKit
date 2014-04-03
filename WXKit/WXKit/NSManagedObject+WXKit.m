@@ -10,6 +10,49 @@
 
 @implementation NSManagedObject (WXKit)
 
++ (NSString *)entityName
+{
+    return NSStringFromClass(self);
+}
+
++ (instancetype)createInContext:(NSManagedObjectContext *)context
+{
+    __block id instance;
+
+    [context performBlockRegardConcurrentTypeAndWait:^{
+        instance  = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
+    }];
+
+    return instance;
+}
+
++ (NSArray *)allInstancesInContext:(NSManagedObjectContext *)context
+{
+    return [self allInstancesWithPredicate:nil andSortDescripts:nil inContext:context];
+}
+
++ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate
+                             inContext:(NSManagedObjectContext *)context
+{
+    return [self allInstancesWithPredicate:predicate andSortDescripts:nil inContext:context];
+}
+
++ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate
+                     andSortDescripts:(NSArray *)sortDescriptors
+                            inContext:(NSManagedObjectContext *)context
+{
+    __block NSArray *instances;
+
+    [context performBlockRegardConcurrentTypeAndWait:^{
+        NSFetchRequest *request = [self fetchRequest];
+        request.predicate = predicate;
+        request.sortDescriptors = sortDescriptors ?  sortDescriptors : @[];
+        instances = [context executeFetchRequest:request error:nil];
+    }];
+
+    return instances;
+}
+
 + (NSFetchRequest *)fetchRequest
 {
     return [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
@@ -37,28 +80,5 @@
         return object;
     }
     return nil;
-}
-
-+ (instancetype)createInContext:(NSManagedObjectContext *)context
-{
-    __block id instance;
-
-    void(^block)() = ^{
-        instance  = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
-    };
-
-    if (context.concurrencyType != NSPrivateQueueConcurrencyType) {
-        block();
-    } else {
-        [context performBlockAndWait:block];
-    }
-
-    return instance;
-
-}
-
-+ (NSString *)entityName
-{
-    return NSStringFromClass(self);
 }
 @end

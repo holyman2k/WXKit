@@ -10,14 +10,20 @@
 
 @interface NSManagedObject (WXKit)
 
-- (void)deleteInContext:(NSManagedObjectContext *)context;
-
-- (instancetype)instanceInContext:(NSManagedObjectContext *)context;
-
-+ (instancetype)createInContext:(NSManagedObjectContext *)context;
-
 + (NSString *)entityName;
 
 + (NSFetchRequest *)fetchRequest;
+
++ (instancetype)createInContext:(NSManagedObjectContext *)context;
+
++ (NSArray *)allInstancesInContext:(NSManagedObjectContext *)context;
+
++ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context;
+
++ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate andSortDescripts:(NSArray *)sortDescriptors inContext:(NSManagedObjectContext *)context;
+
+- (void)deleteInContext:(NSManagedObjectContext *)context;
+
+- (instancetype)instanceInContext:(NSManagedObjectContext *)context;
 
 @end
