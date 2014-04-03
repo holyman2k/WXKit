@@ -10,13 +10,20 @@
 
 @implementation NSManagedObjectContext (WXKit)
 
+
++ (instancetype)createAtUrl:(NSURL *)url mergePolice:(NSMergePolicyType)mergePoliceType andOptions:(NSDictionary *)options
+{
+    // Load Model name
+    BOOL hasModelNameMethod = [[self class] respondsToSelector:@selector(modelName)];
+    NSAssert(!hasModelNameMethod, @"%@  must implement +modelName", NSStringFromClass(self));
+    NSString *modelName = [[self class] performSelector:@selector(modelName)];
+    NSAssert(modelName, @"must have valid model name");
+
+    return [self createAtUrl:url modelName:modelName mergePolice:mergePoliceType andOptions:options];
+}
+
 + (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolice:(NSMergePolicyType)mergePoliceType andOptions:(NSDictionary *)options
 {
-//    // Load Model name
-//    BOOL hasModelNameMethod = [[self class] respondsToSelector:@selector(modelName)];
-//    NSAssert(!hasModelNameMethod, @"%@  must implement +modelName", NSStringFromClass(self));
-//    NSString *modelName = [[self class] performSelector:@selector(modelName)];
-
     // Load Managed Object Model
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:modelName withExtension:@"momd"];
     NSAssert(modelURL != nil, @"could not find model name %@", modelName);
@@ -65,14 +72,5 @@
     }
 
     return !compatibile;
-}
-
-- (void)performBlockRegardConcurrentTypeAndWait:(void(^)(void))block
-{
-    if (self.concurrencyType != NSPrivateQueueConcurrencyType) {
-        block();
-    } else {
-        [self performBlockAndWait:block];
-    }
 }
 @end
