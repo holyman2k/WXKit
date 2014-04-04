@@ -12,6 +12,7 @@
 
 /*!
  * @brief entity name
+ * @return string value of entity name
  */
 + (NSString *)entityName;
 
@@ -22,11 +23,23 @@
 
 /*!
  * @brief create basic fetch request
+ * @return NSFetchRequest for this Entity Class
  */
 + (NSFetchRequest *)fetchRequest;
 
+/*!
+ * @brief create basic fetch request with predicate
+ * @param predicate     predicate for filtering
+ * @return NSFetchRequest for this Entity Class
+ */
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate;
 
+/*!
+ * @brief create basic fetch request with predicate
+ * @param predicate         predicate for filtering
+ * @param sortDescriptors   list of NSSortDescriptors, can be nil
+ * @return NSFetchRequest for this Entity Class
+ */
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescripts:(NSArray *)sortDescriptors;
 
 /*!

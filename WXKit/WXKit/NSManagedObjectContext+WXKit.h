@@ -13,7 +13,7 @@
 /*!
  * @brief create managed context, recommend to pass in light weight migration for option
  * @param url               url storing the persistence store
- * @param mergePoliceType   merge policy type
+ * @param mergePolicyType   merge policy type
  * @param options           persistence store options
  * @return managed object context
  * @discussion to use method, sub class NSManagedObjectContext and implement method - (NSString *)modelName
@@ -24,7 +24,7 @@
  * @brief create managed context
  * @param url               url storing the persistence store
  * @param modelName         managed Object Model filename
- * @param mergePoliceType   merge policy type
+ * @param mergePolicyType   merge policy type
  * @param options           persistence store options
  * @return managed object context
  */
