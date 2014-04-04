@@ -76,27 +76,6 @@
     XCTAssertTrue([string widthForFont:font] > 490, @"width for one line");
 }
 
-- (void)testMutableString
-{
-    NSMutableString *string;
-    string = @" hello ".mutableCopy;
-    [string trimSelf];
-    
-    XCTAssertEqualObjects(@"hello", string, @"equal after trim");
-    
-    string = @" hello".mutableCopy;
-    [string trimSelf];
-    XCTAssertEqualObjects(@"hello", string, @"equal after trim");
-    
-    string = @"hello ".mutableCopy;
-    [string trimSelf];
-    XCTAssertEqualObjects(@"hello", string, @"equal after trim");
-    
-    string = @"hel  lo".mutableCopy;
-    [string trimSelf];
-    XCTAssertNotEqualObjects(@"hello", string, @"equal after trim");
-}
-
 - (void)testEncryption
 {
     NSString *plainText1 = @"hello world !@#&*(";
