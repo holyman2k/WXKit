@@ -42,6 +42,7 @@
 		6F88A6CA18EE283300B9F8DA /* WXAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6C918EE283300B9F8DA /* WXAccount.m */; };
 		6F88A6CD18EE283400B9F8DA /* WXCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6CC18EE283400B9F8DA /* WXCompany.m */; };
 		6F88A6CE18EE2AA500B9F8DA /* WXKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6A918EE1AD600B9F8DA /* WXKit.xcdatamodeld */; };
+		6F88A6D018EE2C7300B9F8DA /* WXManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6CF18EE2C7300B9F8DA /* WXManagedObject.m */; };
 		6FD550B61869072200FA1277 /* WXNSStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B51869072200FA1277 /* WXNSStringTest.m */; };
 		6FD550B8186913C900FA1277 /* WXDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B7186913C900FA1277 /* WXDateTests.m */; };
 		6FEE33F2186ED43800F084A8 /* WXUIColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEE33F1186ED43800F084A8 /* WXUIColorTests.m */; };
@@ -104,6 +105,7 @@
 		6F88A6C918EE283300B9F8DA /* WXAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXAccount.m; path = CoreData/WXAccount.m; sourceTree = "<group>"; };
 		6F88A6CB18EE283400B9F8DA /* WXCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXCompany.h; path = CoreData/WXCompany.h; sourceTree = "<group>"; };
 		6F88A6CC18EE283400B9F8DA /* WXCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXCompany.m; path = CoreData/WXCompany.m; sourceTree = "<group>"; };
+		6F88A6CF18EE2C7300B9F8DA /* WXManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXManagedObject.m; sourceTree = "<group>"; };
 		6FD550B51869072200FA1277 /* WXNSStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXNSStringTest.m; sourceTree = "<group>"; };
 		6FD550B7186913C900FA1277 /* WXDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDateTests.m; sourceTree = "<group>"; };
 		6FEE33F1186ED43800F084A8 /* WXUIColorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIColorTests.m; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				6FD550B7186913C900FA1277 /* WXDateTests.m */,
 				6FEE33F1186ED43800F084A8 /* WXUIColorTests.m */,
 				6F88A6B718EE1FC000B9F8DA /* WXManagedObjectContextTests.m */,
+				6F88A6CF18EE2C7300B9F8DA /* WXManagedObject.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				6F4B5313186842B400F37378 /* UIImage+WXKit.m in Sources */,
 				6F4B530C1868420100F37378 /* WXArrayTest.m in Sources */,
 				6F4B5311186842B400F37378 /* NSArray+WXKit.m in Sources */,
+				6F88A6D018EE2C7300B9F8DA /* WXManagedObject.m in Sources */,
 				6FD550B61869072200FA1277 /* WXNSStringTest.m in Sources */,
 				6FEE33F2186ED43800F084A8 /* WXUIColorTests.m in Sources */,
 				6F88A6AB18EE1AD600B9F8DA /* WXKit.xcdatamodeld in Sources */,

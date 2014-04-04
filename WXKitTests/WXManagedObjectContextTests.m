@@ -47,4 +47,24 @@
     [[NSFileManager defaultManager] removeItemAtURL:[WXTestDefaults persistenceStoreUrl] error:nil];
 }
 
+- (void)testCreateContextFailed
+{
+    BOOL hasException = NO;
+    NSURL *url = [WXTestDefaults persistenceStoreUrl];
+    NSManagedObjectContext *context;
+    @try {
+         context = [NSManagedObjectContext createAtUrl:url modelName:@"a" mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType andOptions:nil];
+    }
+    @catch (NSException *exception) {
+        XCTAssertNotNil(exception, @"failed");
+        hasException = YES;
+    }
+    @finally {
+
+    }
+
+    XCTAssert(hasException, @"tested exception");
+    XCTAssertNil(context, @"context not nil");
+}
+
 @end
