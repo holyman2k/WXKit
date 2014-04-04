@@ -11,7 +11,7 @@
 @interface NSManagedObjectContext (WXKit)
 
 /*!
- * @brief create managed context
+ * @brief create managed context, recommend to pass in light weight migration for option
  * @param url               url storing the persistence store
  * @param mergePoliceType   merge policy type
  * @param options           persistence store options
