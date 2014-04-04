@@ -294,4 +294,105 @@
     XCTAssertNotEqualObjects([accounts.firstObject company], @"no name", @"match entity value");
 }
 
+- (void)testDeleteInContext
+{
+    NSError *error;
+
+    WXAccount *account1 = [WXAccount createInContext:self.context];
+    account1.company = [WXCompany createInContext:self.context];
+    account1.username = @"account 1";
+
+    [self.context save:&error];
+
+    XCTAssertEqualObjects([[WXAccount allInstancesInContext:self.context].firstObject username], account1.username, @"account in context");
+
+    [account1 deleteInContext:self.context];
+    error = nil;
+    [self.context save:&error];
+
+    XCTAssertNil(error, @"save context");
+}
+
+- (void)testInstanceInContext
+{
+    __block NSError *error;
+
+    WXAccount *account1 = [WXAccount createInContext:self.context];
+    account1.company = [WXCompany createInContext:self.context];
+    account1.username = @"account 1";
+
+    [self.context save:&error];
+    XCTAssertNil(error, @"save context");
+
+    XCTAssertEqualObjects([[WXAccount allInstancesInContext:self.context].firstObject username], account1.username, @"account in context");
+
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        NSManagedObjectContext *privateContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        privateContext.persistentStoreCoordinator = self.context.persistentStoreCoordinator;
+        id observer = [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification
+                                                                        object:nil
+                                                                         queue:nil
+                                                                    usingBlock:^(NSNotification *note) {
+                                                                        NSManagedObjectContext *moc = self.context;
+                                                                        if (note.object != moc) {
+                                                                            [moc mergeChangesFromContextDidSaveNotification:note];
+                                                                        }
+                                                                    }];
+        WXAccount *account1InContext = [account1 instanceInContext:privateContext];
+        XCTAssertEqualObjects(account1.username, account1InContext.username, @"match user name");
+
+        account1InContext.username = @"hello world";
+
+        error = nil;
+        [privateContext save:&error];
+        XCTAssertNil(error, @"save context");
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+        dispatch_semaphore_signal(sema);
+    });
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+
+    XCTAssertEqualObjects([[WXAccount allInstancesInContext:self.context].firstObject username] , @"hello world", @"account in context");
+}
+
+- (void)testDeleteInContextBackGroundQueue;
+{
+    __block NSError *error;
+
+    WXAccount *account1 = [WXAccount createInContext:self.context];
+    account1.company = [WXCompany createInContext:self.context];
+    account1.username = @"account 1";
+
+    [self.context save:&error];
+    XCTAssertNil(error, @"save context");
+
+    XCTAssertEqualObjects([[WXAccount allInstancesInContext:self.context].firstObject username], account1.username, @"account in context");
+
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        NSManagedObjectContext *privateContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        privateContext.persistentStoreCoordinator = self.context.persistentStoreCoordinator;
+        id observer = [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification
+                                                                        object:nil
+                                                                         queue:nil
+                                                                    usingBlock:^(NSNotification *note) {
+                                                                        NSManagedObjectContext *moc = self.context;
+                                                                        if (note.object != moc) {
+                                                                            [moc mergeChangesFromContextDidSaveNotification:note];
+                                                                        }
+                                                                    }];
+        [account1 deleteInContext:privateContext];
+        error = nil;
+        [privateContext save:&error];
+        XCTAssertNil(error, @"save context");
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+        dispatch_semaphore_signal(sema);
+    });
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+
+    XCTAssertEqual([WXAccount allInstancesInContext:self.context].count , 0, @"account in context");
+}
+
 @end
