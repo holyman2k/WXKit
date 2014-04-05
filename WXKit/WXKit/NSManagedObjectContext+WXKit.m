@@ -99,4 +99,25 @@
 {
     return nil;
 }
+
+- (void)safelyPerformBlockAndWait:(void (^)())block
+{
+    if (self.concurrencyType == NSConfinementConcurrencyType) {
+        if ([NSThread isMainThread]) {
+            NSLog(@"%@ NSConfinementConcurrencyType in main thread", NSStringFromSelector(_cmd));
+            block();
+        } else {
+            NSLog(@"%@ NSConfinementConcurrencyType will run on main thread", NSStringFromSelector(_cmd));
+            dispatch_sync(dispatch_get_main_queue(), block);
+        }
+    } else {
+        NSLog(@"%@ perform block and wait", NSStringFromSelector(_cmd));
+        [self performBlockAndWait:block];
+    }
+}
+
+- (void)runBlock:(void (^)())block
+{
+    block();
+}
 @end

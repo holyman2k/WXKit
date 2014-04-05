@@ -37,4 +37,10 @@
  */
 + (BOOL)storeNeedsMigrationAtURL:(NSURL *)sourceStoreUrl modelName:(NSString *)modelName;
 
+/*!
+ * @brief safely perform block with regard to concurrent type
+ * @discussion top level context must be created from main context with concurrent type NSConfinementConcurrencyType
+ */
+- (void)safelyPerformBlockAndWait:(void (^)())block;
+
 @end
