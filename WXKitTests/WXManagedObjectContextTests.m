@@ -116,7 +116,7 @@
         queueCompleted = YES;
     });
 
-    wait_while(queueCompleted);
+    wait_while(queueCompleted, 10);
 
     XCTAssert(saveResult, @"saved");
     XCTAssertNil(error, @"test");
@@ -228,8 +228,7 @@
         queueCompleted = YES;
 
     });
-
-    wait_while(queueCompleted);
+    wait_while(queueCompleted, 10);
 
     XCTAssert(saveResult, @"saved");
     XCTAssertNil(error, @"test");
@@ -314,7 +313,7 @@
         queueCompleted = YES;
 
     });
-    wait_while(queueCompleted);
+    wait_while(queueCompleted, 10);
 
     XCTAssert(saveResult, @"saved");
     XCTAssertNil(error, @"test");
