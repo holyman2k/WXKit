@@ -28,15 +28,15 @@
 
 - (void)testWaitWhile
 {
-    __block BOOL queueCompleted = NO;
+    __block BOOL lock = YES;
     __block BOOL queueDidWait = NO;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         queueDidWait = YES;
-        queueCompleted = YES;
+        lock = NO;
     });
 
-    wait_while(queueCompleted, 1.0);
-    XCTAssert(queueCompleted, @"did wait");
+    wait_while(!lock, 1.0);
+    XCTAssert(!lock, @"did wait");
     XCTAssert(queueDidWait, @"did wait");
 }
 
