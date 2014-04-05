@@ -115,10 +115,8 @@
         }];
         queueCompleted = YES;
     });
-    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:1];
-    while (!queueCompleted && [loopUntil timeIntervalSinceNow] > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:loopUntil];
-    }
+
+    wait_while(queueCompleted);
 
     XCTAssert(saveResult, @"saved");
     XCTAssertNil(error, @"test");
@@ -230,10 +228,8 @@
         queueCompleted = YES;
 
     });
-    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:1];
-    while (!queueCompleted && [loopUntil timeIntervalSinceNow] > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:loopUntil];
-    }
+
+    wait_while(queueCompleted);
 
     XCTAssert(saveResult, @"saved");
     XCTAssertNil(error, @"test");
@@ -318,10 +314,7 @@
         queueCompleted = YES;
 
     });
-    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:1];
-    while (!queueCompleted && [loopUntil timeIntervalSinceNow] > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:loopUntil];
-    }
+    wait_while(queueCompleted);
 
     XCTAssert(saveResult, @"saved");
     XCTAssertNil(error, @"test");
