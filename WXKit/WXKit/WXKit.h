@@ -16,9 +16,9 @@
  * @brief suspend queue till value is true, will not block main thread
  * @param value     value that is waited to be true
  */
-#define wait_while(value)\
-NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:1];\
-while (!value && [loopUntil timeIntervalSinceNow] > 0) {\
+#define wait_while(condition, timeout)\
+NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:timeout];\
+while (!condition && [loopUntil timeIntervalSinceNow] > 0) {\
     [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:loopUntil];\
 }
 
