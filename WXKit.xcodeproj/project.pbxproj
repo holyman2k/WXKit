@@ -38,6 +38,7 @@
 		6F4B5311186842B400F37378 /* NSArray+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B530018683A9B00F37378 /* NSArray+WXKit.m */; };
 		6F4B5312186842B400F37378 /* UIColor+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B530418683BFE00F37378 /* UIColor+WXKit.m */; };
 		6F4B5313186842B400F37378 /* UIImage+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B5308186840B300F37378 /* UIImage+WXKit.m */; };
+		6F5AFFCE18F212EC00B5BE21 /* WXIsObjectEqualTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5AFFCD18F212EC00B5BE21 /* WXIsObjectEqualTests.m */; };
 		6F88A6AB18EE1AD600B9F8DA /* WXKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6A918EE1AD600B9F8DA /* WXKit.xcdatamodeld */; };
 		6F88A6B818EE1FC000B9F8DA /* WXManagedObjectContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6B718EE1FC000B9F8DA /* WXManagedObjectContextTests.m */; };
 		6F88A6BB18EE216500B9F8DA /* WXTestDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6BA18EE216500B9F8DA /* WXTestDefaults.m */; };
@@ -101,6 +102,8 @@
 		6F4B5307186840B300F37378 /* UIImage+WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+WXKit.h"; path = "WXKit/UIImage+WXKit.h"; sourceTree = "<group>"; };
 		6F4B5308186840B300F37378 /* UIImage+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+WXKit.m"; path = "WXKit/UIImage+WXKit.m"; sourceTree = "<group>"; };
 		6F4B530B1868420100F37378 /* WXArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXArrayTest.m; sourceTree = "<group>"; };
+		6F5AFFCC18F211CF00B5BE21 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Macros.h; path = WXKit/Macros.h; sourceTree = "<group>"; };
+		6F5AFFCD18F212EC00B5BE21 /* WXIsObjectEqualTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXIsObjectEqualTests.m; sourceTree = "<group>"; };
 		6F88A6AA18EE1AD600B9F8DA /* WXKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WXKit.xcdatamodel; sourceTree = "<group>"; };
 		6F88A6B718EE1FC000B9F8DA /* WXManagedObjectContextTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXManagedObjectContextTests.m; sourceTree = "<group>"; };
 		6F88A6B918EE216500B9F8DA /* WXTestDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTestDefaults.h; sourceTree = "<group>"; };
@@ -247,6 +250,7 @@
 				6FF2DE2318E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m */,
 				6F88A6BC18EE21A400B9F8DA /* NSURL+WXKit.h */,
 				6F88A6BD18EE21A400B9F8DA /* NSURL+WXKit.m */,
+				6F5AFFCC18F211CF00B5BE21 /* Macros.h */,
 				6F4B530618683F3100F37378 /* WXKit.h */,
 			);
 			name = WXKit;
@@ -285,6 +289,7 @@
 				6F24169C18EE5DE000507FCE /* WXURLTests.m */,
 				6F2416A018EE5F8500507FCE /* WXDeviceTests.m */,
 				6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */,
+				6F5AFFCD18F212EC00B5BE21 /* WXIsObjectEqualTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				6F2416A118EE5F8500507FCE /* WXDeviceTests.m in Sources */,
 				6F4B530C1868420100F37378 /* WXArrayTest.m in Sources */,
 				6F4B5311186842B400F37378 /* NSArray+WXKit.m in Sources */,
+				6F5AFFCE18F212EC00B5BE21 /* WXIsObjectEqualTests.m in Sources */,
 				6F88A6D018EE2C7300B9F8DA /* WXManagedObjectTests.m in Sources */,
 				6FD550B61869072200FA1277 /* WXStringTest.m in Sources */,
 				6FEE33F2186ED43800F084A8 /* WXUIColorTests.m in Sources */,
