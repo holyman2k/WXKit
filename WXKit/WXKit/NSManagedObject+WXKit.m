@@ -50,7 +50,7 @@
 
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate
 {
-    return [self fetchRequestWithPredicate:predicate andSortDescripts:nil];
+    return [self fetchRequestWithPredicate:predicate andSortDescripts:@[]];
 }
 
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescripts:(NSArray *)sortDescriptors
