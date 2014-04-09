@@ -152,7 +152,7 @@
 
     XCTAssertNil(error, @"saved without error");
 
-    NSFetchRequest *request = [WXAccount fetchRequestWithPredicate:[NSPredicate predicateWithFormat:@"username = %@", account1.username] andSortDescripts:nil];
+    NSFetchRequest *request = [WXAccount fetchRequestWithPredicate:[NSPredicate predicateWithFormat:@"username = %@", account1.username] andSortDescriptors:nil];
     NSArray *accounts = [self.context executeFetchRequest:request error:&error];
 
     XCTAssertNotNil(accounts, "fetch 1 account");
@@ -167,7 +167,7 @@
 
     NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"username" ascending:YES]];
 
-    request = [WXAccount fetchRequestWithPredicate:[NSPredicate predicateWithFormat:@"username MATCHES '^account [0-9]'"] andSortDescripts:sortDescriptors];
+    request = [WXAccount fetchRequestWithPredicate:[NSPredicate predicateWithFormat:@"username MATCHES '^account [0-9]'"] andSortDescriptors:sortDescriptors];
     accounts = [self.context executeFetchRequest:request error:&error];
 
     XCTAssertNotNil(accounts, "fetch accounts");
@@ -265,7 +265,7 @@
 
     XCTAssertNil(error, @"saved without error");
 
-    NSArray *accounts = [WXAccount allInstancesWithPredicate:[NSPredicate predicateWithFormat:@"username = %@", account1.username] andSortDescripts:nil inContext:self.context];
+    NSArray *accounts = [WXAccount allInstancesWithPredicate:[NSPredicate predicateWithFormat:@"username = %@", account1.username] andSortDescriptors:nil inContext:self.context];
 
     XCTAssertNotNil(accounts, "fetch 1 account");
     XCTAssertEqual(accounts.count, 1, "fetch 1 account");
@@ -279,7 +279,7 @@
 
     NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"username" ascending:YES]];
 
-    accounts = [WXAccount allInstancesWithPredicate:[NSPredicate predicateWithFormat:@"username MATCHES '^account [0-9]'"] andSortDescripts:sortDescriptors inContext:self.context];
+    accounts = [WXAccount allInstancesWithPredicate:[NSPredicate predicateWithFormat:@"username MATCHES '^account [0-9]'"] andSortDescriptors:sortDescriptors inContext:self.context];
 
     XCTAssertNotNil(accounts, "fetch accounts");
     XCTAssertEqual(accounts.count, 3, "fetch 3 account");
