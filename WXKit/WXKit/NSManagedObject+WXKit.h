@@ -40,7 +40,7 @@
  * @param sortDescriptors   list of NSSortDescriptors, can be nil
  * @return NSFetchRequest for this Entity Class
  */
-+ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescripts:(NSArray *)sortDescriptors;
++ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescriptors:(NSArray *)sortDescriptors;
 
 /*!
  * @brief fetch all instances from context
@@ -59,7 +59,7 @@
  * @param predicate predicate or compond predicte
  * @return all entities from context match predicated sorted by sort descriptors
  */
-+ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate andSortDescripts:(NSArray *)sortDescriptors inContext:(NSManagedObjectContext *)context;
++ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate andSortDescriptors:(NSArray *)sortDescriptors inContext:(NSManagedObjectContext *)context;
 
 /*!
  * @brief delete entity from context

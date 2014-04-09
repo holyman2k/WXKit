@@ -24,20 +24,20 @@
 
 + (NSArray *)allInstancesInContext:(NSManagedObjectContext *)context
 {
-    return [self allInstancesWithPredicate:nil andSortDescripts:nil inContext:context];
+    return [self allInstancesWithPredicate:nil andSortDescriptors:nil inContext:context];
 }
 
 + (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate
                              inContext:(NSManagedObjectContext *)context
 {
-    return [self allInstancesWithPredicate:predicate andSortDescripts:nil inContext:context];
+    return [self allInstancesWithPredicate:predicate andSortDescriptors:nil inContext:context];
 }
 
 + (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate
-                     andSortDescripts:(NSArray *)sortDescriptors
+                     andSortDescriptors:(NSArray *)sortDescriptors
                             inContext:(NSManagedObjectContext *)context
 {
-    NSFetchRequest *request = [self fetchRequestWithPredicate:predicate andSortDescripts:sortDescriptors];
+    NSFetchRequest *request = [self fetchRequestWithPredicate:predicate andSortDescriptors:sortDescriptors];
     NSArray *instances = [context executeFetchRequest:request error:nil];
 
     return instances;
@@ -45,15 +45,15 @@
 
 + (NSFetchRequest *)fetchRequest
 {
-    return [self fetchRequestWithPredicate:nil andSortDescripts:nil];
+    return [self fetchRequestWithPredicate:nil andSortDescriptors:nil];
 }
 
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate
 {
-    return [self fetchRequestWithPredicate:predicate andSortDescripts:@[]];
+    return [self fetchRequestWithPredicate:predicate andSortDescriptors:@[]];
 }
 
-+ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescripts:(NSArray *)sortDescriptors
++ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescriptors:(NSArray *)sortDescriptors
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
     request.predicate = predicate;
