@@ -17,8 +17,10 @@
 
 + (instancetype)createInContext:(NSManagedObjectContext *)context
 {
-     id instance = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
-
+    __block id instance;
+    [context safelyPerformBlockAndWait:^{
+        instance = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
+    }];
     return instance;
 }
 
@@ -37,9 +39,11 @@
                      andSortDescriptors:(NSArray *)sortDescriptors
                             inContext:(NSManagedObjectContext *)context
 {
-    NSFetchRequest *request = [self fetchRequestWithPredicate:predicate andSortDescriptors:sortDescriptors];
-    NSArray *instances = [context executeFetchRequest:request error:nil];
-
+    __block NSArray *instances;
+    [context safelyPerformBlockAndWait:^{
+        NSFetchRequest *request = [self fetchRequestWithPredicate:predicate andSortDescriptors:sortDescriptors];
+        instances = [context executeFetchRequest:request error:nil];
+    }];
     return instances;
 }
 
@@ -59,31 +63,25 @@
     request.predicate = predicate;
     request.sortDescriptors = sortDescriptors;
     return request;
-
 }
-
 
 - (void)deleteInContext:(NSManagedObjectContext *)context
 {
     id instaceInContext = self.managedObjectContext != context ? [self instanceInContext:context] : self;
-    if (context.concurrencyType == NSPrivateQueueConcurrencyType) {
-        [context performBlockAndWait:^{
-            [context deleteObject:instaceInContext];
-        }];
-    } else {
+    [context safelyPerformBlockAndWait:^{
         [context deleteObject:instaceInContext];
-    }
-
+    }];
 }
 
 - (instancetype)instanceInContext:(NSManagedObjectContext *)context
 {
     if (self.managedObjectContext == context) return self;
-    NSError *error;
-    id object = [context existingObjectWithID:self.objectID error:&error];
-    if (!error){
-        return object;
-    }
+    __block NSError *error;
+    __block id instance;
+    [context safelyPerformBlockAndWait:^{
+        instance = [context existingObjectWithID:self.objectID error:&error];
+    }];
+    if (!error) return instance;
     return nil;
 }
 @end
