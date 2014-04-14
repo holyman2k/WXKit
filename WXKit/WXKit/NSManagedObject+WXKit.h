@@ -22,6 +22,13 @@
 + (instancetype)createInContext:(NSManagedObjectContext *)context;
 
 /*!
+ * @brief create new instance in context
+ * @param context managed object context
+ * @param block a block with self as param for initalization.  Thread safe.
+ */
++ (instancetype)createInContext:(NSManagedObjectContext *)context withBuilderBlock:(void(^)(id me))block;
+
+/*!
  * @brief create basic fetch request
  * @return NSFetchRequest for this Entity Class
  */

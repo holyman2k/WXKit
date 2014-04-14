@@ -24,6 +24,15 @@
     return instance;
 }
 
++ (instancetype)createInContext:(NSManagedObjectContext *)context withBuilderBlock:(void(^)(id me))block;
+{
+    __block id instance = [self createInContext:context];
+    [context safelyPerformBlockAndWait:^{
+        block(instance);
+    }];
+    return instance;
+}
+
 + (NSArray *)allInstancesInContext:(NSManagedObjectContext *)context
 {
     return [self allInstancesWithPredicate:nil andSortDescriptors:nil inContext:context];

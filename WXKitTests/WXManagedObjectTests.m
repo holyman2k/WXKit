@@ -50,7 +50,7 @@
     account.company = [WXCompany createInContext:self.context];
 
     [self.context save:&error];
-    XCTAssertNotNil(error, @"account need compay");
+    XCTAssertNotNil(error, @"account username");
     account.username = @"hello";
 
     error = nil;
@@ -63,6 +63,31 @@
 
     XCTAssertNil(error, @"fetch account");
 
+    XCTAssertEqualObjects([accounts.firstObject username], account.username, @"created object match");
+    XCTAssertEqualObjects([accounts.firstObject company], account.company, @"created object match");
+}
+
+- (void)testCreateInContextWithBuilder
+{
+    NSError *error;
+    WXCompany *company = [WXCompany createInContext:self.context];
+    WXAccount *account = [WXAccount createInContext:self.context withBuilderBlock:^(id me) {
+        WXAccount *this = me;
+        this.accountId = 2;
+        this.username = @"hello";
+        this.company = company;
+    }];
+
+    [self.context save:&error];
+    XCTAssertNil(error, @"save");
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"WXAccount"];
+    NSArray *accounts = [self.context executeFetchRequest:request error:&error];
+
+    XCTAssertNil(error, @"fetch account");
+
+    XCTAssertEqual([accounts.firstObject accountId], 2, @"created object match");
+    XCTAssertEqualObjects([accounts.firstObject username], @"hello", @"created object match");
     XCTAssertEqualObjects([accounts.firstObject username], account.username, @"created object match");
     XCTAssertEqualObjects([accounts.firstObject company], account.company, @"created object match");
 }
