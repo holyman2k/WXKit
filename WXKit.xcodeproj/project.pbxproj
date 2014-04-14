@@ -48,6 +48,9 @@
 		6F88A6CE18EE2AA500B9F8DA /* WXKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6A918EE1AD600B9F8DA /* WXKit.xcdatamodeld */; };
 		6F88A6D018EE2C7300B9F8DA /* WXManagedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6CF18EE2C7300B9F8DA /* WXManagedObjectTests.m */; };
 		6F8B531518F0388D003F62DB /* WXWaitWhileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */; };
+		6FB1936718FB6CAE002820B4 /* NSObject+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1936618FB6CAE002820B4 /* NSObject+WXKit.m */; };
+		6FB1937018FB6EF1002820B4 /* WXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1936F18FB6EF1002820B4 /* WXUser.m */; };
+		6FB1937418FB6F4E002820B4 /* WXObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1937318FB6F4E002820B4 /* WXObjectTests.m */; };
 		6FD550B61869072200FA1277 /* WXStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B51869072200FA1277 /* WXStringTest.m */; };
 		6FD550B8186913C900FA1277 /* WXDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD550B7186913C900FA1277 /* WXDateTests.m */; };
 		6FEE33F2186ED43800F084A8 /* WXUIColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEE33F1186ED43800F084A8 /* WXUIColorTests.m */; };
@@ -117,6 +120,11 @@
 		6F88A6CC18EE283400B9F8DA /* WXCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXCompany.m; path = CoreData/WXCompany.m; sourceTree = "<group>"; };
 		6F88A6CF18EE2C7300B9F8DA /* WXManagedObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXManagedObjectTests.m; sourceTree = "<group>"; };
 		6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWaitWhileTest.m; sourceTree = "<group>"; };
+		6FB1936518FB6CAE002820B4 /* NSObject+WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+WXKit.h"; path = "WXKit/NSObject+WXKit.h"; sourceTree = "<group>"; };
+		6FB1936618FB6CAE002820B4 /* NSObject+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+WXKit.m"; path = "WXKit/NSObject+WXKit.m"; sourceTree = "<group>"; };
+		6FB1936E18FB6EF1002820B4 /* WXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUser.h; sourceTree = "<group>"; };
+		6FB1936F18FB6EF1002820B4 /* WXUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUser.m; sourceTree = "<group>"; };
+		6FB1937318FB6F4E002820B4 /* WXObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXObjectTests.m; sourceTree = "<group>"; };
 		6FD550B51869072200FA1277 /* WXStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXStringTest.m; sourceTree = "<group>"; };
 		6FD550B7186913C900FA1277 /* WXDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDateTests.m; sourceTree = "<group>"; };
 		6FEE33F1186ED43800F084A8 /* WXUIColorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIColorTests.m; sourceTree = "<group>"; };
@@ -206,11 +214,13 @@
 		6F4B52DB18681E1F00F37378 /* WXKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				6F4B52DC18681E1F00F37378 /* Supporting Files */,
-				6F88A6AC18EE1ADC00B9F8DA /* CoreData */,
 				6F88A6C118EE24D500B9F8DA /* Tests */,
+				6F88A6AC18EE1ADC00B9F8DA /* CoreData */,
+				6FB1936E18FB6EF1002820B4 /* WXUser.h */,
+				6FB1936F18FB6EF1002820B4 /* WXUser.m */,
 				6F88A6B918EE216500B9F8DA /* WXTestDefaults.h */,
 				6F88A6BA18EE216500B9F8DA /* WXTestDefaults.m */,
+				6F4B52DC18681E1F00F37378 /* Supporting Files */,
 			);
 			path = WXKitTests;
 			sourceTree = "<group>";
@@ -228,30 +238,32 @@
 		6F4B52EB18681F3A00F37378 /* WXKit */ = {
 			isa = PBXGroup;
 			children = (
-				6F4B52EC18681F5800F37378 /* NSString+WXKit.h */,
-				6F4B52ED18681F5800F37378 /* NSString+WXKit.m */,
-				6F4B52F018681F9900F37378 /* NSMutableString+WXKit.h */,
-				6F4B52F118681F9900F37378 /* NSMutableString+WXKit.m */,
-				6F4B52F31868202100F37378 /* NSDate+WXKit.h */,
-				6F4B52F41868202100F37378 /* NSDate+WXKit.m */,
-				6F4B52F9186829D200F37378 /* UIDevice+WXKit.h */,
-				6F4B52FA186829D200F37378 /* UIDevice+WXKit.m */,
-				6F4B52FC18682A2800F37378 /* UILabel+WXKit.h */,
-				6F4B52FD18682A2800F37378 /* UILabel+WXKit.m */,
-				6F4B52FF18683A9B00F37378 /* NSArray+WXKit.h */,
-				6F4B530018683A9B00F37378 /* NSArray+WXKit.m */,
-				6F4B530318683BFE00F37378 /* UIColor+WXKit.h */,
-				6F4B530418683BFE00F37378 /* UIColor+WXKit.m */,
-				6F4B5307186840B300F37378 /* UIImage+WXKit.h */,
-				6F4B5308186840B300F37378 /* UIImage+WXKit.m */,
-				6FF2DE2018E7E0F1002D88C3 /* NSManagedObject+WXKit.h */,
-				6FF2DE2118E7E0F1002D88C3 /* NSManagedObject+WXKit.m */,
-				6FF2DE2218E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.h */,
-				6FF2DE2318E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m */,
-				6F88A6BC18EE21A400B9F8DA /* NSURL+WXKit.h */,
-				6F88A6BD18EE21A400B9F8DA /* NSURL+WXKit.m */,
 				6F5AFFCC18F211CF00B5BE21 /* Macros.h */,
+				6F4B52FF18683A9B00F37378 /* NSArray+WXKit.h */,
+				6F4B52F31868202100F37378 /* NSDate+WXKit.h */,
+				6FF2DE2018E7E0F1002D88C3 /* NSManagedObject+WXKit.h */,
+				6FF2DE2218E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.h */,
+				6F4B52F018681F9900F37378 /* NSMutableString+WXKit.h */,
+				6FB1936518FB6CAE002820B4 /* NSObject+WXKit.h */,
+				6F4B52EC18681F5800F37378 /* NSString+WXKit.h */,
+				6F88A6BC18EE21A400B9F8DA /* NSURL+WXKit.h */,
+				6F4B530318683BFE00F37378 /* UIColor+WXKit.h */,
+				6F4B52F9186829D200F37378 /* UIDevice+WXKit.h */,
+				6F4B5307186840B300F37378 /* UIImage+WXKit.h */,
+				6F4B52FC18682A2800F37378 /* UILabel+WXKit.h */,
 				6F4B530618683F3100F37378 /* WXKit.h */,
+				6F4B530018683A9B00F37378 /* NSArray+WXKit.m */,
+				6F4B52F41868202100F37378 /* NSDate+WXKit.m */,
+				6FF2DE2118E7E0F1002D88C3 /* NSManagedObject+WXKit.m */,
+				6FF2DE2318E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m */,
+				6F4B52F118681F9900F37378 /* NSMutableString+WXKit.m */,
+				6FB1936618FB6CAE002820B4 /* NSObject+WXKit.m */,
+				6F4B52ED18681F5800F37378 /* NSString+WXKit.m */,
+				6F88A6BD18EE21A400B9F8DA /* NSURL+WXKit.m */,
+				6F4B530418683BFE00F37378 /* UIColor+WXKit.m */,
+				6F4B52FA186829D200F37378 /* UIDevice+WXKit.m */,
+				6F4B5308186840B300F37378 /* UIImage+WXKit.m */,
+				6F4B52FD18682A2800F37378 /* UILabel+WXKit.m */,
 			);
 			name = WXKit;
 			sourceTree = "<group>";
@@ -290,6 +302,7 @@
 				6F2416A018EE5F8500507FCE /* WXDeviceTests.m */,
 				6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */,
 				6F5AFFCD18F212EC00B5BE21 /* WXIsObjectEqualTests.m */,
+				6FB1937318FB6F4E002820B4 /* WXObjectTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -392,6 +405,7 @@
 			files = (
 				6F4B52F218681F9900F37378 /* NSMutableString+WXKit.m in Sources */,
 				6F88A6CE18EE2AA500B9F8DA /* WXKit.xcdatamodeld in Sources */,
+				6FB1936718FB6CAE002820B4 /* NSObject+WXKit.m in Sources */,
 				6F4B52FB186829D200F37378 /* UIDevice+WXKit.m in Sources */,
 				6F4B52FE18682A2800F37378 /* UILabel+WXKit.m in Sources */,
 				6F4B52F51868202100F37378 /* NSDate+WXKit.m in Sources */,
@@ -412,7 +426,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F4B530D186842AC00F37378 /* UIDevice+WXKit.m in Sources */,
+				6FB1937418FB6F4E002820B4 /* WXObjectTests.m in Sources */,
 				6F4B52F81868202900F37378 /* NSDate+WXKit.m in Sources */,
+				6FB1937018FB6EF1002820B4 /* WXUser.m in Sources */,
 				6F88A6CA18EE283300B9F8DA /* WXAccount.m in Sources */,
 				6F4B52F71868202600F37378 /* NSMutableString+WXKit.m in Sources */,
 				6F88A6B818EE1FC000B9F8DA /* WXManagedObjectContextTests.m in Sources */,
