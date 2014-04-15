@@ -93,4 +93,9 @@
     if (!error) return instance;
     return nil;
 }
+
+- (BOOL)isDeletedOrNilContext
+{
+    return self.isDeleted || self.managedObjectContext == nil;
+}
 @end

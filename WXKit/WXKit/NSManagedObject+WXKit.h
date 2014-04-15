@@ -79,4 +79,9 @@
  */
 - (instancetype)instanceInContext:(NSManagedObjectContext *)context;
 
+
+/*!
+ * @brief if the defect will be deleted on next save or has already been deleted
+ */
+- (BOOL)isDeletedOrNilContext;
 @end
