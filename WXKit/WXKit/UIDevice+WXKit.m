@@ -28,4 +28,15 @@
 {
     return [[self currentDevice] systemVersion].floatValue;
 }
+
++ (BOOL)isCurrentDeviceIpad
+{
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+}
+
++ (BOOL)isCurrentDeviceIphone
+{
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+}
 @end
+

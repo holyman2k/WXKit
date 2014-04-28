@@ -16,4 +16,8 @@
 
 + (CGFloat)currentDeviceSystemVersion;
 
++ (BOOL)isCurrentDeviceIpad;
+
++ (BOOL)isCurrentDeviceIphone;
+
 @end
