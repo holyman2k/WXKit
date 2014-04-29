@@ -9,21 +9,21 @@
 #ifndef WXKit_WXKit_h
 #define WXKit_WXKit_h
 
-#import "NSString+WXKit.h"
-#import "NSMutableString+WXKit.h"
-#import "NSDate+WXKit.h"
-#import "NSURL+WXKit.h"
 #import "NSArray+WXKit.h"
-#import "NSMutableArray+WXKit.h"
-#import "NSManagedObject+WXKit.h"
+#import "NSDate+WXKit.h"
 #import "NSManagedObjectContext+WXKit.h"
+#import "NSManagedObject+WXKit.h"
+#import "NSMutableArray+WXKit.h"
+#import "NSMutableString+WXKit.h"
 #import "NSObject+WXKit.h"
-#import "UIDevice+WXKit.h"
-#import "UILabel+WXKit.h"
+#import "NSString+WXKit.h"
+#import "NSURL+WXKit.h"
 #import "UIColor+WXKit.h"
+#import "UIDevice+WXKit.h"
 #import "UIImage+WXKit.h"
 #import "UIImageView+WXKit.h"
-
+#import "UILabel+WXKit.h"
+#import "UIView+WXKit.h"
 #import "Macros.h"
 
 #endif
