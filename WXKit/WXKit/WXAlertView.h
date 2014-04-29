@@ -17,6 +17,12 @@ typedef void (^WXAlertViewBlock)(void);
                        buttonTitle:(NSString *)buttonTitle
                       buttonAction:(WXAlertViewBlock)block;
 
+
++ (instancetype)showAlertViewWithTitle:(NSString *)title
+                           message:(NSString *)message
+                       buttonTitle:(NSString *)buttonTitle
+                      buttonAction:(WXAlertViewBlock)block;
+
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
                   buttonTitle:(NSString *)cancelButtonTitle
