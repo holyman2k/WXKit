@@ -12,6 +12,11 @@ typedef void (^WXAlertViewBlock)(void);
 
 @interface WXAlertView : UIAlertView
 
++ (instancetype)alertviewWithTitle:(NSString *)title
+                           message:(NSString *)message
+                       buttonTitle:(NSString *)buttonTitle
+                      buttonAction:(WXAlertViewBlock)block;
+
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
                   buttonTitle:(NSString *)cancelButtonTitle

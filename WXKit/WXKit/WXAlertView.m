@@ -16,6 +16,15 @@
 
 @implementation WXAlertView
 
++ (instancetype)alertviewWithTitle:(NSString *)title
+                           message:(NSString *)message
+                       buttonTitle:(NSString *)buttonTitle
+                      buttonAction:(WXAlertViewBlock)block;
+{
+    WXAlertView *alertView = [[WXAlertView alloc] initWithTitle:title message:message buttonTitle:buttonTitle buttonAction:block];
+    return alertView;
+}
+
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
                   buttonTitle:(NSString *)buttonTitle

@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
 
-    WXAlertView *alertView = [[WXAlertView alloc] initWithTitle:@"Color" message:@"Change Color" buttonTitle:@"Red" buttonAction:^{
+    WXAlertView *alertView = [WXAlertView alertviewWithTitle:@"Color" message:@"Change Color" buttonTitle:@"Red" buttonAction:^{
         self.view.backgroundColor = [UIColor colorWithRed:0.857 green:0.267 blue:0.164 alpha:1.000];
     }];
 
