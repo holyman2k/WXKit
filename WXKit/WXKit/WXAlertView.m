@@ -16,7 +16,7 @@
 
 @implementation WXAlertView
 
-+ (instancetype)alertviewWithTitle:(NSString *)title
++ (instancetype)alertViewWithTitle:(NSString *)title
                            message:(NSString *)message
                        buttonTitle:(NSString *)buttonTitle
                       buttonAction:(WXAlertViewBlock)block;
