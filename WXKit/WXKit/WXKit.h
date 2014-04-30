@@ -26,6 +26,7 @@
 #import "UIView+WXKit.h"
 
 #import "WXAlertView.h"
+#import "WXActionSheet.h"
 
 #import "Macros.h"
 
