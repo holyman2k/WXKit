@@ -41,7 +41,8 @@
                  buttonAction:(WXAlertViewBlock)block;
 {
     if (self = [self initWithTitle:title message:message delegate:self cancelButtonTitle:buttonTitle otherButtonTitles:nil]) {
-        self.actionMap[@0] = block;
+
+        self.actionMap[@0] = block ? block : ^(void){};
 
         [NSNotificationCenter.defaultCenter addObserver:self
                                                selector:@selector(applicationDidEnterBackground:)
@@ -60,7 +61,7 @@
 
 - (void)addButtonTitle:(NSString *)title actionBlock:(WXAlertViewBlock)block
 {
-    self.actionMap[@(self.numberOfButtons)] = block;
+    self.actionMap[@(self.numberOfButtons)] = block ? block : ^(void){};;
     [self addButtonWithTitle:title];
 }
 
