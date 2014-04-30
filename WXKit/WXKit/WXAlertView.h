@@ -17,11 +17,11 @@ typedef void (^WXAlertViewBlock)(void);
                        buttonTitle:(NSString *)buttonTitle
                       buttonAction:(WXAlertViewBlock)block;
 
-
 + (instancetype)showAlertViewWithTitle:(NSString *)title
                            message:(NSString *)message
                        buttonTitle:(NSString *)buttonTitle
                       buttonAction:(WXAlertViewBlock)block;
+
 
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
@@ -29,5 +29,19 @@ typedef void (^WXAlertViewBlock)(void);
                  buttonAction:(WXAlertViewBlock)block;
 
 - (void)addButtonTitle:(NSString *)title actionBlock:(WXAlertViewBlock)block;
+
+@end
+
+@class WXAlertPickerView;
+
+typedef void (^WXAlertPickerViewBlock)(WXAlertPickerView *alertView, NSUInteger selectedIndex);
+
+@interface WXAlertPickerView : UIAlertView
+
++ (instancetype)showAlertWithTitle:(NSString *)title
+                           message:(NSString *)message
+                 cancelButtonTitle:(NSString *)cancelButtonTitle
+                 otherButtonTitles:(NSArray *)otherButtonTitles
+                     buttonActions:(WXAlertPickerViewBlock)block;
 
 @end

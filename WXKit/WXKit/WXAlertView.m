@@ -8,6 +8,8 @@
 
 #import "WXAlertView.h"
 
+#pragma mark - WXAlertView
+
 @interface WXAlertView()
 
 @property (strong, nonatomic) NSMutableDictionary *actionMap;
@@ -93,4 +95,78 @@
     block();
 }
 
+@end
+
+#pragma mark - WXAlertPickerView
+
+@interface WXAlertPickerView()
+
+@property (strong, nonatomic) WXAlertPickerViewBlock block;
+
+@end
+
+@implementation WXAlertPickerView
+
++ (instancetype)showAlertWithTitle:(NSString *)title
+                           message:(NSString *)message
+                 cancelButtonTitle:(NSString *)cancelButtonTitle
+                 otherButtonTitles:(NSArray *)otherButtonTitles
+                     buttonActions:(WXAlertPickerViewBlock)block
+{
+    WXAlertPickerView *alertView = [[WXAlertPickerView alloc] initWithTitle:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles buttonActions:block];
+
+    [alertView show];
+
+    return alertView;
+}
+
+- (id)initWithTitle:(NSString *)title
+            message:(NSString *)message
+  cancelButtonTitle:(NSString *)cancelButtonTitle
+  otherButtonTitles:(NSArray *)otherButtonTitles
+      buttonActions:(WXAlertPickerViewBlock)block
+{
+    if (self = [self initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil]) {
+        [otherButtonTitles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self addButtonWithTitle:obj];
+        }];
+        self.block = block;
+
+        [NSNotificationCenter.defaultCenter addObserver:self
+                                               selector:@selector(applicationDidEnterBackground:)
+                                                   name:UIApplicationDidEnterBackgroundNotification
+                                                 object:nil];
+    }
+
+    return self;
+}
+
+- (void)show
+{
+    if ([NSThread isMainThread]) {
+        [super show];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [super show];
+        });
+    }
+}
+
+- (void)applicationDidEnterBackground:(id)sender
+{
+    [self dismissWithClickedButtonIndex:self.cancelButtonIndex animated:NO];
+}
+
+- (void)dealloc
+{
+    [NSNotificationCenter.defaultCenter removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+
+#pragma mark - delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    self.block(self, buttonIndex);
+}
 @end
