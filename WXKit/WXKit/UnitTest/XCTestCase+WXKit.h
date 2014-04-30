@@ -10,10 +10,19 @@
 
 @interface XCTestCase (WXKit)
 
+/*!
+ * @brief keep runloop going; start asynchronise task and wait for completeAsynchronousTask or safelyCompleteAsynchronousTask
+ */
 - (void)waitForAsynchronousTask;
 
+/*!
+ * @brief stop runloop; asychronise task completed
+ */
 - (void)completeAsynchronousTask;
 
+/*!
+ * @brief same as completeAsynchronousTask but thread safe
+ */
 - (void)safelyCompleteAsynchronousTask;
 
 @end

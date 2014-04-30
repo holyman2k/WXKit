@@ -49,6 +49,8 @@
 		6F88A6D018EE2C7300B9F8DA /* WXManagedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6CF18EE2C7300B9F8DA /* WXManagedObjectTests.m */; };
 		6F8B531518F0388D003F62DB /* WXWaitWhileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */; };
 		6F92848B191086F50050099C /* WXActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F92848A191086F50050099C /* WXActionSheet.m */; };
+		6FA7BD751910D5050089B741 /* XCTestCase+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA7BD721910D4DE0089B741 /* XCTestCase+WXKit.m */; };
+		6FA7BD7C1910D62D0089B741 /* WXUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA7BD7B1910D62D0089B741 /* WXUnitTests.m */; };
 		6FB1936718FB6CAE002820B4 /* NSObject+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1936618FB6CAE002820B4 /* NSObject+WXKit.m */; };
 		6FB1937018FB6EF1002820B4 /* WXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1936F18FB6EF1002820B4 /* WXUser.m */; };
 		6FB1937418FB6F4E002820B4 /* WXObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1937318FB6F4E002820B4 /* WXObjectTests.m */; };
@@ -126,6 +128,11 @@
 		6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWaitWhileTest.m; sourceTree = "<group>"; };
 		6F928489191086F50050099C /* WXActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXActionSheet.h; path = WXKit/WXActionSheet.h; sourceTree = "<group>"; };
 		6F92848A191086F50050099C /* WXActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXActionSheet.m; path = WXKit/WXActionSheet.m; sourceTree = "<group>"; };
+		6FA7BD711910D4DE0089B741 /* XCTestCase+WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "XCTestCase+WXKit.h"; path = "WXKit/UnitTest/XCTestCase+WXKit.h"; sourceTree = "<group>"; };
+		6FA7BD721910D4DE0089B741 /* XCTestCase+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase+WXKit.m"; path = "WXKit/UnitTest/XCTestCase+WXKit.m"; sourceTree = "<group>"; };
+		6FA7BD761910D5600089B741 /* WXUnitTestKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WXUnitTestKit.h; path = WXKit/UnitTest/WXUnitTestKit.h; sourceTree = "<group>"; };
+		6FA7BD771910D5960089B741 /* WXUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXUtilities.h; sourceTree = "<group>"; };
+		6FA7BD7B1910D62D0089B741 /* WXUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUnitTests.m; sourceTree = "<group>"; };
 		6FB1936518FB6CAE002820B4 /* NSObject+WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+WXKit.h"; path = "WXKit/NSObject+WXKit.h"; sourceTree = "<group>"; };
 		6FB1936618FB6CAE002820B4 /* NSObject+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+WXKit.m"; path = "WXKit/NSObject+WXKit.m"; sourceTree = "<group>"; };
 		6FB1936E18FB6EF1002820B4 /* WXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUser.h; sourceTree = "<group>"; };
@@ -204,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				6F4B52EB18681F3A00F37378 /* WXKit */,
+				6FA7BD741910D4E60089B741 /* UnitTests */,
 				6F4B52CB18681E1F00F37378 /* WXAppDelegate.h */,
 				6F4B52CC18681E1F00F37378 /* WXAppDelegate.m */,
 				6F4B52CE18681E1F00F37378 /* Images.xcassets */,
@@ -323,8 +331,20 @@
 				6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */,
 				6F5AFFCD18F212EC00B5BE21 /* WXIsObjectEqualTests.m */,
 				6FB1937318FB6F4E002820B4 /* WXObjectTests.m */,
+				6FA7BD7B1910D62D0089B741 /* WXUnitTests.m */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		6FA7BD741910D4E60089B741 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				6FA7BD711910D4DE0089B741 /* XCTestCase+WXKit.h */,
+				6FA7BD721910D4DE0089B741 /* XCTestCase+WXKit.m */,
+				6FA7BD761910D5600089B741 /* WXUnitTestKit.h */,
+				6FA7BD771910D5960089B741 /* WXUtilities.h */,
+			);
+			name = UnitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +474,7 @@
 				6F4B52F81868202900F37378 /* NSDate+WXKit.m in Sources */,
 				6FB1937018FB6EF1002820B4 /* WXUser.m in Sources */,
 				6F88A6CA18EE283300B9F8DA /* WXAccount.m in Sources */,
+				6FA7BD7C1910D62D0089B741 /* WXUnitTests.m in Sources */,
 				6F4B52F71868202600F37378 /* NSMutableString+WXKit.m in Sources */,
 				6F88A6B818EE1FC000B9F8DA /* WXManagedObjectContextTests.m in Sources */,
 				6F88A6CD18EE283400B9F8DA /* WXCompany.m in Sources */,
@@ -469,6 +490,7 @@
 				6F4B530C1868420100F37378 /* WXArrayTest.m in Sources */,
 				6F4B5311186842B400F37378 /* NSArray+WXKit.m in Sources */,
 				6F5AFFCE18F212EC00B5BE21 /* WXIsObjectEqualTests.m in Sources */,
+				6FA7BD751910D5050089B741 /* XCTestCase+WXKit.m in Sources */,
 				6F88A6D018EE2C7300B9F8DA /* WXManagedObjectTests.m in Sources */,
 				6FD550B61869072200FA1277 /* WXStringTest.m in Sources */,
 				6FEE33F2186ED43800F084A8 /* WXUIColorTests.m in Sources */,

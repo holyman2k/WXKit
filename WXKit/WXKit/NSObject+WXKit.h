@@ -12,11 +12,4 @@
 
 + (instancetype)initWithBuilderBlock:(void(^)(id me))block;
 
-
-- (void)waitForAsynchronousTask;
-
-- (void)completeAsynchronousTask;
-
-- (void)safelyCompleteAsynchronousTask;
-
 @end

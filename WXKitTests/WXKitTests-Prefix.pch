@@ -14,5 +14,6 @@
 
 #import "WXTestDefaults.h"
 #import "WXKit-Prefix.pch"
+#import "WXUnitTestKit.h"
 
 #endif

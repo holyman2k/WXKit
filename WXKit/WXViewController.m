@@ -83,6 +83,12 @@
     [actionSheet addCancelButtonWithTitle:@"Cancel" andAction:nil];
     
     [actionSheet showFromBarButtonItem:sender animated:YES];
+
+    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        sleep(3);
+        NSLog(@"waited 3 seconds");
+    });
+    NSLog(@"waited 3 seconds and now this");
 }
 
 

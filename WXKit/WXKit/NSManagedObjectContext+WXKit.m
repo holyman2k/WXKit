@@ -113,8 +113,4 @@
     }
 }
 
-- (void)runBlock:(void (^)())block
-{
-    block();
-}
 @end

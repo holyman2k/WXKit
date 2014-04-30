@@ -22,7 +22,13 @@
 
 - (void)safelyCompleteAsynchronousTask
 {
-    [self performSelectorOnMainThread:@selector(completeAsynchronousTask) withObject:nil waitUntilDone:YES];
+    if ([NSThread isMainThread]) {
+        [self completeAsynchronousTask];
+    } else {
+        [self performSelectorOnMainThread:@selector(completeAsynchronousTask)
+                               withObject:nil
+                            waitUntilDone:YES];
+    }
 }
 
 @end
