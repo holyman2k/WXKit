@@ -9,6 +9,8 @@
 #ifndef WXKit_WXKit_h
 #define WXKit_WXKit_h
 
+#import "Blocks.h"
+
 #import "NSArray+WXKit.h"
 #import "NSDate+WXKit.h"
 #import "NSManagedObjectContext+WXKit.h"
