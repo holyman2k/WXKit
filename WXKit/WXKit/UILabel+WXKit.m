@@ -9,7 +9,7 @@
 #import "UILabel+WXKit.h"
 
 @implementation UILabel (WXKit)
-- (float)textWidth
+- (CGFloat)textWidth
 {
     NSDictionary *attributesDictionary = @{NSFontAttributeName: self.font};
     
@@ -26,7 +26,7 @@
     }
 }
 
-- (float)textHeight
+- (CGFloat)textHeight
 {
     NSDictionary *attributesDictionary = @{NSFontAttributeName: self.font};
     

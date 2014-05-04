@@ -22,7 +22,7 @@
         newWidth = (image.size.width / image.size.height ) * newHeight;
 
         if (newWidth > size.width){
-            float diff = (newWidth - size.width) / newWidth;
+            CGFloat diff = (newWidth - size.width) / newWidth;
             newHeight = newHeight - diff * newHeight;
             newWidth= size.width;
         }
@@ -31,7 +31,7 @@
         newWidth = size.width;
         newHeight = size.width / image.size.width * image.size.height;
         if (newHeight > size.height) {
-            float diff = (newHeight - size.height) / newHeight;
+            CGFloat diff = (newHeight - size.height) / newHeight;
             newWidth = newWidth - newWidth * diff;
             newHeight = size.height;
         }

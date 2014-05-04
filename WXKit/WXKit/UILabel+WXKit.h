@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UILabel (WXKit)
-- (float)textWidth;
-- (float)textHeight;
+- (CGFloat)textWidth;
+- (CGFloat)textHeight;
 @end
