@@ -50,7 +50,6 @@
 		6F8B531518F0388D003F62DB /* WXWaitWhileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */; };
 		6F92848B191086F50050099C /* WXActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F92848A191086F50050099C /* WXActionSheet.m */; };
 		6FA7BD7C1910D62D0089B741 /* WXUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA7BD7B1910D62D0089B741 /* WXUnitTests.m */; };
-		6FA7BD861910D7E10089B741 /* XCTestCase+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA7BD851910D7E10089B741 /* XCTestCase+WXKit.m */; };
 		6FB1936718FB6CAE002820B4 /* NSObject+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1936618FB6CAE002820B4 /* NSObject+WXKit.m */; };
 		6FB1937018FB6EF1002820B4 /* WXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1936F18FB6EF1002820B4 /* WXUser.m */; };
 		6FB1937418FB6F4E002820B4 /* WXObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1937318FB6F4E002820B4 /* WXObjectTests.m */; };
@@ -62,6 +61,10 @@
 		6FEE33F2186ED43800F084A8 /* WXUIColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEE33F1186ED43800F084A8 /* WXUIColorTests.m */; };
 		6FF2DE2418E7E0F1002D88C3 /* NSManagedObject+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF2DE2118E7E0F1002D88C3 /* NSManagedObject+WXKit.m */; };
 		6FF2DE2518E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF2DE2318E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m */; };
+		6FF6CFE419174E0800767C93 /* WXTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF6CFE319174E0800767C93 /* WXTextInput.m */; };
+		6FF6CFE6191755B700767C93 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6CFE5191755B700767C93 /* Storyboard.storyboard */; };
+		6FF6CFEA1917580400767C93 /* XCTestCase+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA7BD851910D7E10089B741 /* XCTestCase+WXKit.m */; };
+		6FF6CFEC19175F2E00767C93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF6CFEB19175F2E00767C93 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +154,10 @@
 		6FF2DE2118E7E0F1002D88C3 /* NSManagedObject+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+WXKit.m"; path = "WXKit/NSManagedObject+WXKit.m"; sourceTree = "<group>"; };
 		6FF2DE2218E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+WXKit.h"; path = "WXKit/NSManagedObjectContext+WXKit.h"; sourceTree = "<group>"; };
 		6FF2DE2318E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+WXKit.m"; path = "WXKit/NSManagedObjectContext+WXKit.m"; sourceTree = "<group>"; };
+		6FF6CFE219174E0800767C93 /* WXTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXTextInput.h; path = WXKit/WXTextInput.h; sourceTree = "<group>"; };
+		6FF6CFE319174E0800767C93 /* WXTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXTextInput.m; path = WXKit/WXTextInput.m; sourceTree = "<group>"; };
+		6FF6CFE5191755B700767C93 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		6FF6CFEB19175F2E00767C93 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FF6CFEC19175F2E00767C93 /* QuartzCore.framework in Frameworks */,
 				6F4B52BF18681E1F00F37378 /* CoreGraphics.framework in Frameworks */,
 				6F4B52C118681E1F00F37378 /* UIKit.framework in Frameworks */,
 				6F4B52BD18681E1F00F37378 /* Foundation.framework in Frameworks */,
@@ -199,6 +207,7 @@
 		6F4B52BB18681E1F00F37378 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FF6CFEB19175F2E00767C93 /* QuartzCore.framework */,
 				6F4B52BC18681E1F00F37378 /* Foundation.framework */,
 				6F4B52BE18681E1F00F37378 /* CoreGraphics.framework */,
 				6F4B52C018681E1F00F37378 /* UIKit.framework */,
@@ -211,13 +220,13 @@
 			isa = PBXGroup;
 			children = (
 				6F4B52EB18681F3A00F37378 /* WXKit */,
-				6FA7BD741910D4E60089B741 /* UnitTests */,
 				6F4B52CB18681E1F00F37378 /* WXAppDelegate.h */,
 				6F4B52CC18681E1F00F37378 /* WXAppDelegate.m */,
 				6F4B52CE18681E1F00F37378 /* Images.xcassets */,
 				6F4B52C318681E1F00F37378 /* Supporting Files */,
 				6FC0A0ED190F904A0005D0FD /* WXViewController.h */,
 				6FC0A0EE190F904A0005D0FD /* WXViewController.m */,
+				6FF6CFE5191755B700767C93 /* Storyboard.storyboard */,
 			);
 			path = WXKit;
 			sourceTree = "<group>";
@@ -236,6 +245,7 @@
 		6F4B52DB18681E1F00F37378 /* WXKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				6FA7BD741910D4E60089B741 /* UnitTests */,
 				6F88A6C118EE24D500B9F8DA /* Tests */,
 				6F88A6AC18EE1ADC00B9F8DA /* CoreData */,
 				6FB1936E18FB6EF1002820B4 /* WXUser.h */,
@@ -260,6 +270,7 @@
 		6F4B52EB18681F3A00F37378 /* WXKit */ = {
 			isa = PBXGroup;
 			children = (
+				6FF6CFE119174DF600767C93 /* UI */,
 				6F5AFFCC18F211CF00B5BE21 /* Macros.h */,
 				6F4B52FF18683A9B00F37378 /* NSArray+WXKit.h */,
 				6F4B530018683A9B00F37378 /* NSArray+WXKit.m */,
@@ -345,6 +356,16 @@
 				6FA7BD851910D7E10089B741 /* XCTestCase+WXKit.m */,
 			);
 			name = UnitTests;
+			path = ../WXKit;
+			sourceTree = "<group>";
+		};
+		6FF6CFE119174DF600767C93 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6FF6CFE219174E0800767C93 /* WXTextInput.h */,
+				6FF6CFE319174E0800767C93 /* WXTextInput.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +446,7 @@
 			files = (
 				6F4B52C718681E1F00F37378 /* InfoPlist.strings in Resources */,
 				6F4B52CF18681E1F00F37378 /* Images.xcassets in Resources */,
+				6FF6CFE6191755B700767C93 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +467,6 @@
 			files = (
 				6F4B52F218681F9900F37378 /* NSMutableString+WXKit.m in Sources */,
 				6FC0A0EA190F8D270005D0FD /* WXAlertView.m in Sources */,
-				6FA7BD861910D7E10089B741 /* XCTestCase+WXKit.m in Sources */,
 				6F88A6CE18EE2AA500B9F8DA /* WXKit.xcdatamodeld in Sources */,
 				6FB1936718FB6CAE002820B4 /* NSObject+WXKit.m in Sources */,
 				6F4B52FB186829D200F37378 /* UIDevice+WXKit.m in Sources */,
@@ -454,6 +475,7 @@
 				6F4B52F51868202100F37378 /* NSDate+WXKit.m in Sources */,
 				6F88A6BE18EE21A400B9F8DA /* NSURL+WXKit.m in Sources */,
 				6F92848B191086F50050099C /* WXActionSheet.m in Sources */,
+				6FF6CFE419174E0800767C93 /* WXTextInput.m in Sources */,
 				6F4B530518683BFE00F37378 /* UIColor+WXKit.m in Sources */,
 				6FF2DE2518E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m in Sources */,
 				6FC0A0EF190F904A0005D0FD /* WXViewController.m in Sources */,
@@ -477,6 +499,7 @@
 				6F88A6CA18EE283300B9F8DA /* WXAccount.m in Sources */,
 				6FA7BD7C1910D62D0089B741 /* WXUnitTests.m in Sources */,
 				6F4B52F71868202600F37378 /* NSMutableString+WXKit.m in Sources */,
+				6FF6CFEA1917580400767C93 /* XCTestCase+WXKit.m in Sources */,
 				6F88A6B818EE1FC000B9F8DA /* WXManagedObjectContextTests.m in Sources */,
 				6F88A6CD18EE283400B9F8DA /* WXCompany.m in Sources */,
 				6F4B530E186842AF00F37378 /* UILabel+WXKit.m in Sources */,
@@ -606,11 +629,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WXKit/WXKit-Prefix.pch";
 				INFOPLIST_FILE = "WXKit/WXKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -620,11 +648,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WXKit/WXKit-Prefix.pch";
 				INFOPLIST_FILE = "WXKit/WXKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
