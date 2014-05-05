@@ -41,7 +41,7 @@
     _label.alpha = 0;
 
     _textField = [[UITextField alloc] init];
-    _textField.font = [UIFont systemFontOfSize:17];
+    _textField.font = [UIFont systemFontOfSize:15];
     _textField.textColor = [UIColor colorWithWhite:0.297f alpha:1.0f];
     _textField.delegate = self;
 

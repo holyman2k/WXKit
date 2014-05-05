@@ -65,6 +65,7 @@
 		6FF6CFE6191755B700767C93 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6CFE5191755B700767C93 /* Storyboard.storyboard */; };
 		6FF6CFEA1917580400767C93 /* XCTestCase+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA7BD851910D7E10089B741 /* XCTestCase+WXKit.m */; };
 		6FF6CFEC19175F2E00767C93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF6CFEB19175F2E00767C93 /* QuartzCore.framework */; };
+		6FF6CFEF1917790D00767C93 /* WXTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF6CFEE1917790D00767C93 /* WXTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,8 @@
 		6FF6CFE319174E0800767C93 /* WXTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXTextInput.m; path = WXKit/WXTextInput.m; sourceTree = "<group>"; };
 		6FF6CFE5191755B700767C93 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		6FF6CFEB19175F2E00767C93 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6FF6CFED1917790D00767C93 /* WXTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTableViewController.h; sourceTree = "<group>"; };
+		6FF6CFEE1917790D00767C93 /* WXTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +230,8 @@
 				6FC0A0ED190F904A0005D0FD /* WXViewController.h */,
 				6FC0A0EE190F904A0005D0FD /* WXViewController.m */,
 				6FF6CFE5191755B700767C93 /* Storyboard.storyboard */,
+				6FF6CFED1917790D00767C93 /* WXTableViewController.h */,
+				6FF6CFEE1917790D00767C93 /* WXTableViewController.m */,
 			);
 			path = WXKit;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 				6F4B52F51868202100F37378 /* NSDate+WXKit.m in Sources */,
 				6F88A6BE18EE21A400B9F8DA /* NSURL+WXKit.m in Sources */,
 				6F92848B191086F50050099C /* WXActionSheet.m in Sources */,
+				6FF6CFEF1917790D00767C93 /* WXTableViewController.m in Sources */,
 				6FF6CFE419174E0800767C93 /* WXTextInput.m in Sources */,
 				6F4B530518683BFE00F37378 /* UIColor+WXKit.m in Sources */,
 				6FF2DE2518E7E0F1002D88C3 /* NSManagedObjectContext+WXKit.m in Sources */,
