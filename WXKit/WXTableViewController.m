@@ -46,18 +46,18 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *label = self.labels[indexPath.row];
-    NSString *text = self.values[label];
-    static CGFloat textFieldWidth;
-    static CGFloat otherFieldHeight;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        textFieldWidth = self.view.frame.size.width - 16 - WXTextLabel.leftRightPadding;
-        otherFieldHeight = WXTextLabel.topBottomPadding + WXTextLabel.labelHeight;
-    });
-
-    return MAX([text heightForFont:[UIFont systemFontOfSize:15] andWidth:textFieldWidth] + otherFieldHeight, WXTextLabel.defaultHeight);
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSString *label = self.labels[indexPath.row];
+//    NSString *text = self.values[label];
+//    static CGFloat textFieldWidth;
+//    static CGFloat otherFieldHeight;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        textFieldWidth = self.view.frame.size.width - 16 - WXTextLabel.leftRightPadding;
+//        otherFieldHeight = WXTextLabel.topBottomPadding + WXTextLabel.labelHeight;
+//    });
+//
+//    return MAX([text heightForFont:[UIFont systemFontOfSize:15] andWidth:textFieldWidth] + otherFieldHeight, WXTextLabel.defaultHeight);
+//}
 @end

@@ -53,21 +53,21 @@
                       relatedBy:NSLayoutRelationEqual
                          toItem:self
                       attribute:NSLayoutAttributeTop
-                       constant:8.0f];
+                       constant:0.0f];
 
     [self addConstraintWithItem:_label
                       attribute:NSLayoutAttributeLeft
                       relatedBy:NSLayoutRelationEqual
                          toItem:self
                       attribute:NSLayoutAttributeLeft
-                       constant:8.0f];
+                       constant:0.0f];
 
     [self addConstraintWithItem:_label
                       attribute:NSLayoutAttributeRight
                       relatedBy:NSLayoutRelationEqual
                          toItem:self
                       attribute:NSLayoutAttributeRight
-                       constant:8.0f];
+                       constant:0.0f];
 
     [_label addConstraintWithItem:_label
                             attribute:NSLayoutAttributeHeight
@@ -80,31 +80,31 @@
     [self addConstraintWithItem:_textField
                       attribute:NSLayoutAttributeTop
                       relatedBy:NSLayoutRelationEqual
-                         toItem:_label
-                      attribute:NSLayoutAttributeBottom
+                         toItem:self
+                      attribute:NSLayoutAttributeTop
+                       constant:10.0f];
+
+    [self addConstraintWithItem:_textField
+                      attribute:NSLayoutAttributeLeft
+                      relatedBy:NSLayoutRelationEqual
+                         toItem:self
+                      attribute:NSLayoutAttributeLeft
                        constant:0.0f];
 
     [self addConstraintWithItem:_textField
-                      attribute:NSLayoutAttributeLeft
-                      relatedBy:NSLayoutRelationEqual
-                         toItem:self
-                      attribute:NSLayoutAttributeLeft
-                       constant:8.0f];
-
-    [self addConstraintWithItem:_textField
                       attribute:NSLayoutAttributeRight
                       relatedBy:NSLayoutRelationEqual
                          toItem:self
                       attribute:NSLayoutAttributeRight
-                       constant:8.0f];
+                       constant:0.0f];
 
     [_textField addConstraintWithItem:_textField
-                                attribute:NSLayoutAttributeHeight
-                                relatedBy:NSLayoutRelationEqual
-                                   toItem:nil
-                                attribute:NSLayoutAttributeNotAnAttribute
-                                 constant:25.0f];
-
+                            attribute:NSLayoutAttributeHeight
+                            relatedBy:NSLayoutRelationEqual
+                               toItem:nil
+                            attribute:NSLayoutAttributeNotAnAttribute
+                             constant:25.0f
+                             priority:UILayoutPriorityDefaultHigh];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -142,9 +142,10 @@
 
 - (void)updateViewLayout
 {
-    [self.label.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint *constrain, NSUInteger idx, BOOL *stop) {
-        if (constrain.firstItem == self.label && constrain.firstAttribute == NSLayoutAttributeHeight){
-            constrain.constant = self.text.length > 0 ? 10.0f : 5.0f;
+    CGFloat height = self.frame.size.height;
+    [self.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint *constrain, NSUInteger idx, BOOL *stop) {
+        if (constrain.firstItem == self.textField && constrain.firstAttribute == NSLayoutAttributeTop){
+            constrain.constant = self.text.length > 0 ? 10.0f : (height - 25) / 2;
             [self.label updateConstraints];
         }
     }];

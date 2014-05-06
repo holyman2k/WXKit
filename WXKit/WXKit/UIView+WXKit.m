@@ -34,4 +34,18 @@
     [self addConstraint:constrain];
     return constrain;
 }
+
+- (NSLayoutConstraint *)addConstraintWithItem:(id)view1
+                                    attribute:(NSLayoutAttribute)attr1
+                                    relatedBy:(NSLayoutRelation)relation
+                                       toItem:(id)view2
+                                    attribute:(NSLayoutAttribute)attr2
+                                     constant:(CGFloat)c
+                                     priority:(UILayoutPriority)priority
+{
+    NSLayoutConstraint *constrain = [NSLayoutConstraint constraintWithItem:view1 attribute:attr1 relatedBy:relation toItem:view2 attribute:attr2 multiplier:1 constant:c];
+    constrain.priority = priority;
+    [self addConstraint:constrain];
+    return constrain;
+}
 @end

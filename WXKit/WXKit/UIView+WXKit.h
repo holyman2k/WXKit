@@ -19,4 +19,11 @@
                                    attribute:(NSLayoutAttribute)attr2
                                     constant:(CGFloat)c;
 
+- (NSLayoutConstraint *)addConstraintWithItem:(id)view1
+                                    attribute:(NSLayoutAttribute)attr1
+                                    relatedBy:(NSLayoutRelation)relation
+                                       toItem:(id)view2
+                                    attribute:(NSLayoutAttribute)attr2
+                                     constant:(CGFloat)c
+                                     priority:(UILayoutPriority)priority;
 @end
