@@ -12,7 +12,8 @@
 
 + (UIColor *)colorWithHexString:(NSString *)hexString withAlpha:(float)alpha
 {
-    if ([hexString length] != 6) {
+    if (hexString.length > 0 && [hexString characterAtIndex:0] == '#') hexString = [hexString substringFromIndex:1];
+    if (hexString.length != 6) {
         return nil;
     }
     

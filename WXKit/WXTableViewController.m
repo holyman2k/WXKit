@@ -18,8 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.labels = @[@"Description", @"Location", @"Service"];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#D6B849" withAlpha:1];
+    self.labels = @[@"Description", @"Location", @"Service", @"Due Date", @"Assignee"];
 }
 
 #pragma mark - Table view data source
