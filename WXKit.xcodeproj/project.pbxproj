@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0B3EC819189BB7008019D7 /* WXTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3EC719189BB7008019D7 /* WXTextLabel.m */; };
 		6F24169D18EE5DE000507FCE /* WXURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F24169C18EE5DE000507FCE /* WXURLTests.m */; };
 		6F24169F18EE5F4600507FCE /* WXMutableStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F24169E18EE5F4600507FCE /* WXMutableStringTests.m */; };
 		6F2416A118EE5F8500507FCE /* WXDeviceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2416A018EE5F8500507FCE /* WXDeviceTests.m */; };
@@ -79,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F0B3EC619189BB7008019D7 /* WXTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXTextLabel.h; path = WXKit/WXTextLabel.h; sourceTree = "<group>"; };
+		6F0B3EC719189BB7008019D7 /* WXTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXTextLabel.m; path = WXKit/WXTextLabel.m; sourceTree = "<group>"; };
 		6F24169C18EE5DE000507FCE /* WXURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXURLTests.m; sourceTree = "<group>"; };
 		6F24169E18EE5F4600507FCE /* WXMutableStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMutableStringTests.m; sourceTree = "<group>"; };
 		6F2416A018EE5F8500507FCE /* WXDeviceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDeviceTests.m; sourceTree = "<group>"; };
@@ -369,6 +372,8 @@
 			children = (
 				6FF6CFE219174E0800767C93 /* WXTextInput.h */,
 				6FF6CFE319174E0800767C93 /* WXTextInput.m */,
+				6F0B3EC619189BB7008019D7 /* WXTextLabel.h */,
+				6F0B3EC719189BB7008019D7 /* WXTextLabel.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 				6F4B5309186840B300F37378 /* UIImage+WXKit.m in Sources */,
 				6FF2DE2418E7E0F1002D88C3 /* NSManagedObject+WXKit.m in Sources */,
 				6F4B52C918681E1F00F37378 /* main.m in Sources */,
+				6F0B3EC819189BB7008019D7 /* WXTextLabel.m in Sources */,
 				6F4B52EE18681F5800F37378 /* NSString+WXKit.m in Sources */,
 				6F4B530118683A9B00F37378 /* NSArray+WXKit.m in Sources */,
 				6F4B52CD18681E1F00F37378 /* WXAppDelegate.m in Sources */,

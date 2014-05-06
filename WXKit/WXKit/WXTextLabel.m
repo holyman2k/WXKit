@@ -1,19 +1,19 @@
 //
-//  WXTextInput.m
+//  WXTextLabel.m
 //  WXKit
 //
-//  Created by Charlie Wu on 5/05/2014.
+//  Created by Charlie Wu on 6/05/2014.
 //  Copyright (c) 2014 Charlie Wu. All rights reserved.
 //
 
-#import "WXTextInput.h"
+#import "WXTextLabel.h"
 
-@interface WXTextInput() <UITextFieldDelegate>
+@interface WXTextLabel() 
 @property (strong, nonatomic) UILabel *label;
-@property (strong, nonatomic) UITextField *textField;
+@property (strong, nonatomic) UILabel *textField;
 @end
 
-@implementation WXTextInput
+@implementation WXTextLabel
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,7 +28,6 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         [self initialize];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:_textField];
     }
     return self;
 }
@@ -40,10 +39,10 @@
     _label.font = [UIFont systemFontOfSize:10.0f];
     _label.alpha = 0;
 
-    _textField = [[UITextField alloc] init];
+    _textField = [[UILabel alloc] init];
     _textField.font = [UIFont systemFontOfSize:15];
+    _textField.numberOfLines = 0;
     _textField.textColor = [UIColor colorWithWhite:0.297f alpha:1.0f];
-    _textField.delegate = self;
     _label.translatesAutoresizingMaskIntoConstraints = NO;
     _textField.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.label];
@@ -70,11 +69,11 @@
                        constant:8.0f];
 
     [_label addConstraintWithItem:_label
-                            attribute:NSLayoutAttributeHeight
-                            relatedBy:NSLayoutRelationEqual
-                               toItem:nil
-                            attribute:NSLayoutAttributeNotAnAttribute
-                             constant:10.0f];
+                        attribute:NSLayoutAttributeHeight
+                        relatedBy:NSLayoutRelationEqual
+                           toItem:nil
+                        attribute:NSLayoutAttributeNotAnAttribute
+                         constant:10.0f];
 
     //constrains for text field
     [self addConstraintWithItem:_textField
@@ -99,28 +98,18 @@
                        constant:8.0f];
 
     [_textField addConstraintWithItem:_textField
-                                attribute:NSLayoutAttributeHeight
-                                relatedBy:NSLayoutRelationEqual
-                                   toItem:nil
-                                attribute:NSLayoutAttributeNotAnAttribute
-                                 constant:25.0f];
+                            attribute:NSLayoutAttributeHeight
+                            relatedBy:NSLayoutRelationGreaterThanOrEqual
+                               toItem:nil
+                            attribute:NSLayoutAttributeNotAnAttribute
+                             constant:25.0f];
 
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (!self.textField.isFirstResponder) [self.textField becomeFirstResponder];
 }
 
 - (void)textFieldDidChange:(NSNotification *)notification
 {
     self.textField.text = self.textField.text;
     [self updateViewLayout];
-}
-
-- (NSString *)text
-{
-    return self.textField.text;
 }
 
 - (NSString *)labelText
@@ -130,6 +119,7 @@
 
 - (void)setText:(NSString *)text
 {
+    _text = text;
     self.textField.text = text;
     [self updateViewLayout];
 }
@@ -144,15 +134,17 @@
 {
     [self.label.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint *constrain, NSUInteger idx, BOOL *stop) {
         if (constrain.firstItem == self.label && constrain.firstAttribute == NSLayoutAttributeHeight){
-            constrain.constant = self.text.length > 0 ? 10.0f : 5.0f;
+            constrain.constant = self.text.length > 0 ? 10.0f : 2.0f;
             [self.label updateConstraints];
         }
     }];
 
-    if (self.textField.text.length == 0) {
+    if (self.text.length == 0) {
         self.label.alpha = 0.0f;
-        self.textField.placeholder = self.labelText;
+        self.textField.text = self.labelText;
+        self.textField.textColor = [UIColor colorWithWhite:0.614 alpha:1.0f];
     } else {
+        self.textField.textColor = [UIColor colorWithWhite:0.297f alpha:1.0f];
         self.label.alpha = 1.0f;
     }
 }
@@ -167,9 +159,23 @@
     self.label.textColor = [UIColor colorWithWhite:0.66f alpha:1.0f];
 }
 
-- (void)dealloc
++ (CGFloat)leftRightPadding
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    return 16;
 }
 
++ (CGFloat)topBottomPadding
+{
+    return 16;
+}
+
++ (CGFloat)labelHeight
+{
+    return 10;
+}
+
++ (CGFloat)defaultHeight
+{
+    return 46;
+}
 @end

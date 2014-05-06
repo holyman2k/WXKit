@@ -8,9 +8,11 @@
 
 #import "WXTableViewController.h"
 #import "WXTextInput.h"
+#import "WXTextLabel.h"
 
 @interface WXTableViewController ()
 @property (strong, nonatomic) NSArray *labels;
+@property (strong, nonatomic) NSDictionary *values;
 @end
 
 @implementation WXTableViewController
@@ -18,8 +20,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#D6B849" withAlpha:1];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"D6B849" withAlpha:1];
     self.labels = @[@"Description", @"Location", @"Service", @"Due Date", @"Assignee"];
+    self.values = @{self.labels[0] : @"Broken Window",
+                    self.labels[1] : @"Westmead Hopsital - Building A - Level 2 - Room 126",
+                    self.labels[2] : @"Building Service - Window"};
 }
 
 #pragma mark - Table view data source
@@ -33,59 +38,26 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    WXTextInput *textInput = cell.contentView.subviews.firstObject;
+    WXTextLabel *textField = cell.contentView.subviews.firstObject;
 
-    textInput.labelText = self.labels[indexPath.row];
+    textField.labelText = self.labels[indexPath.row];
+    textField.text = self.values[textField.labelText];
     
     return cell;
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    NSString *label = self.labels[indexPath.row];
+    NSString *text = self.values[label];
+    static CGFloat textFieldWidth;
+    static CGFloat otherFieldHeight;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        textFieldWidth = self.view.frame.size.width - 16 - WXTextLabel.leftRightPadding;
+        otherFieldHeight = WXTextLabel.topBottomPadding + WXTextLabel.labelHeight;
+    });
+
+    return MAX([text heightForFont:[UIFont systemFontOfSize:15] andWidth:textFieldWidth] + otherFieldHeight, WXTextLabel.defaultHeight);
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
