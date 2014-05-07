@@ -9,6 +9,7 @@
 #import "WXTextInput.h"
 
 @interface WXTextInput() <UITextFieldDelegate>
+@property (strong, nonatomic) UILabel *labelValidation;
 @property (strong, nonatomic) UILabel *label;
 @property (strong, nonatomic) UITextField *textField;
 @end
@@ -35,6 +36,11 @@
 
 - (void)initialize
 {
+    _labelValidation = [[UILabel alloc] init];
+    _labelValidation.textColor = [UIColor colorWithRed:0.841f green:0.231f blue:0.189f alpha:1.000f];
+    _labelValidation.font = [UIFont systemFontOfSize:12.0f];
+    _labelValidation.alpha = 0;
+
     _label = [[UILabel alloc] init];
     _label.textColor = [self tintColor];
     _label.font = [UIFont systemFontOfSize:10.0f];
@@ -44,14 +50,48 @@
     _textField.font = [UIFont systemFontOfSize:15];
     _textField.textColor = [UIColor colorWithWhite:0.297f alpha:1.0f];
     _textField.delegate = self;
+
+    _labelValidation.translatesAutoresizingMaskIntoConstraints = NO;
     _label.translatesAutoresizingMaskIntoConstraints = NO;
     _textField.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.label];
-    [self addSubview:self.textField];// constrains for label
-    [self addConstraintWithItem:_label
+    [self addSubview:_labelValidation];
+    [self addSubview:_label];
+    [self addSubview:_textField];
+
+    // constrains for label validation
+    [self addConstraintWithItem:_labelValidation
                       attribute:NSLayoutAttributeTop
                       relatedBy:NSLayoutRelationEqual
                          toItem:self
+                      attribute:NSLayoutAttributeTop
+                       constant:0.0f];
+
+    [self addConstraintWithItem:_labelValidation
+                      attribute:NSLayoutAttributeLeft
+                      relatedBy:NSLayoutRelationEqual
+                         toItem:self
+                      attribute:NSLayoutAttributeLeft
+                       constant:0.0f];
+
+    [self addConstraintWithItem:_labelValidation
+                      attribute:NSLayoutAttributeRight
+                      relatedBy:NSLayoutRelationEqual
+                         toItem:self
+                      attribute:NSLayoutAttributeRight
+                       constant:0.0f];
+
+    [_label addConstraintWithItem:_labelValidation
+                        attribute:NSLayoutAttributeHeight
+                        relatedBy:NSLayoutRelationEqual
+                           toItem:nil
+                        attribute:NSLayoutAttributeNotAnAttribute
+                         constant:0.0f];
+
+    // constrains for label
+    [self addConstraintWithItem:_label
+                      attribute:NSLayoutAttributeTop
+                      relatedBy:NSLayoutRelationEqual
+                         toItem:_labelValidation
                       attribute:NSLayoutAttributeTop
                        constant:0.0f];
 

@@ -10,7 +10,8 @@
 
 @interface WXTextInput : UIView
 
-@property NSString *text;
-@property NSString *labelText;
+@property (nonatomic) NSString *text;
+@property (nonatomic) NSString *labelText;
+@property (nonatomic) NSString *validationMessage;
 
 @end
