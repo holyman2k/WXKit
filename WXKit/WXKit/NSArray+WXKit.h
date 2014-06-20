@@ -12,6 +12,6 @@
 
 - (id)objectOrNilAtIndex:(NSUInteger)index;
 
-- (NSArray *)reverse;
+- (instancetype)reverse;
 
 @end

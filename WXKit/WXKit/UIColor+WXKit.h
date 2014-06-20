@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIColor (WXKit)
-+ (UIColor *)colorWithHexString:(NSString *)hexString withAlpha:(float)alpha;
++ (instancetype)colorWithHexString:(NSString *)hexString withAlpha:(float)alpha;
 @end

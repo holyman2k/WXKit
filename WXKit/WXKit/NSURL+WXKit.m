@@ -10,12 +10,12 @@
 
 @implementation NSURL (WXKit)
 
-+ (NSURL *)applicationDocumentsDirectory
++ (instancetype)applicationDocumentsDirectory
 {
     return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
 }
 
-+ (NSURL *)applicationLibraryDirectory
++ (instancetype)applicationLibraryDirectory
 {
     return [[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask].firstObject;
 }

@@ -18,7 +18,7 @@
     return nil;
 }
 
-- (NSArray *)reverse
+- (instancetype)reverse
 {
     return self.reverseObjectEnumerator.allObjects;
 }

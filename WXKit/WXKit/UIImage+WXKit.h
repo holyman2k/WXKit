@@ -10,8 +10,8 @@
 
 @interface UIImage (WXKit)
 
-- (UIImage *)imageScaleToSize:(CGSize)size;
+- (instancetype)imageScaleToSize:(CGSize)size;
 
-- (UIImage *)imageWithBorderWithColor:(UIColor *)color andThickness:(CGFloat)thickness;
+- (instancetype)imageWithBorderWithColor:(UIColor *)color andThickness:(CGFloat)thickness;
 
 @end

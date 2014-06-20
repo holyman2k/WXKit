@@ -10,7 +10,7 @@
 
 @implementation UIImage (WXKit)
 
-- (UIImage *)imageScaleToSize:(CGSize)size
+- (instancetype)imageScaleToSize:(CGSize)size
 {
     CGFloat screenScale = [UIScreen mainScreen].scale;
     size = CGSizeMake(size.width * screenScale, size.height * screenScale);
@@ -20,7 +20,7 @@
     return scaledImage;
 }
 
-- (UIImage *)imageWithBorderWithColor:(UIColor *)color andThickness:(CGFloat)thickness
+- (instancetype)imageWithBorderWithColor:(UIColor *)color andThickness:(CGFloat)thickness
 {
     CGSize size = CGSizeMake(self.size.width, self.size.height);
     UIGraphicsBeginImageContext(size);

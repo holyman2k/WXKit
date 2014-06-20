@@ -10,8 +10,8 @@
 
 @interface NSURL (WXKit)
 
-+ (NSURL *)applicationDocumentsDirectory;
++ (instancetype)applicationDocumentsDirectory;
 
-+ (NSURL *)applicationLibraryDirectory;
++ (instancetype)applicationLibraryDirectory;
 
 @end
