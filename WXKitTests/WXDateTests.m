@@ -96,4 +96,21 @@
     XCTAssertNotEqualObjects([NSDate dateWithTimeIntervalSince1970:1385846784], dateFromString, @"not equal datetimeß date");
 }
 
+- (void)testDateByRemoveTime
+{
+    NSDate *datetime = [NSDate dateFromString:@"2014.5.12 10:30:00 AM" withFormat:@"yyyy.MM.dd hh:mm:ss a"];
+    NSDate *dateWithoutTime = [NSDate dateFromString:@"2014.5.12" withFormat:@"yyyy.MM.dd"];
+    NSDate *dateWithoutTimeFull = [NSDate dateFromString:@"2014.5.12 00:00:00 AM" withFormat:@"yyyy.MM.dd hh:mm:ss a"];
+    NSDate *dateWithoutTimeOffset = [NSDate dateFromString:@"2014.5.12 00:00:01 AM" withFormat:@"yyyy.MM.dd hh:mm:ss a"];
+    NSDate *dateWithoutTimeOffset2 = [NSDate dateFromString:@"2014.5.11 11:59:59 AM" withFormat:@"yyyy.MM.dd hh:mm:ss a"];
+
+    NSDate *date = [datetime dateByRemoveTime];
+
+    XCTAssertEqualObjects(date, dateWithoutTime, @"equal date");
+    XCTAssertEqualObjects(date, dateWithoutTimeFull, @"equal date");
+    XCTAssertNotEqualObjects(date, dateWithoutTimeOffset, @"equal date");
+    XCTAssertNotEqualObjects(date, dateWithoutTimeOffset2, @"equal date");
+
+}
+
 @end

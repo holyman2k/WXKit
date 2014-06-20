@@ -10,9 +10,9 @@
 
 @interface NSDate (WXKit)
 
-+ (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format;
++ (instancetype)dateFromString:(NSString *)string withFormat:(NSString *)format;
 
-+ (NSDate *)dateFromJsonString:(NSString *)json;
++ (instancetype)dateFromJsonString:(NSString *)json;
 
 - (NSString *)jsonString;
 
@@ -23,5 +23,7 @@
 - (NSString *)dateTimeString;
 
 - (NSString *)dateStringWithFormat:(NSString *)format;
+
+- (instancetype)dateByWithoutTime;
 
 @end

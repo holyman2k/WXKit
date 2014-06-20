@@ -10,14 +10,14 @@
 
 @implementation NSDate (WXKit)
 
-+ (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format
++ (instancetype)dateFromString:(NSString *)string withFormat:(NSString *)format
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:format];
     return [dateFormat dateFromString:string];
 }
 
-+ (NSDate *)dateFromJsonString:(NSString *)json
++ (instancetype)dateFromJsonString:(NSString *)json
 {
     static NSDateFormatter *dateFormat;
     static dispatch_once_t dateFormatOnceToken;
@@ -79,4 +79,9 @@
     return [dateFormat stringFromDate:self];
 }
 
+- (instancetype)dateByWithoutTime
+{
+    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+    return [[NSCalendar currentCalendar] dateFromComponents:comps];
+}
 @end
