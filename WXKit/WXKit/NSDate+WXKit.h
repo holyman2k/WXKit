@@ -24,6 +24,6 @@
 
 - (NSString *)dateStringWithFormat:(NSString *)format;
 
-- (instancetype)dateByWithoutTime;
+- (instancetype)dateWithoutTime;
 
 @end

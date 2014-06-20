@@ -113,4 +113,29 @@
     }
 }
 
+static NSMutableDictionary *observerMap;
+
+- (instancetype)privateContext:(id *)observer
+{
+    NSAssert(![NSThread isMainThread], @"must not be in main thread");
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    context.persistentStoreCoordinator = self.persistentStoreCoordinator;
+
+    *observer = [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:nil
+                                                                usingBlock:^(NSNotification *note) {
+                                                                    NSManagedObjectContext *moc = self;
+                                                                    if (note.object != moc) {
+                                                                        [moc mergeChangesFromContextDidSaveNotification:note];
+                                                                    }
+                                                                }];
+    return context;
+}
+
+- (void)removeObserver:(id *)observer
+{
+    if (self.concurrencyType == NSPrivateQueueConcurrencyType) {
+        [[NSNotificationCenter defaultCenter] removeObserver:*observer];
+    }
+}
+
 @end

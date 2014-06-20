@@ -70,6 +70,45 @@
     XCTAssertNil(context, @"context not nil");
 }
 
+- (void)testPrivateContext
+{
+    NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
+                                                                modelName:@"WXKit"
+                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                               andOptions:nil];
+
+    for (NSUInteger i = 0; i < 10; i++) {
+        __block BOOL queueCompleted = NO;
+        __block NSError *error;
+        __block BOOL saveResult = NO;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+            id observer;
+            NSManagedObjectContext *privateContext = [context privateContext:&observer];
+
+            WXAccount *account = [WXAccount createInContext:privateContext];
+            account.username = @"test user name";
+            WXCompany *company = [WXCompany createInContext:privateContext];
+            account.company = company;
+            [company addAccountObject:account];
+            saveResult = [privateContext save:&error];
+            queueCompleted = YES;
+
+            [privateContext removeObserver:&observer];
+            NSLog(@"queue completed %lu for context: %@", i + 1, privateContext);
+        });
+
+        wait_while(queueCompleted, 10);
+
+        XCTAssert(saveResult, @"saved");
+        XCTAssertNil(error, @"test");
+        XCTAssertEqual([WXAccount allInstancesInContext:context].count, i+1, @"1 account");
+        XCTAssertEqual([WXCompany allInstancesInContext:context].count, i+1, @"1 company");
+        XCTAssertNotEqual([WXAccount allInstancesInContext:context].count, i+2, @"1 account");
+        XCTAssertNotEqual([WXCompany allInstancesInContext:context].count, i+3, @"1 company");
+    }
+}
+
 - (void)testPerformBlockMainThread
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
@@ -93,8 +132,8 @@
     XCTAssertNil(error, @"test");
     XCTAssert(saveResult, @"save successfully");
     
-    
 }
+
 - (void)testSafelyPerformBlockBackgroundThread
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil

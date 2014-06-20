@@ -79,7 +79,7 @@
     return [dateFormat stringFromDate:self];
 }
 
-- (instancetype)dateByWithoutTime
+- (instancetype)dateWithoutTime
 {
     NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
     return [[NSCalendar currentCalendar] dateFromComponents:comps];

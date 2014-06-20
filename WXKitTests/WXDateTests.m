@@ -104,7 +104,7 @@
     NSDate *dateWithoutTimeOffset = [NSDate dateFromString:@"2014.5.12 00:00:01 AM" withFormat:@"yyyy.MM.dd hh:mm:ss a"];
     NSDate *dateWithoutTimeOffset2 = [NSDate dateFromString:@"2014.5.11 11:59:59 AM" withFormat:@"yyyy.MM.dd hh:mm:ss a"];
 
-    NSDate *date = [datetime dateByRemoveTime];
+    NSDate *date = [datetime dateWithoutTime];
 
     XCTAssertEqualObjects(date, dateWithoutTime, @"equal date");
     XCTAssertEqualObjects(date, dateWithoutTimeFull, @"equal date");
