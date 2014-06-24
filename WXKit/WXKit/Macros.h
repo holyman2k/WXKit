@@ -19,4 +19,5 @@
  */
 #define assign_if_not_equal(x,y) if (!is_object_equal(x,y)) x = y
 
+#define WXLocalizedString(x) NSLocalizedString(x, x)
 #endif
