@@ -113,29 +113,4 @@
     }
 }
 
-- (instancetype)privateContext
-{
-    NSAssert(![NSThread isMainThread], @"must not be in main thread");
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    context.persistentStoreCoordinator = self.persistentStoreCoordinator;
-    [context setupMergeHandler];
-    return context;
-}
-
-- (void)setupMergeHandler
-{
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:nil
-                                                  usingBlock:^(NSNotification *note) {
-                                                      NSManagedObjectContext *moc = self;
-                                                      if (note.object != moc) {
-                                                          [moc mergeChangesFromContextDidSaveNotification:note];
-                                                      }
-                                                  }];
-}
-
-- (void)removeObserver:(id *)observer
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:*observer];
-}
-
 @end

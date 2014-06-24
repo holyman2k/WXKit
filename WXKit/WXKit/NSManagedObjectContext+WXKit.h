@@ -43,8 +43,4 @@
  */
 - (void)safelyPerformBlockAndWait:(void (^)())block;
 
-- (instancetype)privateContext:(id *)observer;
-
-- (void)removeObserver:(id *)observer;
-
 @end
