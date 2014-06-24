@@ -113,29 +113,29 @@
     }
 }
 
-static NSMutableDictionary *observerMap;
-
-- (instancetype)privateContext:(id *)observer
+- (instancetype)privateContext
 {
     NSAssert(![NSThread isMainThread], @"must not be in main thread");
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     context.persistentStoreCoordinator = self.persistentStoreCoordinator;
-
-    *observer = [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:nil
-                                                                usingBlock:^(NSNotification *note) {
-                                                                    NSManagedObjectContext *moc = self;
-                                                                    if (note.object != moc) {
-                                                                        [moc mergeChangesFromContextDidSaveNotification:note];
-                                                                    }
-                                                                }];
+    [context setupMergeHandler];
     return context;
+}
+
+- (void)setupMergeHandler
+{
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      NSManagedObjectContext *moc = self;
+                                                      if (note.object != moc) {
+                                                          [moc mergeChangesFromContextDidSaveNotification:note];
+                                                      }
+                                                  }];
 }
 
 - (void)removeObserver:(id *)observer
 {
-    if (self.concurrencyType == NSPrivateQueueConcurrencyType) {
-        [[NSNotificationCenter defaultCenter] removeObserver:*observer];
-    }
+    [[NSNotificationCenter defaultCenter] removeObserver:*observer];
 }
 
 @end
