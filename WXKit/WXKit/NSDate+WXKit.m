@@ -34,7 +34,8 @@
     static dispatch_once_t dateFormatOnceToken;
     dispatch_once(&dateFormatOnceToken, ^{
         dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+        dateFormat.timeZone = [NSTimeZone localTimeZone];
+        [dateFormat setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss Z"];
     });
     return [dateFormat stringFromDate:self];
 }
