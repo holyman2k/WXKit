@@ -26,6 +26,7 @@
 #import "UIImageView+WXKit.h"
 #import "UILabel+WXKit.h"
 #import "UIView+WXKit.h"
+#import "UIBarButtonItem+WXKit.h"
 
 #import "WXAlertView.h"
 #import "WXActionSheet.h"
