@@ -13,7 +13,7 @@
 
 + (BOOL)isEmptyOrNil:(NSString *)string
 {
-    return !string || (id)string == [NSNull null] || string.length == 0;
+    return !string || (id)string == [NSNull null] || string.length == 0 || string == NULL;
 }
 
 + (BOOL)isEmptyOrNilOrOnlyWhiteSpace:(NSString *)string
