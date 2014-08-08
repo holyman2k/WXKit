@@ -23,6 +23,19 @@
     return image;
 }
 
+- (NSLayoutConstraint *)addConstraintAttribute:(NSLayoutAttribute)attr1
+                                   toChildView:(UIView *)childView
+                                 withAttribute:(NSLayoutAttribute)attr2
+                                     relatedBy:(NSLayoutRelation)relation
+                                      constant:(CGFloat)constant
+                                      priority:(UILayoutPriority)priority
+{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:childView attribute:attr2 relatedBy:relation toItem:self attribute:attr1 multiplier:1 constant:constant];
+    constraint.priority = priority;
+    [self addConstraint:constraint];
+    return constraint;
+}
+
 - (NSLayoutConstraint *)addConstraintWithItem:(id)view1
                                    attribute:(NSLayoutAttribute)attr1
                                    relatedBy:(NSLayoutRelation)relation
