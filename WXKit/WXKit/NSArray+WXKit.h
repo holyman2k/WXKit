@@ -14,4 +14,5 @@
 
 - (instancetype)reverse;
 
+- (id)firstObjectPassTest:(BOOL(^)(id obj))block;
 @end

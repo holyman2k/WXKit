@@ -48,6 +48,18 @@
     return constrain;
 }
 
+- (NSLayoutConstraint *)addConstraintWithAttribute:(NSLayoutAttribute)attr
+                                            toItem:(id)view1
+                                         attribute:(NSLayoutAttribute)attr1
+                                         relatedBy:(NSLayoutRelation)relation
+                                          constant:(CGFloat)c
+{
+    NSAssert(![(UIView *)view1 translatesAutoresizingMaskIntoConstraints], @"translate autoresizing mask into constrains must be turned off");
+    NSLayoutConstraint *constrain = [NSLayoutConstraint constraintWithItem:self attribute:attr relatedBy:relation toItem:view1 attribute:attr1 multiplier:1 constant:c];
+    [self addConstraint:constrain];
+    return constrain;
+}
+
 - (NSLayoutConstraint *)addConstraintWithItem:(id)view1
                                     attribute:(NSLayoutAttribute)attr1
                                     relatedBy:(NSLayoutRelation)relation
