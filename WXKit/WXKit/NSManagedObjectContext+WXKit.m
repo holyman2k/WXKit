@@ -113,29 +113,27 @@
     }
 }
 
-- (instancetype)privateContext
+- (instancetype)privateContextWithObserver:(__autoreleasing id *)observer
 {
     NSAssert(![NSThread isMainThread], @"must not be in main thread");
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    context.persistentStoreCoordinator = self.persistentStoreCoordinator;
-    [context setupMergeHandler];
-    return context;
-}
+    NSManagedObjectContext *privateContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    privateContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
 
-- (void)setupMergeHandler
-{
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:nil
+    *observer = [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *note) {
                                                       NSManagedObjectContext *moc = self;
                                                       if (note.object != moc) {
                                                           [moc mergeChangesFromContextDidSaveNotification:note];
                                                       }
                                                   }];
+    return privateContext;
 }
 
-- (void)removeObserver:(id *)observer
+- (void)removeObserver:(id)observer
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:*observer];
+    [[NSNotificationCenter defaultCenter] removeObserver:observer];
 }
 
 @end

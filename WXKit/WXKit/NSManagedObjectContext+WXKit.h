@@ -43,4 +43,22 @@
  */
 - (void)safelyPerformBlockAndWait:(void (^)())block;
 
+/*!
+ * @brief create a private context
+ * @param observer pass in an auto releasing id to keep track of the observer
+ * @code
+ * id observer;
+ * NSManagedObjectContext *privateContext = [mainContext privateContextWithObserver:&observer];
+ * .. use private context
+ * [privateContext save:&error];
+ * [mainContext removeObserver:observer];
+ * @endcode
+ */
+- (instancetype)privateContextWithObserver:(__autoreleasing id *)observer;
+
+/*!
+ * @brief called from main context to remove private context merge observer
+ */
+- (void)removeObserver:(id)observer;
+
 @end
