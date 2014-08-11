@@ -28,7 +28,7 @@
     return [dateFormat dateFromString:json];
 }
 
-- (NSString *)jsonString
+- (NSString *)jsonDateTimeString
 {
     static NSDateFormatter *dateFormat;
     static dispatch_once_t dateFormatOnceToken;
@@ -38,6 +38,18 @@
     });
     return [dateFormat stringFromDate:self];
 }
+
+- (NSString *)jsonDateString
+{
+    static NSDateFormatter *dateFormat;
+    static dispatch_once_t dateFormatOnceToken;
+    dispatch_once(&dateFormatOnceToken, ^{
+        dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy'-'MM'-'dd"];
+    });
+    return [dateFormat stringFromDate:self];
+}
+
 
 - (NSString *)dateStringShort
 {

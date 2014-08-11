@@ -14,7 +14,9 @@
 
 + (instancetype)dateFromJsonString:(NSString *)json;
 
-- (NSString *)jsonString;
+- (NSString *)jsonDateTimeString;
+
+- (NSString *)jsonDateString;
 
 - (NSString *)dateStringShort;
 
