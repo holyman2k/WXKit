@@ -23,6 +23,36 @@
     return image;
 }
 
+- (NSLayoutConstraint *)addEqualConstrain:(NSLayoutAttribute)attr
+                              toChildView:(UIView *)childView
+                                  contant:(CGFloat)c
+{
+    NSAssert(![(UIView *)childView translatesAutoresizingMaskIntoConstraints], @"translate autoresizing mask into constrains must be turned off");
+    NSLayoutConstraint *constrain = [NSLayoutConstraint constraintWithItem:self
+                                                                 attribute:attr
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:childView
+                                                                 attribute:attr
+                                                                multiplier:1
+                                                                  constant:c];
+    [self addConstraint:constrain];
+    return constrain;
+}
+
+- (NSLayoutConstraint *)addSelfConstrain:(NSLayoutAttribute)attr
+                                 contant:(CGFloat)c
+{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
+                                                                  attribute:attr
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self
+                                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                                 multiplier:1
+                                                                   constant:c];
+    [self addConstraint:constraint];
+    return constraint;
+}
+
 - (NSLayoutConstraint *)addConstraintAttribute:(NSLayoutAttribute)attr1
                                    toChildView:(UIView *)childView
                                  withAttribute:(NSLayoutAttribute)attr2

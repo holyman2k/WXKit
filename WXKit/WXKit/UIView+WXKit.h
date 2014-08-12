@@ -32,4 +32,11 @@
                                          attribute:(NSLayoutAttribute)attr1
                                          relatedBy:(NSLayoutRelation)relation
                                           constant:(CGFloat)c;
+
+- (NSLayoutConstraint *)addEqualConstrain:(NSLayoutAttribute)attr
+                              toChildView:(UIView *)childView
+                                  contant:(CGFloat)c;
+
+- (NSLayoutConstraint *)addSelfConstrain:(NSLayoutAttribute)attr
+                                 contant:(CGFloat)c;
 @end
