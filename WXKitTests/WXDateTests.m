@@ -27,15 +27,28 @@
     [super tearDown];
 }
 
-- (void)testDateJSON
+- (void)testDateTimeJSON
 {
-    NSTimeInterval timestamp = 1387846784;
+    NSTimeInterval timestamp = 1367593535;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];   // Dec 24 2013, 11:59:44 am
     
-    XCTAssertEqualObjects(date.jsonString, @"2013-12-24T11:59:44Z", @"equal json date");
-    XCTAssertNotEqualObjects(date.jsonString, @"2012-12-24T11:59:44Z", @"not equal json date");
+    XCTAssertEqualObjects(date.jsonDateTimeString, @"2013-05-04T01:05:35+1000", @"equal json date");
+    XCTAssertNotEqualObjects(date.jsonDateTimeString, @"2012-12-24T11:59:44+1100", @"not equal json date");
     
-    NSDate *dateFromJSON = [NSDate dateFromJsonString:@"2013-12-24T11:59:44Z"];
+    NSDate *dateFromJSON = [NSDate dateFromJsonString:@"2013-05-04T01:05:35+1000"];
+    XCTAssertEqualObjects(dateFromJSON, date, "convert json back to date");
+    XCTAssertNotEqualObjects(dateFromJSON, [NSDate dateWithTimeIntervalSince1970:timestamp + 1], "convert json back to date");
+}
+
+- (void)testDateJson
+{
+    NSTimeInterval timestamp = 1367593535;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];   // Dec 24 2013, 11:59:44 am
+
+    XCTAssertEqualObjects(date.jsonDateString, @"2013-05-04", @"equal json date");
+    XCTAssertNotEqualObjects(date.jsonDateString, @"2012-12-24", @"not equal json date");
+
+    NSDate *dateFromJSON = [NSDate dateFromJsonString:@"2013-05-04T01:05:35+1000"];
     XCTAssertEqualObjects(dateFromJSON, date, "convert json back to date");
     XCTAssertNotEqualObjects(dateFromJSON, [NSDate dateWithTimeIntervalSince1970:timestamp + 1], "convert json back to date");
 }
