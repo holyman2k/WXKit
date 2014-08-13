@@ -12,5 +12,6 @@
 
 + (instancetype)flexibleSpace;
 + (instancetype)fixedSpaceOfWidth:(CGFloat)width;
++ (instancetype)plainBarButtonItemWithTitle:(NSString *)title;
 
 @end

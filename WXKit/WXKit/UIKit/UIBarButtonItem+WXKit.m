@@ -22,4 +22,12 @@
     return item;
 }
 
++ (instancetype)plainBarButtonItemWithTitle:(NSString *)title
+{
+    return [[UIBarButtonItem alloc] initWithTitle:title
+                                            style:UIBarButtonItemStylePlain
+                                           target:nil
+                                           action:nil];
+}
+
 @end

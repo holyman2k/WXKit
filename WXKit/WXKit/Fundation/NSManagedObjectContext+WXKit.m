@@ -125,9 +125,7 @@
                                                   usingBlock:^(NSNotification *note) {
                                                       NSManagedObjectContext *moc = self;
                                                       if (note.object != moc) {
-                                                          NSLog(@"start merge");
                                                           [moc mergeChangesFromContextDidSaveNotification:note];
-                                                          NSLog(@"end merge");
                                                       }
                                                   }];
     return privateContext;
