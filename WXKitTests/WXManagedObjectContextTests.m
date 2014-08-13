@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NSManagedObjectContext+WXKit.h"
 #import "WXAccount.h"
 #import "WXCompany.h"
 
