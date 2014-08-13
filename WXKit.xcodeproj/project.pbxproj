@@ -156,11 +156,11 @@
 		6FCE9ACA199B26BF003D6A1B /* WXActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXActionSheet.m; sourceTree = "<group>"; };
 		6FCE9ACB199B26BF003D6A1B /* WXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAlertView.h; sourceTree = "<group>"; };
 		6FCE9ACC199B26BF003D6A1B /* WXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAlertView.m; sourceTree = "<group>"; };
-		6FCE9ACD199B26BF003D6A1B /* WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXKit.h; sourceTree = "<group>"; };
 		6FCE9ACE199B26BF003D6A1B /* WXTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTextInput.h; sourceTree = "<group>"; };
 		6FCE9ACF199B26BF003D6A1B /* WXTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTextInput.m; sourceTree = "<group>"; };
 		6FCE9AD0199B26BF003D6A1B /* WXTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTextLabel.h; sourceTree = "<group>"; };
 		6FCE9AD1199B26BF003D6A1B /* WXTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTextLabel.m; sourceTree = "<group>"; };
+		6FCE9AE7199B2889003D6A1B /* WXKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WXKit.h; path = WXKit/WXKit.h; sourceTree = "<group>"; };
 		6FD550B51869072200FA1277 /* WXStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXStringTest.m; sourceTree = "<group>"; };
 		6FD550B7186913C900FA1277 /* WXDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDateTests.m; sourceTree = "<group>"; };
 		6FEE33F1186ED43800F084A8 /* WXUIColorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIColorTests.m; sourceTree = "<group>"; };
@@ -285,6 +285,7 @@
 				6FCE9AA4199B26BF003D6A1B /* Fundation */,
 				6FCE9AB9199B26BF003D6A1B /* UIKit */,
 				6FCE9AC8199B26BF003D6A1B /* UIKitExtended */,
+				6FCE9AE7199B2889003D6A1B /* WXKit.h */,
 				6F5AFFCC18F211CF00B5BE21 /* Macros.h */,
 			);
 			name = WXKit;
@@ -399,7 +400,6 @@
 				6FCE9ACA199B26BF003D6A1B /* WXActionSheet.m */,
 				6FCE9ACB199B26BF003D6A1B /* WXAlertView.h */,
 				6FCE9ACC199B26BF003D6A1B /* WXAlertView.m */,
-				6FCE9ACD199B26BF003D6A1B /* WXKit.h */,
 				6FCE9ACE199B26BF003D6A1B /* WXTextInput.h */,
 				6FCE9ACF199B26BF003D6A1B /* WXTextInput.m */,
 				6FCE9AD0199B26BF003D6A1B /* WXTextLabel.h */,
