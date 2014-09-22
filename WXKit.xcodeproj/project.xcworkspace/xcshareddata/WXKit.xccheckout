@@ -10,29 +10,29 @@
 	<string>WXKit</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E8106DE6-2C80-4987-BA05-81A5D44F1F05</key>
+		<key>B77C8804A1979B352043B953BADF2B7EDB43ECCB</key>
 		<string>ssh://github.com/holyman2k/WXKit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>WXKit.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E8106DE6-2C80-4987-BA05-81A5D44F1F05</key>
+		<key>B77C8804A1979B352043B953BADF2B7EDB43ECCB</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/holyman2k/WXKit.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E8106DE6-2C80-4987-BA05-81A5D44F1F05</string>
+	<string>B77C8804A1979B352043B953BADF2B7EDB43ECCB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E8106DE6-2C80-4987-BA05-81A5D44F1F05</string>
+			<string>B77C8804A1979B352043B953BADF2B7EDB43ECCB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>WXKit</string>
 		</dict>
