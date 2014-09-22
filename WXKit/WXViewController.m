@@ -1,17 +1,16 @@
 //
-//  WXViewController.m
+//  WXTableViewController.m
 //  WXKit
 //
-//  Created by Charlie Wu on 29/04/2014.
+//  Created by Charlie Wu on 5/05/2014.
 //  Copyright (c) 2014 Charlie Wu. All rights reserved.
 //
 
 #import "WXViewController.h"
-#import "WXTextInput.h"
+#import "WXButton.h"
+#import "WXBarButtonItem.h"
 
 @interface WXViewController ()
-@property (weak, nonatomic) IBOutlet WXTextInput *username;
-@property (weak, nonatomic) IBOutlet WXTextInput *password;
 
 @end
 
@@ -21,13 +20,21 @@
 {
     [super viewDidLoad];
 
-    self.username.labelText = @"Username";
-    self.password.labelText = @"Password";
+    CGRect frame = CGRectMake(self.view.center.x - 40, self.view.center.y - 22, 80, 44);
 
+    WXButton *button = [[WXButton alloc] initWithTitle:@"Action" andFrame:frame andAction:^(id sender) {
 
+        NSLog(@"hello");
+        self.view.tintColor = [UIColor grayColor];
+    }];
+
+    [self.view addSubview:button];
+
+    WXBarButtonItem *barButton = [[WXBarButtonItem alloc] initWithTitle:@"bar action" style:UIBarButtonItemStyleBordered actionBlock:^(id sender) {
+        NSLog(@"hello from bar action");
+    }];
+
+    self.navigationItem.rightBarButtonItem = barButton;
 }
-
-
-
 
 @end

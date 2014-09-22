@@ -9,6 +9,8 @@
 #ifndef Defects_Blocks_h
 #define Defects_Blocks_h
 
-typedef void (^voidBlock)(void);
+typedef void (^VoidBlock)(void);
+
+typedef void (^ActionBlock)(id sender);
 
 #endif
