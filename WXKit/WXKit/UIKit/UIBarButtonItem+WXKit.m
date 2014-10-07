@@ -30,4 +30,12 @@
                                            action:nil];
 }
 
++ (instancetype)doneBarButtonItemWithTitle:(NSString *)title
+{
+    return [[UIBarButtonItem alloc] initWithTitle:title
+                                            style:UIBarButtonItemStyleDone
+                                           target:nil
+                                           action:nil];
+}
+
 @end
