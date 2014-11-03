@@ -30,6 +30,14 @@
                                            action:nil];
 }
 
++ (instancetype)borderedBarButtonItemWithTitle:(NSString *)title
+{
+    return [[UIBarButtonItem alloc] initWithTitle:title
+                                            style:UIBarButtonItemStyleBordered
+                                           target:nil
+                                           action:nil];
+}
+
 + (instancetype)doneBarButtonItemWithTitle:(NSString *)title
 {
     return [[UIBarButtonItem alloc] initWithTitle:title
@@ -38,4 +46,11 @@
                                            action:nil];
 }
 
++ (instancetype)barButtonItemWithTitle:(NSString *)title andStyle:(UIBarButtonItemStyle)style
+{
+    return [[UIBarButtonItem alloc] initWithTitle:title
+                                            style:style
+                                           target:nil
+                                           action:nil];
+}
 @end

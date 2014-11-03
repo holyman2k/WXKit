@@ -14,5 +14,6 @@
 + (instancetype)fixedSpaceOfWidth:(CGFloat)width;
 + (instancetype)plainBarButtonItemWithTitle:(NSString *)title;
 + (instancetype)doneBarButtonItemWithTitle:(NSString *)title;
-
++ (instancetype)borderedBarButtonItemWithTitle:(NSString *)title;
++ (instancetype)barButtonItemWithTitle:(NSString *)title andStyle:(UIBarButtonItemStyle)style;
 @end
