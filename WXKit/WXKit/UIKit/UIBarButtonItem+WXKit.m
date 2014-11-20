@@ -24,8 +24,11 @@
 
 + (instancetype)plainBarButtonItemWithTitle:(NSString *)title
 {
+
+
+
     return [[UIBarButtonItem alloc] initWithTitle:title
-                                            style:UIBarButtonItemStylePlain
+                                            style:[UIDevice currentDeviceSystemVersion] < 7 ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain
                                            target:nil
                                            action:nil];
 }
@@ -33,7 +36,7 @@
 + (instancetype)borderedBarButtonItemWithTitle:(NSString *)title
 {
     return [[UIBarButtonItem alloc] initWithTitle:title
-                                            style:UIBarButtonItemStyleBordered
+                                            style:[UIDevice currentDeviceSystemVersion] < 7 ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain
                                            target:nil
                                            action:nil];
 }

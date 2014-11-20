@@ -93,7 +93,8 @@
 
 - (instancetype)dateWithoutTime
 {
-    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+    NSCalendarUnit unit = [UIDevice currentDeviceSystemVersion] < 8 ? NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit : NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
+    NSDateComponents* comps = [[NSCalendar currentCalendar] components:unit fromDate:self];
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 @end
