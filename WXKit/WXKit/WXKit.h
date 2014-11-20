@@ -31,6 +31,7 @@
 
 #import "UIKitExtended/WXAlertView.h"
 #import "UIKitExtended/WXActionSheet.h"
+#import "UIKitExtended/WXBarButtonItem.h"
 
 #import "Macros.h"
 

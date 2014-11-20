@@ -25,6 +25,14 @@
     return self;
 }
 
+- (instancetype)initWithSystemItem:(UIBarButtonSystemItem)systemItem actionBlock:(ActionBlock)actionBlock {
+
+    if ([self initWithBarButtonSystemItem:systemItem target:nil action:nil]) {
+        _actionBlock = actionBlock;
+    }
+    return self;
+}
+
 - (void)action:(id)sender
 {
     if (self.actionBlock) self.actionBlock(sender);
