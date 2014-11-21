@@ -24,21 +24,24 @@
 
 + (instancetype)plainBarButtonItemWithTitle:(NSString *)title
 {
-
-
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [[UIBarButtonItem alloc] initWithTitle:title
                                             style:[UIDevice currentDeviceSystemVersion] < 7 ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain
                                            target:nil
                                            action:nil];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)borderedBarButtonItemWithTitle:(NSString *)title
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [[UIBarButtonItem alloc] initWithTitle:title
                                             style:[UIDevice currentDeviceSystemVersion] < 7 ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain
                                            target:nil
                                            action:nil];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)doneBarButtonItemWithTitle:(NSString *)title

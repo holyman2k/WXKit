@@ -93,8 +93,11 @@
 
 - (instancetype)dateWithoutTime
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     NSCalendarUnit unit = [UIDevice currentDeviceSystemVersion] < 8 ? NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit : NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
     NSDateComponents* comps = [[NSCalendar currentCalendar] components:unit fromDate:self];
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
+#pragma clang diagnostic pop
 }
 @end
