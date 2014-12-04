@@ -45,7 +45,7 @@
         self.cancelButton = [[UIButton alloc] initWithFrame:frame];
         self.cancelButton.backgroundColor = self.tintColor;
         self.cancelButton.layer.borderColor = self.tintColor.CGColor;
-        self.cancelButton.layer.cornerRadius = self.frame.size.width * .4 * .15;
+        self.cancelButton.layer.cornerRadius = self.frame.size.width * buttonRatio * .15;
         [self.cancelButton addTarget:self action:@selector(cancelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.cancelButton];
     }
@@ -60,6 +60,13 @@
         [self addSubview:self.startButton];
     }
     [super layoutSubviews];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint point = [[touches anyObject] locationInView:self];
+    if (self.started && [self pointInside:point withEvent:nil]) {
+        [self.cancelButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (void)updateProgress {
