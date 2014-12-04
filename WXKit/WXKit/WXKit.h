@@ -9,6 +9,7 @@
 #ifndef WXKit_WXKit_h
 #define WXKit_WXKit_h
 
+#import <UIKit/UIKit.h>
 #import "Blocks.h"
 
 #import "Fundation/NSArray+WXKit.h"

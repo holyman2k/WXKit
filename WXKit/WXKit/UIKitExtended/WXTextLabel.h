@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface WXTextLabel : UIView
 
-@property (nonatomic) NSString *text;
-@property (nonatomic) NSString *labelText;
+@property (nonatomic) IBInspectable NSString *text;
+@property (nonatomic) IBInspectable NSString *labelText;
 
 + (CGFloat)leftRightPadding;
 
