@@ -14,4 +14,6 @@
 
 + (instancetype)applicationLibraryDirectory;
 
++ (instancetype)applicationTemporaryDirectory;
+
 @end

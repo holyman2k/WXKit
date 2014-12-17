@@ -17,7 +17,7 @@
 
 @implementation WXDownloadProgressView
 
-@synthesize progress = _progress, lineWidth = _lineWidth;
+@synthesize progress = _progress, lineWidth = _lineWidth, started = _started, startStateImage = _startStateImage;
 
 - (void)setProgress:(CGFloat)progress {
     _progress = progress;
@@ -31,6 +31,12 @@
 
 - (void)setStarted:(BOOL)started {
     _started = started;
+    [self updateProgress];
+}
+
+- (void)setStartStateImage:(UIImage *)startStateImage {
+    _startStateImage = startStateImage;
+    [self.startButton setBackgroundImage:_startStateImage forState:UIControlStateNormal];
     [self updateProgress];
 }
 
