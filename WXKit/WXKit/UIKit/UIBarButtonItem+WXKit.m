@@ -59,4 +59,12 @@
                                            target:nil
                                            action:nil];
 }
+
++ (instancetype)barButtonItemWithImage:(UIImage *)image andStyle:(UIBarButtonItemStyle)style {
+
+    return [[UIBarButtonItem alloc] initWithImage:image
+                                            style:style
+                                           target:nil
+                                           action:nil];
+}
 @end

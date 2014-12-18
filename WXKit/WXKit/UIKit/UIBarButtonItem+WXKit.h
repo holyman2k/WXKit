@@ -16,4 +16,5 @@
 + (instancetype)doneBarButtonItemWithTitle:(NSString *)title;
 + (instancetype)borderedBarButtonItemWithTitle:(NSString *)title;
 + (instancetype)barButtonItemWithTitle:(NSString *)title andStyle:(UIBarButtonItemStyle)style;
++ (instancetype)barButtonItemWithImage:(UIImage *)image andStyle:(UIBarButtonItemStyle)style;
 @end
