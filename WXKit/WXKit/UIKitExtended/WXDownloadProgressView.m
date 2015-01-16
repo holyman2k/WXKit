@@ -17,7 +17,7 @@
 
 @implementation WXDownloadProgressView
 
-@synthesize progress = _progress, lineWidth = _lineWidth, started = _started, startStateImage = _startStateImage;
+@synthesize progress = _progress, lineWidth = _lineWidth, started = _started, startStateImage = _startStateImage, cancellable = _cancellable;
 
 - (void)setProgress:(CGFloat)progress {
     _progress = progress;
@@ -31,6 +31,11 @@
 
 - (void)setStarted:(BOOL)started {
     _started = started;
+    [self updateProgress];
+}
+
+- (void)setCancellable:(BOOL)cancellable {
+    _cancellable = cancellable;
     [self updateProgress];
 }
 
@@ -70,17 +75,20 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     CGPoint point = [[touches anyObject] locationInView:self];
-    if (self.started && [self pointInside:point withEvent:nil]) {
+    if (self.isStarted && [self pointInside:point withEvent:nil]) {
         [self.cancelButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
 }
 
 - (void)updateProgress {
 
-    self.progressLayer.hidden = !self.started;
-    self.paddingLayer.hidden = !self.started;
-    self.startButton.hidden = self.started;
-    self.cancelButton.hidden = !self.started;
+    if (self.progressLayer.hidden != !self.isStarted) self.progressLayer.hidden = !self.progressLayer.hidden;
+    if (self.paddingLayer.hidden != !self.isStarted) self.paddingLayer.hidden  = !self.paddingLayer.hidden;
+    if (self.startButton.hidden != self.isStarted) self.startButton.hidden = !self.startButton.hidden;
+
+    if (self.cancelButton.hidden != !self.isStarted || (self.isStarted && !self.isCanncellable)) {
+        self.cancelButton.hidden = !self.cancelButton.hidden;
+    }
 
     if (self.started) {
 

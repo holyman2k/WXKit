@@ -13,7 +13,8 @@ IB_DESIGNABLE
 @interface WXDownloadProgressView : WXProgressView
 
 @property (nonatomic, strong) IBInspectable UIImage *startStateImage;
-@property (nonatomic) IBInspectable BOOL started;
+@property (nonatomic, getter=isStarted) IBInspectable BOOL started;
+@property (nonatomic, getter=isCanncellable) IBInspectable BOOL cancellable;
 
 @property (nonatomic, strong) void(^startAction)(UIButton *sender);
 @property (nonatomic, strong) void(^cancelAction)(UIButton *sender);
