@@ -14,7 +14,7 @@ IB_DESIGNABLE
 
 @property (nonatomic, strong) IBInspectable UIImage *startStateImage;
 @property (nonatomic, getter=isStarted) IBInspectable BOOL started;
-@property (nonatomic, getter=isCanncellable) IBInspectable BOOL cancellable;
+@property (nonatomic, getter=isCancellable) IBInspectable BOOL cancellable;
 
 @property (nonatomic, strong) void(^startAction)(UIButton *sender);
 @property (nonatomic, strong) void(^cancelAction)(UIButton *sender);

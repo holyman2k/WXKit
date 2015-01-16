@@ -86,7 +86,7 @@
     if (self.paddingLayer.hidden != !self.isStarted) self.paddingLayer.hidden  = !self.paddingLayer.hidden;
     if (self.startButton.hidden != self.isStarted) self.startButton.hidden = !self.startButton.hidden;
 
-    if (self.cancelButton.hidden != !self.isStarted || (self.isStarted && !self.isCanncellable)) {
+    if (self.cancelButton.hidden != !self.isStarted || (self.isStarted && !self.isCancellable)) {
         self.cancelButton.hidden = !self.cancelButton.hidden;
     }
 
