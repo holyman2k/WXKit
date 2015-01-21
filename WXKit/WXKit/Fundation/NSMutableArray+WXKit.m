@@ -32,4 +32,12 @@
     [self removeAllObjects];
 }
 
+- (BOOL)addObjectIfNotNil:(id)object {
+    if (object) {
+        [self addObject:object];
+        return YES;
+    }
+    return nil;
+}
+
 @end
