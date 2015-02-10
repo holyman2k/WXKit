@@ -10,11 +10,11 @@
 #import "NSString+WXKit.h"
 #import "NSMutableString+WXKit.h"
 
-@interface WXNSStringTest : XCTestCase
+@interface WXNSStringTests : XCTestCase
 
 @end
 
-@implementation WXNSStringTest
+@implementation WXNSStringTests
 
 - (void)setUp
 {
