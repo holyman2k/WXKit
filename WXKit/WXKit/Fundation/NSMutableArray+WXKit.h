@@ -18,4 +18,6 @@
 
 - (void)empty;
 
+- (BOOL)addObjectIfNotNil:(id)object;
+
 @end

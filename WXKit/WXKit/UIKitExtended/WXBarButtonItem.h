@@ -12,4 +12,6 @@
 
 - (instancetype)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style actionBlock:(ActionBlock)actionBlock;
 
+- (instancetype)initWithSystemItem:(UIBarButtonSystemItem)systemItem actionBlock:(ActionBlock)actionBlock;
+
 @end

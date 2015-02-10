@@ -39,6 +39,20 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    self.titleLabel.textColor = self.textColor ? self.textColor : self.tintColor;
+    self.layer.borderColor = self.borderColor.CGColor;
+    self.layer.borderWidth = self.borderWidth;
+    self.layer.cornerRadius = self.cornerRadius;
+    self.clipsToBounds = YES;
+}
+
+- (void)prepareForInterfaceBuilder {
+    [self layoutSubviews];
+}
+
 - (void)action:(id)sender
 {
     if (self.actionBlock) self.actionBlock(sender);

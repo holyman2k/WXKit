@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface WXTextInput : UIView
 
-@property (nonatomic) NSString *text;
-@property (nonatomic) NSString *labelText;
-@property (nonatomic) NSString *validationMessage;
+@property (nonatomic) IBInspectable NSString *text;
+@property (nonatomic) IBInspectable NSString *labelText;
+@property (nonatomic) IBInspectable NSString *validationMessage;
 
 @end

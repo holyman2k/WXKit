@@ -24,10 +24,24 @@
 
 + (instancetype)plainBarButtonItemWithTitle:(NSString *)title
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [[UIBarButtonItem alloc] initWithTitle:title
-                                            style:UIBarButtonItemStylePlain
+                                            style:[UIDevice currentDeviceSystemVersion] < 7 ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain
                                            target:nil
                                            action:nil];
+#pragma clang diagnostic pop
+}
+
++ (instancetype)borderedBarButtonItemWithTitle:(NSString *)title
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    return [[UIBarButtonItem alloc] initWithTitle:title
+                                            style:[UIDevice currentDeviceSystemVersion] < 7 ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain
+                                           target:nil
+                                           action:nil];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)doneBarButtonItemWithTitle:(NSString *)title
@@ -38,4 +52,19 @@
                                            action:nil];
 }
 
++ (instancetype)barButtonItemWithTitle:(NSString *)title andStyle:(UIBarButtonItemStyle)style
+{
+    return [[UIBarButtonItem alloc] initWithTitle:title
+                                            style:style
+                                           target:nil
+                                           action:nil];
+}
+
++ (instancetype)barButtonItemWithImage:(UIImage *)image andStyle:(UIBarButtonItemStyle)style {
+
+    return [[UIBarButtonItem alloc] initWithImage:image
+                                            style:style
+                                           target:nil
+                                           action:nil];
+}
 @end

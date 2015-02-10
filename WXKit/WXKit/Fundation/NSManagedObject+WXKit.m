@@ -74,6 +74,13 @@
     return request;
 }
 
++ (NSMutableDictionary *)dictionaryWithIdKeyPath:(NSString *)keyPath andPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context
+{
+    NSArray *list = [self allInstancesWithPredicate:predicate inContext:context];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjects:list forKeys:[list valueForKey:keyPath]];
+    return dictionary;
+}
+
 - (void)deleteInContext:(NSManagedObjectContext *)context
 {
     id instaceInContext = self.managedObjectContext != context ? [self instanceInContext:context] : self;

@@ -69,6 +69,14 @@
 + (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate andSortDescriptors:(NSArray *)sortDescriptors inContext:(NSManagedObjectContext *)context;
 
 /*!
+ * @brief return a dictionary with Id Key Path value as the key
+ * @param keyPath property name to be used as the dictionary key
+ * @param predicate predicate or compond predicte
+ * @return all entities from context match predicated sorted by sort descriptors
+ */
++ (NSMutableDictionary *)dictionaryWithIdKeyPath:(NSString *)keyPath andPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context;
+
+/*!
  * @brief delete entity from context
  */
 - (void)deleteInContext:(NSManagedObjectContext *)context;

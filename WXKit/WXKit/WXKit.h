@@ -9,6 +9,7 @@
 #ifndef WXKit_WXKit_h
 #define WXKit_WXKit_h
 
+#import <UIKit/UIKit.h>
 #import "Blocks.h"
 
 #import "Fundation/NSArray+WXKit.h"
@@ -31,6 +32,7 @@
 
 #import "UIKitExtended/WXAlertView.h"
 #import "UIKitExtended/WXActionSheet.h"
+#import "UIKitExtended/WXBarButtonItem.h"
 
 #import "Macros.h"
 

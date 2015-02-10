@@ -88,5 +88,8 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
 
 - (void)callDismissBlock:(NSNotification *)n { [self dismissWithClickedButtonIndex:self.cancelButtonIndex animated:YES]; }
 
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end
