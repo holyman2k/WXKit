@@ -37,7 +37,7 @@
         [self addObject:object];
         return YES;
     }
-    return nil;
+    return NO;
 }
 
 @end

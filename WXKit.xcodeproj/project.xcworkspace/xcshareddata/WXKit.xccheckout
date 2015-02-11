@@ -11,17 +11,17 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B77C8804A1979B352043B953BADF2B7EDB43ECCB</key>
-		<string>ssh://github.com/holyman2k/WXKit.git</string>
+		<string>github.com:holyman2k/WXKit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>WXKit.xcodeproj/project.xcworkspace</string>
+	<string>WXKit.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B77C8804A1979B352043B953BADF2B7EDB43ECCB</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/holyman2k/WXKit.git</string>
+	<string>github.com:holyman2k/WXKit.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

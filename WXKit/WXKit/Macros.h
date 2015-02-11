@@ -12,6 +12,8 @@
 
 #define is_object_equal(x,y) ((x && [x isEqual:y]) || (!x && !y))
 
+#define is_object_equal_and_not_nil(x,y) (x && y && [x isEqual:y])
+
 /*!
  * @brief assign y to x if x is not equal y
  * @param x value to be overwritten

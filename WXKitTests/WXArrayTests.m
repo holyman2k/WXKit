@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "NSArray+WXKit.h"
 
-@interface WXArrayTest : XCTestCase
+@interface WXArrayTests : XCTestCase
 
 @end
 
-@implementation WXArrayTest
+@implementation WXArrayTests
 
 - (void)setUp
 {
