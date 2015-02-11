@@ -45,6 +45,12 @@
     [self updateProgress];
 }
 
+- (void)setHidden:(BOOL)hidden {
+    [super setHidden:hidden];
+    self.startButton.hidden = hidden;
+    self.cancelButton.hidden = hidden;
+}
+
 - (void)layoutSubviews {
 
     if (!self.cancelButton) {
@@ -74,6 +80,7 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.hidden) return;
     CGPoint point = [[touches anyObject] locationInView:self];
     if (self.isStarted && [self pointInside:point withEvent:nil]) {
         [self.cancelButton sendActionsForControlEvents:UIControlEventTouchUpInside];
