@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Charlie Wu. All rights reserved.
 //
 
-#import "WXBlockDebounce.h"
+#import "WXBlockDebouncer.h"
 
-@interface WXBlockDebounce()
+@interface WXBlockDebouncer()
 
 @property (nonatomic) float throttle;
 
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation WXBlockDebounce
+@implementation WXBlockDebouncer
 
 - (instancetype)initWithThrottleInSeconds:(float)throttle {
 

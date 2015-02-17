@@ -9,6 +9,6 @@
 #ifndef Documents_Utilities_h
 #define Documents_Utilities_h
 
-#import "WXBlockDebounce.h"
+#import "WXBlockDebouncer.h"
 
 #endif

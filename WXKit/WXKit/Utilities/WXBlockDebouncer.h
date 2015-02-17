@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WXBlockDebounce : NSObject
+@interface WXBlockDebouncer : NSObject
 
 - (instancetype)initWithThrottleInSeconds:(float)throttle;
 
