@@ -67,7 +67,7 @@
 
     // Create Managed Object Context
     NSMergePolicy *mergePolice = [[NSMergePolicy alloc] initWithMergeType:mergePoliceType];
-    id context = [[self alloc] init];
+    id context = [[self alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [context setPersistentStoreCoordinator:persistentStoreCoordinator];
     [context setMergePolicy: mergePolice];
 
