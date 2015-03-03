@@ -73,7 +73,11 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
     WXActionSheetBlock block = self.actionMap[@(buttonIndex)];
-    if (block) block();
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (block) block();
+    });
+
+    self.actionMap = nil;
 }
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
