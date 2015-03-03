@@ -10,30 +10,13 @@
 #define WXKit_WXKit_h
 
 #import <UIKit/UIKit.h>
-#import "Blocks.h"
 
-#import "Fundation/NSArray+WXKit.h"
-#import "Fundation/NSDate+WXKit.h"
-#import "Fundation/NSManagedObjectContext+WXKit.h"
-#import "Fundation/NSManagedObject+WXKit.h"
-#import "Fundation/NSMutableArray+WXKit.h"
-#import "Fundation/NSMutableString+WXKit.h"
-#import "Fundation/NSObject+WXKit.h"
-#import "Fundation/NSString+WXKit.h"
-#import "Fundation/NSURL+WXKit.h"
+#import "WXBlocks.h"
+#import "WXMacros.h"
 
-#import "UIKit/UIColor+WXKit.h"
-#import "UIKit/UIDevice+WXKit.h"
-#import "UIKit/UIImage+WXKit.h"
-#import "UIKit/UIImageView+WXKit.h"
-#import "UIKit/UILabel+WXKit.h"
-#import "UIKit/UIView+WXKit.h"
-#import "UIKit/UIBarButtonItem+WXKit.h"
-
-#import "UIKitExtended/WXAlertView.h"
-#import "UIKitExtended/WXActionSheet.h"
-#import "UIKitExtended/WXBarButtonItem.h"
-
-#import "Macros.h"
+#import "Fundation/WXFundation.h"
+#import "Utilities/WXUtilities.h"
+#import "UIKit/WXUIKit.h"
+#import "UIKitExtended/WXUIKitExtended.h"
 
 #endif

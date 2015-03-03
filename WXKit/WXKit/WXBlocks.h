@@ -13,4 +13,6 @@ typedef void (^VoidBlock)(void);
 
 typedef void (^ActionBlock)(id sender);
 
+typedef void (^ErrorBlock)(NSError *error);
+
 #endif
