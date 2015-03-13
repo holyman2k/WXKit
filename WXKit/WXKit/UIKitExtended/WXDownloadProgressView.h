@@ -12,6 +12,7 @@
 IB_DESIGNABLE
 @interface WXDownloadProgressView : WXProgressView
 
+@property (nonatomic) IBInspectable CGFloat cancelButtonRatio;
 @property (nonatomic, strong) IBInspectable UIImage *startStateImage;
 @property (nonatomic, getter=isStarted) IBInspectable BOOL started;
 @property (nonatomic, getter=isCancellable) IBInspectable BOOL cancellable;

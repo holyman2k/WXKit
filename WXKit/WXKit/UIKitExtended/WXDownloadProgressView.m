@@ -54,7 +54,8 @@
 - (void)layoutSubviews {
 
     if (!self.cancelButton) {
-        CGFloat buttonRatio = .3;
+        CGFloat buttonRatio = self.cancelButtonRatio <= 0 ? .3 : self.cancelButtonRatio;
+
         CGRect frame = CGRectMake((1-buttonRatio) * self.frame.size.width / 2,
                                   (1-buttonRatio) * self.frame.size.height / 2,
                                   self.frame.size.width * buttonRatio,
