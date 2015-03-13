@@ -10,7 +10,7 @@
 
 typedef void (^WXActionSheetBlock)(void);
 
-@interface WXActionSheet : UIActionSheet
+@protocol WXCommonActionSheet <NSObject>
 
 - (instancetype)initWithTitle:(NSString *)title;
 
@@ -19,5 +19,26 @@ typedef void (^WXActionSheetBlock)(void);
 - (instancetype)addCancelButtonWithTitle:(NSString *)title andAction:(WXActionSheetBlock)action;
 
 - (instancetype)addDesctructiveButtonWithTitle:(NSString *)title andAction:(WXActionSheetBlock)action;
+
+- (void)showFromRect:(CGRect)rect inView:(UIView *)view andViewController:(UIViewController *)viewController animated:(BOOL)animated;
+
+- (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem inViewController:(UIViewController *)viewController animated:(BOOL)animated;
+
+- (void)dismissActionSheetInViewController:(UIViewController *)viewController animated:(BOOL)animated;
+
+@end
+
+@interface WXActionSheetFactory : NSObject
+
++ (id<WXCommonActionSheet>)actionSheetWithTitle:(NSString *)title;
+
+@end
+
+@interface WXActionSheet : UIActionSheet <WXCommonActionSheet>
+
+@end
+
+
+@interface WXActionSheetController : UIAlertController <WXCommonActionSheet>
 
 @end

@@ -7,6 +7,20 @@
 //
 
 #import "WXActionSheet.h"
+#import "UIDevice+WXKit.h"
+
+@implementation WXActionSheetFactory : NSObject
+
++ (id<WXCommonActionSheet>)actionSheetWithTitle:(NSString *)title {
+
+    if ([UIDevice currentDeviceSystemVersion] < 8) {
+        return [[WXActionSheet alloc] initWithTitle:title];
+    } else {
+        return [[WXActionSheetController alloc] initWithTitle:title];
+    }
+}
+
+@end
 
 @interface WXActionSheet() <UIActionSheetDelegate>
 
@@ -65,6 +79,18 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
     return self;
 }
 
+- (void)showFromRect:(CGRect)rect inView:(UIView *)view andViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self showFromRect:rect inView:view animated:YES];
+}
+
+- (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem inViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self showFromBarButtonItem:barButtonItem animated:YES];
+}
+
+- (void)dismissActionSheetInViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self dismissWithClickedButtonIndex:-1 animated:animated];
+}
+
 #pragma mark - delegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -95,5 +121,68 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.actionMap = nil;
+
+    CLSNSLog(@"%@ - deallocated", NSStringFromClass(self.class));
+}
+@end
+
+@implementation WXActionSheetController
+
+- (instancetype)initWithTitle:(NSString *)title {
+
+    if (self = [super init]) {
+        [self setTitle:title];
+    }
+
+    return self;
+}
+
+- (instancetype)addButtonWithTitle:(NSString *)title andAction:(WXActionSheetBlock)action {
+
+    [self addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction) {
+        action();
+    }]];
+
+    return self;
+}
+
+- (instancetype)addCancelButtonWithTitle:(NSString *)title andAction:(WXActionSheetBlock)action {
+
+    [self addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleCancel handler:^(UIAlertAction *alertAction) {
+        action();
+    }]];
+    return self;
+}
+
+- (instancetype)addDesctructiveButtonWithTitle:(NSString *)title andAction:(WXActionSheetBlock)action {
+
+    [self addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDestructive handler:^(UIAlertAction *alertAction) {
+        action();
+    }]];
+    return self;
+}
+
+- (void)showFromRect:(CGRect)rect inView:(UIView *)view andViewController:(UIViewController *)viewController animated:(BOOL)animated {
+
+    self.modalPresentationStyle = UIModalPresentationPopover;
+    self.popoverPresentationController.sourceView = view;
+    self.popoverPresentationController.sourceRect = rect;
+
+    [viewController presentViewController:self animated:YES completion:nil];
+}
+
+- (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem inViewController:(UIViewController *)viewController animated:(BOOL)animated {
+
+    self.modalPresentationStyle = UIModalPresentationPopover;
+    self.popoverPresentationController.barButtonItem = barButtonItem;
+
+    [viewController presentViewController:self animated:YES completion:nil];
+}
+
+- (void)dismissActionSheetInViewController:(UIViewController *)viewController animated:(BOOL)animated {
+
+    [viewController.presentedViewController dismissViewControllerAnimated:animated completion:nil];
+
 }
 @end
