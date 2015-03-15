@@ -141,7 +141,7 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
 - (instancetype)addButtonWithTitle:(NSString *)title andAction:(WXActionSheetBlock)action {
 
     [self addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction) {
-        action();
+        if (action) action();
     }]];
 
     return self;
@@ -150,7 +150,7 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
 - (instancetype)addCancelButtonWithTitle:(NSString *)title andAction:(WXActionSheetBlock)action {
 
     [self addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleCancel handler:^(UIAlertAction *alertAction) {
-        action();
+        if (action) action();
     }]];
     return self;
 }
@@ -158,7 +158,7 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
 - (instancetype)addDesctructiveButtonWithTitle:(NSString *)title andAction:(WXActionSheetBlock)action {
 
     [self addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDestructive handler:^(UIAlertAction *alertAction) {
-        action();
+        if (action) action();
     }]];
     return self;
 }
