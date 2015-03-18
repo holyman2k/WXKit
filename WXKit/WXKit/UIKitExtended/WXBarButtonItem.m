@@ -18,7 +18,7 @@
 
 - (instancetype)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style actionBlock:(ActionBlock)actionBlock
 {
-    if ([self initWithTitle:title style:style target:self action:@selector(action:)]) {
+    if (self = [self initWithTitle:title style:style target:self action:@selector(action:)]) {
         _actionBlock = actionBlock;
     }
 
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithSystemItem:(UIBarButtonSystemItem)systemItem actionBlock:(ActionBlock)actionBlock {
 
-    if ([self initWithBarButtonSystemItem:systemItem target:nil action:nil]) {
+    if (self = [self initWithBarButtonSystemItem:systemItem target:nil action:nil]) {
         _actionBlock = actionBlock;
     }
     return self;

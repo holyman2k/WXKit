@@ -19,7 +19,7 @@
 
 - (instancetype)initWithTitle:(NSString *)title andFrame:(CGRect)frame andAction:(ActionBlock)actionBlock
 {
-    if ([self initWithFrame:frame]) {
+    if (self = [self initWithFrame:frame]) {
         _actionBlock = actionBlock;
         self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         [self setTitle:title forState:UIControlStateNormal];
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithTitle:(NSString *)title andAction:(ActionBlock)actionBlock
 {
-    if ([self initWithTitle:title andFrame:CGRectZero andAction:actionBlock]) {}
+    if (self = [self initWithTitle:title andFrame:CGRectZero andAction:actionBlock]) {}
     return self;
 }
 
