@@ -17,9 +17,10 @@
     return object;
 }
 
-- (void)push:(id)object
+- (id)push:(id)object
 {
     [self addObject:object];
+    return object;
 }
 
 - (id)peek

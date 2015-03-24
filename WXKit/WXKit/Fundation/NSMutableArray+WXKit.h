@@ -12,7 +12,7 @@
 
 - (id)pop;
 
-- (void)push:(id)object;
+- (id)push:(id)object;
 
 - (id)peek;
 
