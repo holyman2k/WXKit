@@ -122,9 +122,8 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.actionMap = nil;
-
-    CLSNSLog(@"%@ - deallocated", NSStringFromClass(self.class));
 }
+
 @end
 
 @implementation WXActionSheetController
