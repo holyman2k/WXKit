@@ -39,6 +39,9 @@
         } else {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         }
+#if DEBUG
+        [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
+#endif
         /*
          Replace this implementation with code to handle the error appropriately.
 
