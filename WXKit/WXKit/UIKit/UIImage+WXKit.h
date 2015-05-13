@@ -14,4 +14,6 @@
 
 - (instancetype)imageWithBorderWithColor:(UIColor *)color andThickness:(CGFloat)thickness;
 
++ (instancetype)imageOfSize:(CGSize)size withColor:(UIColor *)color;
+
 @end
