@@ -31,8 +31,9 @@
 
     [super layoutSubviews];
 
-    CGFloat paddingLayerWidth = self.lineWidth * 2;
-    CGRect paddingRect = CGRectInset(self.bounds, paddingLayerWidth / 2, paddingLayerWidth / 2);
+    CGFloat paddingRatio = self.trackingCircleSizeRatio == 0 ? 1 : self.trackingCircleSizeRatio;
+    CGFloat paddingLayerWidth = self.lineWidth * paddingRatio;
+    CGRect paddingRect = CGRectInset(self.bounds, paddingLayerWidth / paddingRatio, paddingLayerWidth / paddingRatio);
     CGRect progressRect = CGRectInset(self.bounds, self.lineWidth, self.lineWidth);
 
     UIBezierPath *paddingPath = [UIBezierPath bezierPathWithOvalInRect:paddingRect];
@@ -45,7 +46,7 @@
         self.paddingLayer.path = paddingPath.CGPath;
         self.paddingLayer.fillColor = nil;
         self.paddingLayer.lineWidth = paddingLayerWidth;
-        self.paddingLayer.strokeColor = [UIColor colorWithWhite:0 alpha:.2].CGColor;
+        self.paddingLayer.strokeColor = [UIColor colorWithWhite:0 alpha:.1].CGColor;
     }
 
     if (!self.progressLayer) {

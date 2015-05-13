@@ -17,5 +17,6 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat progress;
 @property (nonatomic) IBInspectable CGFloat lineWidth;
 @property (nonatomic) IBInspectable BOOL showTrackingCircle;
+@property (nonatomic) IBInspectable CGFloat trackingCircleSizeRatio;
 
 @end
