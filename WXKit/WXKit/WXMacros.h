@@ -22,4 +22,7 @@
 #define assign_if_not_equal(x,y) if (!is_object_equal(x,y)) x = y
 
 #define WXLocalizedString(x) NSLocalizedString(x, x)
+
+#define isPhoneTraitCollection(x) x.userInterfaceIdiom == UIUserInterfaceIdiomPhone
+#define isPadTraitCollection(x) x.userInterfaceIdiom == UIUserInterfaceIdiomPad
 #endif
