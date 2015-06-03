@@ -143,4 +143,20 @@
     [self setupStartButton];
 }
 
+- (void)prepareForInterfaceBuilder {
+
+    //! required to preview start button in interface builder
+    if (!self.started) {
+        CGRect frame = self.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 0;
+        self.startButton = [[WXButton alloc] initWithFrame:frame];
+        [self addSubview:self.startButton];
+        [self.startButton setTitleColor:self.tintColor forState:UIControlStateNormal];
+        [self.startButton setImage:self.startButtonImage forState:UIControlStateNormal];
+        [self.startButton setTitle:self.startButtonTitle forState:UIControlStateNormal];
+        [self.startButton setImageEdgeInsets:self.startButtonImageInsets];
+    }
+}
+
 @end
