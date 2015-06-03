@@ -20,4 +20,6 @@ IB_DESIGNABLE
 
 - (instancetype)initWithTitle:(NSString *)title andAction:(ActionBlock)actionBlock;
 
+- (void)setAction:(ActionBlock)actionBlock;
+
 @end

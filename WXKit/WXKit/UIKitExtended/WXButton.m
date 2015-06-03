@@ -17,8 +17,7 @@
 
 @implementation WXButton
 
-- (instancetype)initWithTitle:(NSString *)title andFrame:(CGRect)frame andAction:(ActionBlock)actionBlock
-{
+- (instancetype)initWithTitle:(NSString *)title andFrame:(CGRect)frame andAction:(ActionBlock)actionBlock {
     if (self = [self initWithFrame:frame]) {
         _actionBlock = actionBlock;
         self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -33,8 +32,7 @@
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title andAction:(ActionBlock)actionBlock
-{
+- (instancetype)initWithTitle:(NSString *)title andAction:(ActionBlock)actionBlock {
     if (self = [self initWithTitle:title andFrame:CGRectZero andAction:actionBlock]) {}
     return self;
 }
@@ -53,13 +51,16 @@
     [self layoutSubviews];
 }
 
-- (void)action:(id)sender
-{
+- (void)setAction:(ActionBlock)actionBlock {
+    [self addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+    self.actionBlock = actionBlock;
+}
+
+- (void)action:(id)sender {
     if (self.actionBlock) self.actionBlock(sender);
 }
 
-- (void)tintColorDidChange
-{
+- (void)tintColorDidChange {
     [self setTitleColor:self.tintColor forState:UIControlStateNormal];
     [self setTitleColor:[self.tintColor colorWithAlphaComponent:.3] forState:UIControlStateHighlighted];
 }
