@@ -24,5 +24,6 @@
 #define WXLocalizedString(x) NSLocalizedString(x, x)
 
 #define isPhoneTraitCollection(x) x.userInterfaceIdiom == UIUserInterfaceIdiomPhone
+#define isTraitCollectionHorizontalCompact(x) x.horizontalSizeClass == UIUserInterfaceSizeClassCompact
 #define isPadTraitCollection(x) x.userInterfaceIdiom == UIUserInterfaceIdiomPad
 #endif
