@@ -25,5 +25,6 @@
 
 #define isPhoneTraitCollection(x) x.userInterfaceIdiom == UIUserInterfaceIdiomPhone
 #define isTraitCollectionHorizontalCompact(x) x.horizontalSizeClass == UIUserInterfaceSizeClassCompact
+#define isTraitCollectionHorizontalRegular(x) x.horizontalSizeClass == UIUserInterfaceSizeClassRegular
 #define isPadTraitCollection(x) x.userInterfaceIdiom == UIUserInterfaceIdiomPad
 #endif
