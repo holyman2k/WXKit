@@ -39,4 +39,5 @@
 
 - (NSLayoutConstraint *)addSelfConstrain:(NSLayoutAttribute)attr
                                  contant:(CGFloat)c;
+
 @end
