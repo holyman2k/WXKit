@@ -16,6 +16,6 @@
 #import "UILabel+WXKit.h"
 #import "UIView+WXKit.h"
 #import "UIBarButtonItem+WXKit.h"
-#import "UIViewController+WXKit.h"
+#import "UIApplication+WXKit.h"
 
 #endif

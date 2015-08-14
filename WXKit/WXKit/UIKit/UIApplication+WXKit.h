@@ -1,5 +1,5 @@
 //
-//  UIViewController+WXKit.h
+//  UIApplication+WXKit.h
 //  Defects
 //
 //  Created by Charlie Wu on 14/08/2015.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (WXKit)
+@interface UIApplication (WXKit)
 
-- (BOOL)isSmallDisplayMode;
++ (BOOL)isSmallDisplayMode;
 
-- (BOOL)isLargeDisplayMode;
++ (BOOL)isLargeDisplayMode;
 
 @end
