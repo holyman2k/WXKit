@@ -14,7 +14,7 @@
     if ([UIDevice currentDeviceSystemVersion] < 8) {
         return [UIDevice isCurrentDeviceIphone];
     } else {
-        return [[[self sharedApplication] windows] firstObject].traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact;
+        return [[[[self sharedApplication] windows] firstObject] traitCollection].horizontalSizeClass == UIUserInterfaceSizeClassCompact;
     }
 
 }
@@ -23,7 +23,7 @@
     if ([UIDevice currentDeviceSystemVersion] < 8) {
         return [UIDevice isCurrentDeviceIpad];
     } else {
-        return [[[self sharedApplication] windows] firstObject].traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular;
+        return [[[[self sharedApplication] windows] firstObject] traitCollection].horizontalSizeClass == UIUserInterfaceSizeClassRegular;
     }
 }
 @end
