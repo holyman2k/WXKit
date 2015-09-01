@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0B0F8F1B955058002095CE /* WXOperationKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B0F8E1B955058002095CE /* WXOperationKit.m */; };
 		6F24169D18EE5DE000507FCE /* WXURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F24169C18EE5DE000507FCE /* WXURLTests.m */; };
 		6F24169F18EE5F4600507FCE /* WXMutableStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F24169E18EE5F4600507FCE /* WXMutableStringTests.m */; };
 		6F2416A118EE5F8500507FCE /* WXDeviceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2416A018EE5F8500507FCE /* WXDeviceTests.m */; };
@@ -18,7 +19,6 @@
 		6F4B52C918681E1F00F37378 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B52C818681E1F00F37378 /* main.m */; };
 		6F4B52CD18681E1F00F37378 /* WXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B52CC18681E1F00F37378 /* WXAppDelegate.m */; };
 		6F4B52CF18681E1F00F37378 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4B52CE18681E1F00F37378 /* Images.xcassets */; };
-		6F4B52D618681E1F00F37378 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F4B52D518681E1F00F37378 /* XCTest.framework */; };
 		6F4B52D718681E1F00F37378 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F4B52BC18681E1F00F37378 /* Foundation.framework */; };
 		6F4B52D818681E1F00F37378 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F4B52C018681E1F00F37378 /* UIKit.framework */; };
 		6F4B52E018681E1F00F37378 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F4B52DE18681E1F00F37378 /* InfoPlist.strings */; };
@@ -52,7 +52,6 @@
 		6F6A5E3D1B1E7AB40040DA5A /* WXTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A5E1C1B1E7AB40040DA5A /* WXTextLabel.m */; };
 		6F6A5E3E1B1E7AB40040DA5A /* WXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A5E1F1B1E7AB40040DA5A /* WXView.m */; };
 		6F6A5E3F1B1E7AB40040DA5A /* WXBlockDebouncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A5E221B1E7AB40040DA5A /* WXBlockDebouncer.m */; };
-		6F6A5E451B1E7AD40040DA5A /* XCTestCase+WXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A5E441B1E7AD40040DA5A /* XCTestCase+WXKit.m */; };
 		6F6A5E481B1E7F380040DA5A /* WXProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A5E471B1E7F380040DA5A /* WXProgressButton.m */; };
 		6F88A6AB18EE1AD600B9F8DA /* WXKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6A918EE1AD600B9F8DA /* WXKit.xcdatamodeld */; };
 		6F88A6B818EE1FC000B9F8DA /* WXManagedObjectContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6B718EE1FC000B9F8DA /* WXManagedObjectContextTests.m */; };
@@ -84,6 +83,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F0B0F8D1B955058002095CE /* WXOperationKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXOperationKit.h; sourceTree = "<group>"; };
+		6F0B0F8E1B955058002095CE /* WXOperationKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXOperationKit.m; sourceTree = "<group>"; };
 		6F24169C18EE5DE000507FCE /* WXURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXURLTests.m; sourceTree = "<group>"; };
 		6F24169E18EE5F4600507FCE /* WXMutableStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMutableStringTests.m; sourceTree = "<group>"; };
 		6F2416A018EE5F8500507FCE /* WXDeviceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDeviceTests.m; sourceTree = "<group>"; };
@@ -212,7 +213,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F4B52D618681E1F00F37378 /* XCTest.framework in Frameworks */,
 				6F4B52D818681E1F00F37378 /* UIKit.framework in Frameworks */,
 				6F4B52D718681E1F00F37378 /* Foundation.framework in Frameworks */,
 			);
@@ -221,6 +221,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F0B0F8C1B955046002095CE /* FundationExtended */ = {
+			isa = PBXGroup;
+			children = (
+				6F0B0F8D1B955058002095CE /* WXOperationKit.h */,
+				6F0B0F8E1B955058002095CE /* WXOperationKit.m */,
+			);
+			name = FundationExtended;
+			path = WXKit/FundationExtended;
+			sourceTree = "<group>";
+		};
 		6F4B52B018681E1E00F37378 = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +316,7 @@
 		6F4B52EB18681F3A00F37378 /* WXKit */ = {
 			isa = PBXGroup;
 			children = (
+				6F0B0F8C1B955046002095CE /* FundationExtended */,
 				6F6A5DE41B1E7AB40040DA5A /* Fundation */,
 				6F6A5DFA1B1E7AB40040DA5A /* UIKit */,
 				6F6A5E0A1B1E7AB40040DA5A /* UIKitExtended */,
@@ -579,6 +590,7 @@
 				6F6A5E391B1E7AB40040DA5A /* WXDownloadProgressView.m in Sources */,
 				6F6A5E341B1E7AB40040DA5A /* UIView+WXKit.m in Sources */,
 				6F6A5E2E1B1E7AB40040DA5A /* UIBarButtonItem+WXKit.m in Sources */,
+				6F0B0F8F1B955058002095CE /* WXOperationKit.m in Sources */,
 				6F6A5E331B1E7AB40040DA5A /* UILabel+WXKit.m in Sources */,
 				6F6A5E3B1B1E7AB40040DA5A /* WXProgressView.m in Sources */,
 				6F6A5E3D1B1E7AB40040DA5A /* WXTextLabel.m in Sources */,
@@ -601,7 +613,6 @@
 			files = (
 				6FB1937418FB6F4E002820B4 /* WXObjectTests.m in Sources */,
 				6FB1937018FB6EF1002820B4 /* WXUser.m in Sources */,
-				6F6A5E451B1E7AD40040DA5A /* XCTestCase+WXKit.m in Sources */,
 				6F88A6CA18EE283300B9F8DA /* WXAccount.m in Sources */,
 				6FA7BD7C1910D62D0089B741 /* WXUnitTests.m in Sources */,
 				6F88A6B818EE1FC000B9F8DA /* WXManagedObjectContextTests.m in Sources */,

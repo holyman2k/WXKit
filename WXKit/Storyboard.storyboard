@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="egJ-zp-dYT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="egJ-zp-dYT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -23,66 +21,39 @@
             </objects>
             <point key="canvasLocation" x="-424" y="125"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="Kbr-1g-V7W">
             <objects>
                 <viewController id="TMx-9q-d8h" customClass="WXViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vWk-Lo-c9x"/>
-                        <viewControllerLayoutGuide type="bottom" id="rEK-n1-hV2"/>
+                        <viewControllerLayoutGuide type="top" id="XGI-jI-9u1"/>
+                        <viewControllerLayoutGuide type="bottom" id="x9n-jt-RMI"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tD2-fG-CD7">
+                    <view key="view" contentMode="scaleToFill" id="oeZ-wG-pB1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5B-uj-8cd" customClass="WXProgressButton">
-                                <rect key="frame" x="145" y="269" width="30" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="b5B-uj-8cd" secondAttribute="height" multiplier="1:1" id="7a7-FU-Oae"/>
-                                    <constraint firstAttribute="width" constant="30" id="twI-ed-bFe"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="startButtonTitle" value="I"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cancelButtonHidden" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                        <real key="value" value="0.29999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showTrackingCircle" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="trackingCircleSizeRatio">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cancelButtonRatio">
-                                        <real key="value" value="0.25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8yn-Hg-WAX">
-                                <rect key="frame" x="14" y="530" width="292" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="eNp-zb-bOX"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="progressSliderDidChange:" destination="TMx-9q-d8h" eventType="valueChanged" id="AkZ-Iy-Y2A"/>
-                                </connections>
-                            </slider>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Hmp-51-9Tc">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="b5B-uj-8cd" secondAttribute="centerX" id="5H4-wf-H4L"/>
-                            <constraint firstItem="8yn-Hg-WAX" firstAttribute="leading" secondItem="tD2-fG-CD7" secondAttribute="leadingMargin" id="LPq-YL-C7j"/>
-                            <constraint firstItem="8yn-Hg-WAX" firstAttribute="trailing" secondItem="tD2-fG-CD7" secondAttribute="trailingMargin" id="Wcw-Ud-9vO"/>
-                            <constraint firstAttribute="centerY" secondItem="b5B-uj-8cd" secondAttribute="centerY" id="ZwS-ce-cRW"/>
-                            <constraint firstItem="rEK-n1-hV2" firstAttribute="top" secondItem="8yn-Hg-WAX" secondAttribute="bottom" constant="8" id="mVq-zW-932"/>
+                            <constraint firstAttribute="centerX" secondItem="Hmp-51-9Tc" secondAttribute="centerX" id="9Zf-JC-g6d"/>
+                            <constraint firstAttribute="centerY" secondItem="Hmp-51-9Tc" secondAttribute="centerY" id="TIA-iU-Bfv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WQq-JV-vxn"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="JsN-3f-FTh">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="Ehs-eM-T4W">
+                            <connections>
+                                <action selector="start:" destination="TMx-9q-d8h" id="Wa2-jG-0mL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="progressSlider" destination="8yn-Hg-WAX" id="G5n-a1-96W"/>
-                        <outlet property="progresssButton" destination="b5B-uj-8cd" id="0dM-gT-hWK"/>
+                        <outlet property="activityIndicator" destination="Hmp-51-9Tc" id="gcZ-bO-fTO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX6-s6-9wc" userLabel="First Responder" sceneMemberID="firstResponder"/>
