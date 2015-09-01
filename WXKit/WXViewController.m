@@ -11,6 +11,7 @@
 
 @interface WXViewController ()
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -26,30 +27,72 @@
 - (IBAction)start:(id)sender {
 
     NSLog(@"starting");
-    [self.activityIndicator startAnimating];
 
-    [[[[[WXOperationKit kit]
-     joinTask:^id(NSDictionary *previousResults) {
-         sleep(2);
-         return @(10);
-     } withName:@"start"]
-    joinTask:^id(NSDictionary *previousResults) {
-        sleep(3);
-        return @(15);
-    } withName:@"alsoStart"]
-    thenDoTask:^id(NSDictionary *previousResults) {
-        NSNumber *start = previousResults[@"start"];
-        NSNumber *alsoStart = previousResults[@"alsoStart"];
-        NSInteger value = start.integerValue + alsoStart.integerValue;
-        NSLog(@"value %@", @(value));
-        return @(value);
-    } withName:@"ended"] startOnCompletion:^{
-        NSLog(@"done");
-        [self.activityIndicator stopAnimating];
+    WXOperationKit *taskKit = [WXOperationKit kit];
+
+    [taskKit doTask:^id(WXTuple *results) {
+        NSLog(@"1");
+        [self.activityIndicator startAnimating];
+        self.label.text = @"started";
+        return @(6);
     }];
 
+    [taskKit doTask:^id(WXTuple *results) {
+        NSLog(@"1.1");
+        self.label.textColor = self.view.tintColor;
+        return @(5);
+    }];
 
+    [taskKit doBackgroundTask:^id(WXTuple *value) {
+        NSLog(@"1.2");
+        sleep(2);
+        return @(10);
+    }];
 
+    [taskKit thenDoTask:^id(WXTuple *results) {
+        NSLog(@"2");
+        self.label.textColor = self.view.tintColor;
+        return nil;
+    }];
+
+    [taskKit doBackgroundTask:^id(WXTuple *results) {
+        NSLog(@"2.1");
+        sleep(1);
+        return nil;
+    }];
+
+    [taskKit thenDoBackgroundTask:^id(WXTuple *results) {
+        NSLog(@"3");
+        NSInteger value = [results.first integerValue] + [results.second integerValue] + [results.thrid integerValue] + [results.fourth integerValue];
+
+        NSLog(@"value %@", @(value));
+
+        self.navigationItem.rightBarButtonItem.tintColor = self.view.tintColor;
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+
+        return @(value);
+    }];
+
+    [taskKit doTask:^id(WXTuple *value) {
+
+        NSLog(@"3.1");
+        self.label.text = @"Stage 2";
+        return nil;
+    }];
+
+    [taskKit thenDoTask:^id(WXTuple *value) {
+        NSLog(@"end");
+        self.label.text = @"ended";
+        self.label.textColor = [UIColor darkGrayColor];
+        return nil;
+    }];
+
+    [taskKit startOnCompletion:^{
+        [self.activityIndicator stopAnimating];
+    }];
 }
+
+
+
 
 @end

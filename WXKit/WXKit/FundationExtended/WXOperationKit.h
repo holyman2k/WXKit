@@ -8,14 +8,35 @@
 
 #import <Foundation/Foundation.h>
 
-typedef id (^TaskBlock)(NSDictionary *previousResults);
+@class WXTuple;
+
+typedef id (^TaskBlock)(WXTuple *value);
+
+@interface WXTuple : NSObject
+
+@property (nonatomic, strong) id first;
+@property (nonatomic, strong) id second;
+@property (nonatomic, strong) id thrid;
+@property (nonatomic, strong) id fourth;
+@property (nonatomic, strong) id fifth;
+@property (nonatomic, strong) id sixth;
+@property (nonatomic, strong) id seventh;
+@property (nonatomic, strong) id eighth;
+@property (nonatomic, strong) id ninth;
+@property (nonatomic, strong) id tenth;
+
+@end
 
 @interface WXOperationKit : NSObject
 
 + (instancetype)kit;
 
-- (WXOperationKit *)joinTask:(TaskBlock)task withName:(NSString *)name;
-- (WXOperationKit *)thenDoTask:(TaskBlock)task withName:(NSString *)name;
+- (WXOperationKit *)doTask:(TaskBlock)task;
+- (WXOperationKit *)thenDoTask:(TaskBlock)task;
+
+- (WXOperationKit *)doBackgroundTask:(TaskBlock)task;
+- (WXOperationKit *)thenDoBackgroundTask:(TaskBlock)task;
+
 - (void)startOnCompletion:(VoidBlock)completion;
 
 @end

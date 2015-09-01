@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -36,11 +37,20 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Hmp-51-9Tc">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4c-0J-OfP">
+                                <rect key="frame" x="16" y="72" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Hmp-51-9Tc" secondAttribute="centerX" id="9Zf-JC-g6d"/>
+                            <constraint firstItem="u4c-0J-OfP" firstAttribute="trailing" secondItem="oeZ-wG-pB1" secondAttribute="trailingMargin" id="ESC-Zc-YTE"/>
+                            <constraint firstItem="u4c-0J-OfP" firstAttribute="leading" secondItem="oeZ-wG-pB1" secondAttribute="leadingMargin" id="Krw-4q-3JR"/>
                             <constraint firstAttribute="centerY" secondItem="Hmp-51-9Tc" secondAttribute="centerY" id="TIA-iU-Bfv"/>
+                            <constraint firstItem="u4c-0J-OfP" firstAttribute="top" secondItem="XGI-jI-9u1" secondAttribute="bottom" constant="8" id="xVY-Th-c7R"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -54,6 +64,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Hmp-51-9Tc" id="gcZ-bO-fTO"/>
+                        <outlet property="label" destination="u4c-0J-OfP" id="Lui-mi-iZo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX6-s6-9wc" userLabel="First Responder" sceneMemberID="firstResponder"/>
