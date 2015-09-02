@@ -10,5 +10,6 @@
 #define Documents_Utilities_h
 
 #import "WXBlockDebouncer.h"
+#import "WXTuple.h"
 
 #endif

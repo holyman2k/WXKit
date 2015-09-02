@@ -7,12 +7,12 @@
 //
 
 #import "WXViewController.h"
-#import "WXOperationKit.h"
+#import "WXTaskKit.h"
 
 @interface WXViewController ()
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *label;
-
+@property (nonatomic, strong) WXTaskKit *taskKit;
 @end
 
 @implementation WXViewController
@@ -23,76 +23,96 @@
 
 }
 
-
 - (IBAction)start:(id)sender {
 
     NSLog(@"starting");
+    [self runner2];
 
-    WXOperationKit *taskKit = [WXOperationKit kit];
+}
 
-    [taskKit doTask:^id(WXTuple *results) {
+- (void)runner2 {
+    WXTaskKit *taskKit = [WXTaskKit create];
+    [taskKit doTask:^id{
         NSLog(@"1");
+        return nil;
+    }];
+
+    [taskKit doTask:^id{
+        NSLog(@"2");
+        return nil;
+    }];
+
+    [taskKit doTask:^id{
+        NSLog(@"3");
+        return nil;
+    }];
+    [taskKit doTask:^id{
+        NSLog(@"4");
+        return nil;
+    }];
+
+    [taskKit startOnCompletion:nil];
+    NSLog(@"next");
+}
+
+- (void)runner1 {
+
+    WXTaskKit *taskKit = [WXTaskKit create];
+    __block NSNumber *value;
+    __block NSString *text;
+    id task1 = [taskKit doTask:^id{
         [self.activityIndicator startAnimating];
+        return nil;
+    }];
+
+    id task2 = [taskKit doTask:^id{
         self.label.text = @"started";
-        return @(6);
+        return nil;
     }];
 
-    [taskKit doTask:^id(WXTuple *results) {
-        NSLog(@"1.1");
-        self.label.textColor = self.view.tintColor;
-        return @(5);
-    }];
 
-    [taskKit doBackgroundTask:^id(WXTuple *value) {
-        NSLog(@"1.2");
+    id task3 = [taskKit waitForTasks:@[task1, task2] thenDoBackgroundTask:^id(WXTuple *results) {
         sleep(2);
         return @(10);
     }];
 
-    [taskKit thenDoTask:^id(WXTuple *results) {
-        NSLog(@"2");
-        self.label.textColor = self.view.tintColor;
+
+    id task4 = [taskKit doBackgroundTask:^id{
+        sleep(1);
+        return @(15);
+    }];
+
+    id task4_1 = [taskKit doBackgroundTask:^id{
+        sleep(1);
+        return @"hello world";
+    }];
+
+    id task5 = [taskKit waitForTasks:@[task3, task4, task4_1] thenDoBackgroundTask:^id(WXTuple *results) {
+        sleep(2);
+        value = @([results.first integerValue] + [results.second integerValue]);
+        text = results.thrid;
         return nil;
     }];
 
-    [taskKit doBackgroundTask:^id(WXTuple *results) {
-        NSLog(@"2.1");
+    [taskKit waitForTasks:@[task5] thenDoTask:^id(WXTuple *results) {
+        [self.activityIndicator stopAnimating];
+        return nil;
+    }];
+
+    id task7 = [taskKit waitForTasks:@[task5] thenDoTask:^id(WXTuple *results) {
+        self.label.text = @"done";
+        return nil;
+    }];
+
+    [taskKit waitForTasks:@[task7] thenDoTask:^id(WXTuple *values) {
         sleep(1);
         return nil;
     }];
 
-    [taskKit thenDoBackgroundTask:^id(WXTuple *results) {
-        NSLog(@"3");
-        NSInteger value = [results.first integerValue] + [results.second integerValue] + [results.thrid integerValue] + [results.fourth integerValue];
-
-        NSLog(@"value %@", @(value));
-
-        self.navigationItem.rightBarButtonItem.tintColor = self.view.tintColor;
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-
-        return @(value);
-    }];
-
-    [taskKit doTask:^id(WXTuple *value) {
-
-        NSLog(@"3.1");
-        self.label.text = @"Stage 2";
-        return nil;
-    }];
-
-    [taskKit thenDoTask:^id(WXTuple *value) {
-        NSLog(@"end");
-        self.label.text = @"ended";
-        self.label.textColor = [UIColor darkGrayColor];
-        return nil;
-    }];
-
     [taskKit startOnCompletion:^{
-        [self.activityIndicator stopAnimating];
+        self.label.text = [NSString stringWithFormat:@"value is %@-%@", value, text];
+        NSLog(@"tasks done with value %@ and text %@", value, text);
     }];
 }
-
-
-
 
 @end

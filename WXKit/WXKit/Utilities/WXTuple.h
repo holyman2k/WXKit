@@ -1,16 +1,12 @@
 //
-//  WXProgressKit.h
+//  WXTuple.h
 //  WXKit
 //
-//  Created by Charlie Wu on 1/09/2015.
+//  Created by Charlie Wu on 2/09/2015.
 //  Copyright (c) 2015 Charlie Wu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-
-@class WXTuple;
-
-typedef id (^TaskBlock)(WXTuple *value);
 
 @interface WXTuple : NSObject
 
@@ -25,18 +21,6 @@ typedef id (^TaskBlock)(WXTuple *value);
 @property (nonatomic, strong) id ninth;
 @property (nonatomic, strong) id tenth;
 
-@end
-
-@interface WXOperationKit : NSObject
-
-+ (instancetype)kit;
-
-- (WXOperationKit *)doTask:(TaskBlock)task;
-- (WXOperationKit *)thenDoTask:(TaskBlock)task;
-
-- (WXOperationKit *)doBackgroundTask:(TaskBlock)task;
-- (WXOperationKit *)thenDoBackgroundTask:(TaskBlock)task;
-
-- (void)startOnCompletion:(VoidBlock)completion;
++ (instancetype)tupleWithArray:(NSArray *)array;
 
 @end
