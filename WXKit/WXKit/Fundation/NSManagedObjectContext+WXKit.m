@@ -87,7 +87,12 @@
     NSAssert(modelURL != nil, @"could not find model name %@", modelName);
     NSManagedObjectModel *destinationModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
 
-    NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:nil URL:sourceStoreUrl error:&error];
+    NSDictionary *sourceMetadata;
+    if ([UIDevice currentDeviceSystemVersion] < 9) {
+        sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType URL:sourceStoreUrl error:&error];
+    } else {
+        sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType URL:sourceStoreUrl options:nil error:&error];
+    }
 
     if (sourceMetadata != nil) {
         compatibile = [destinationModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata];
