@@ -23,7 +23,8 @@
     if ([UIDevice currentDeviceSystemVersion] < 8) {
         return [UIDevice isCurrentDeviceIpad];
     } else {
-        return [[[[self sharedApplication] windows] firstObject] traitCollection].horizontalSizeClass == UIUserInterfaceSizeClassRegular;
+        BOOL isHorizontalSizeClassRegular = [[[[self sharedApplication] windows] firstObject] traitCollection].horizontalSizeClass == UIUserInterfaceSizeClassRegular;
+        return [UIDevice isCurrentDeviceIpad] && isHorizontalSizeClassRegular;
     }
 }
 @end
