@@ -65,4 +65,12 @@
     [self setTitleColor:[self.tintColor colorWithAlphaComponent:.3] forState:UIControlStateHighlighted];
 }
 
+- (CGSize)intrinsicContentSize {
+    CGSize size = [super intrinsicContentSize];
+    if (self.textPadding > 0) {
+        size.width = size.width + self.textPadding * 2;
+    }
+    return size;
+}
+
 @end

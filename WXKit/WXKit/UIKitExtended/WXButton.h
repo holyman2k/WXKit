@@ -12,9 +12,10 @@ IB_DESIGNABLE
 @interface WXButton : UIButton
 
 @property (nonatomic, strong) IBInspectable UIColor *borderColor;
-@property (nonatomic, strong) IBInspectable UIColor *textColor;
+@property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
+@property (nonatomic) IBInspectable CGFloat textPadding;
 
 - (instancetype)initWithTitle:(NSString *)title andFrame:(CGRect)frame andAction:(ActionBlock)actionBlock;
 
