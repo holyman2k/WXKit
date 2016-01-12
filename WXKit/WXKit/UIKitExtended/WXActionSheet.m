@@ -93,6 +93,9 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
 
 #pragma mark - delegate
 
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:WXActionSheetDismissNotification object:nil];
@@ -105,7 +108,11 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
 
     self.actionMap = nil;
 }
+#pragma clang diagnostic pop
 
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
 {
     // Only ever show one action sheet at a time
@@ -115,6 +122,7 @@ NSString * const WXActionSheetDismissNotification = @"WXActionSheetDismissNotifi
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callDismissBlock:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callDismissBlock:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
+#pragma clang diagnostic pop
 
 - (void)callDismissBlock:(NSNotification *)n { [self dismissWithClickedButtonIndex:self.cancelButtonIndex animated:YES]; }
 

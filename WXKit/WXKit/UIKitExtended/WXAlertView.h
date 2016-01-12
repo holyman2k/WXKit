@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^WXAlertViewBlock)(void);
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @interface WXAlertView : UIAlertView
 
 + (instancetype)alertViewWithTitle:(NSString *)title
@@ -43,5 +44,5 @@ typedef void (^WXAlertPickerViewBlock)(WXAlertPickerView *alertView, NSUInteger 
                  cancelButtonTitle:(NSString *)cancelButtonTitle
                  otherButtonTitles:(NSArray *)otherButtonTitles
                      buttonActions:(WXAlertPickerViewBlock)block;
-
+#pragma clang diagnostic pop
 @end

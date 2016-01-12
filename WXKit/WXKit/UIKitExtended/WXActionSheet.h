@@ -34,10 +34,12 @@ typedef void (^WXActionSheetBlock)(void);
 
 @end
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @interface WXActionSheet : UIActionSheet <WXCommonActionSheet>
 
 @end
-
+#pragma clang diagnostic pop
 
 @interface WXActionSheetController : UIAlertController <WXCommonActionSheet>
 

@@ -89,13 +89,14 @@
 }
 
 #pragma mark - delegate
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     WXAlertViewBlock block = self.actionMap[@(buttonIndex)];
     block();
 }
-
+#pragma clang diagnostic pop
 @end
 
 #pragma mark - WXAlertPickerView
@@ -166,8 +167,12 @@
 
 #pragma mark - delegate
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     self.block(self, buttonIndex);
 }
+
+#pragma clang diagnostic pop
 @end

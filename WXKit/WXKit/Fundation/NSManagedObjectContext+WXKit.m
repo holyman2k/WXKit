@@ -77,6 +77,8 @@
     return context;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 + (BOOL)storeNeedsMigrationAtURL:(NSURL *)sourceStoreUrl modelName:(NSString *)modelName
 {
     BOOL compatibile = NO;
@@ -87,7 +89,12 @@
     NSAssert(modelURL != nil, @"could not find model name %@", modelName);
     NSManagedObjectModel *destinationModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
 
-    NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:nil URL:sourceStoreUrl error:&error];
+    NSDictionary *sourceMetadata;
+    if ([UIDevice currentDeviceSystemVersion] < 9) {
+        sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType URL:sourceStoreUrl error:&error];
+    } else {
+        sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType URL:sourceStoreUrl options:nil error:&error];
+    }
 
     if (sourceMetadata != nil) {
         compatibile = [destinationModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata];
@@ -97,12 +104,15 @@
 
     return !compatibile;
 }
+#pragma clang diagnostic pop
 
 + (NSString *)modelName
 {
     return nil;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)safelyPerformBlockAndWait:(void (^)())block
 {
     if (self.concurrencyType == NSConfinementConcurrencyType) {
@@ -115,6 +125,7 @@
         [self performBlockAndWait:block];
     }
 }
+#pragma clang diagnostic pop
 
 - (instancetype)privateContextWithObserver:(__autoreleasing id *)observer
 {
