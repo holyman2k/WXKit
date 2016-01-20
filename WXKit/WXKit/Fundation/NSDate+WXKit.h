@@ -28,4 +28,6 @@
 
 - (instancetype)dateWithoutTime;
 
+- (instancetype)startOfTheDay;
+
 @end

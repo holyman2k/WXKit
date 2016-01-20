@@ -100,4 +100,8 @@
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 #pragma clang diagnostic pop
 }
+
+- (instancetype)startOfTheDay {
+    return [self dateWithoutTime];
+}
 @end
