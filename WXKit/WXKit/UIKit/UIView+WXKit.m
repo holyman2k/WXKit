@@ -39,13 +39,14 @@
     return constrain;
 }
 
-- (NSLayoutConstraint *)addSelfConstrain:(NSLayoutAttribute)attr
-                                 contant:(CGFloat)c
+- (NSLayoutConstraint *)addConstrain:(NSLayoutAttribute)attr
+                             contant:(CGFloat)c
 {
+    NSAssert(attr == NSLayoutAttributeWidth || attr == NSLayoutAttributeHeight, @"only can add with or height layout attribute");
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
                                                                   attribute:attr
                                                                   relatedBy:NSLayoutRelationEqual
-                                                                     toItem:self
+                                                                     toItem:nil
                                                                   attribute:NSLayoutAttributeNotAnAttribute
                                                                  multiplier:1
                                                                    constant:c];
