@@ -37,7 +37,10 @@
                               toChildView:(UIView *)childView
                                   contant:(CGFloat)c;
 
-- (NSLayoutConstraint *)addConstrain:(NSLayoutAttribute)attr
-                             contant:(CGFloat)c;
+- (NSLayoutConstraint *)addConstraint:(NSLayoutAttribute)attr
+                              contant:(CGFloat)c;
 
+- (NSLayoutConstraint *)heightConstraint;
+
+- (NSLayoutConstraint *)widthConstraint;
 @end

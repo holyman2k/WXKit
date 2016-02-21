@@ -23,24 +23,42 @@
     return image;
 }
 
-- (NSLayoutConstraint *)addEqualConstrain:(NSLayoutAttribute)attr
-                              toChildView:(UIView *)childView
-                                  contant:(CGFloat)c
-{
-    NSAssert(![(UIView *)childView translatesAutoresizingMaskIntoConstraints], @"translate autoresizing mask into constrains must be turned off");
-    NSLayoutConstraint *constrain = [NSLayoutConstraint constraintWithItem:self
-                                                                 attribute:attr
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:childView
-                                                                 attribute:attr
-                                                                multiplier:1
-                                                                  constant:c];
-    [self addConstraint:constrain];
-    return constrain;
+- (NSLayoutConstraint *)heightConstraint {
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstItem == self || constraint.firstAttribute == NSLayoutAttributeHeight) {
+            return constraint;
+        }
+    }
+    return nil;
 }
 
-- (NSLayoutConstraint *)addConstrain:(NSLayoutAttribute)attr
-                             contant:(CGFloat)c
+- (NSLayoutConstraint *)widthConstraint {
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstItem == self || constraint.firstAttribute == NSLayoutAttributeWidth) {
+            return constraint;
+        }
+    }
+    return nil;
+}
+
+- (NSLayoutConstraint *)addEqualConstraint:(NSLayoutAttribute)attr
+                               toChildView:(UIView *)childView
+                                   contant:(CGFloat)c
+{
+    NSAssert(![(UIView *)childView translatesAutoresizingMaskIntoConstraints], @"translate autoresizing mask into constrains must be turned off");
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
+                                                                  attribute:attr
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:childView
+                                                                  attribute:attr
+                                                                 multiplier:1
+                                                                   constant:c];
+    [self addConstraint:constraint];
+    return constraint;
+}
+
+- (NSLayoutConstraint *)addConstraint:(NSLayoutAttribute)attr
+                              contant:(CGFloat)c
 {
     NSAssert(attr == NSLayoutAttributeWidth || attr == NSLayoutAttributeHeight, @"only can add with or height layout attribute");
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
