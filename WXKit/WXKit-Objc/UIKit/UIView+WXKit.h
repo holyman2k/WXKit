@@ -33,9 +33,9 @@
                                          relatedBy:(NSLayoutRelation)relation
                                           constant:(CGFloat)c;
 
-- (NSLayoutConstraint *)addEqualConstrain:(NSLayoutAttribute)attr
-                              toChildView:(UIView *)childView
-                                  contant:(CGFloat)c;
+- (NSLayoutConstraint *)addEqualConstraint:(NSLayoutAttribute)attr
+                               toChildView:(UIView *)childView
+                                   contant:(CGFloat)c;
 
 - (NSLayoutConstraint *)addConstraint:(NSLayoutAttribute)attr
                               contant:(CGFloat)c;
@@ -43,4 +43,5 @@
 - (NSLayoutConstraint *)heightConstraint;
 
 - (NSLayoutConstraint *)widthConstraint;
+
 @end
