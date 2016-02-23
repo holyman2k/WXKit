@@ -21,6 +21,5 @@ extension String {
         let attributes = [NSFontAttributeName: font]
         let size = CGSizeMake(width, FLT_MAX.f)
         return self.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).height
-        
     }
 }
