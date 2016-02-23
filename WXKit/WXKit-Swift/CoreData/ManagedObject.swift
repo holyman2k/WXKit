@@ -11,7 +11,6 @@ import CoreData
 
 
 protocol ManagedObject {
-    static var entityName:String {get}
 }
 
 extension ManagedObject where Self : NSManagedObject {
@@ -47,10 +46,13 @@ extension ManagedObject where Self : NSManagedObject {
     func deleteInContext(context:NSManagedObjectContext) {
         context.deleteObject(self)
     }
-}
 
-extension NSManagedObject : ManagedObject {
+
     static var entityName:String {
         return NSStringFromClass(self).componentsSeparatedByString(".").last! as String
     }
+}
+
+extension NSManagedObject : ManagedObject {
+
 }
