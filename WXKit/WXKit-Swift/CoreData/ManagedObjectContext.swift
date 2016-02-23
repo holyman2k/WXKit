@@ -83,11 +83,6 @@ extension ManageObjectContext where Self : NSManagedObjectContext {
             }
             return (nil, nil, nil, nil)
     }
-
-    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) throws -> [T] {
-        let instances = try self.executeFetchRequest(request)
-        return (instances as? [T])!
-    }
 }
 
 extension NSManagedObjectContext : ManageObjectContext {

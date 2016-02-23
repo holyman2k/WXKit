@@ -9,11 +9,17 @@
 import Foundation
 import CoreData
 
-
 protocol ManagedObject {
+
 }
 
 extension ManagedObject where Self : NSManagedObject {
+
+    init(context:NSManagedObjectContext) {
+        let name = self.dynamicType.entityName
+        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
+        self.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
 
     static func createInContext(context:NSManagedObjectContext) throws -> Self? {
         var instance:Self? = nil
@@ -50,6 +56,14 @@ extension ManagedObject where Self : NSManagedObject {
 
     static var entityName:String {
         return NSStringFromClass(self).componentsSeparatedByString(".").last! as String
+    }
+}
+
+extension NSManagedObjectContext {
+
+    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) throws -> [T] {
+        let instances = try self.executeFetchRequest(request)
+        return (instances as? [T])!
     }
 }
 
