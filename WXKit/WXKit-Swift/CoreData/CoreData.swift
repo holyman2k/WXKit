@@ -17,7 +17,7 @@ protocol SwfitManagedObject {
     static var entityName:String {get}
 }
 
-private protocol SwiftManageObjectContext {
+protocol SwiftManageObjectContext {
     func fetch<T where T : NSManagedObject>(request : NSFetchRequest) -> [T]
 }
 
