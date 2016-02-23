@@ -18,7 +18,7 @@
  * @return managed object context
  * @discussion to use method, sub class NSManagedObjectContext and implement method - (NSString *)modelName
  */
-+ (instancetype)createAtUrl:(NSURL *)url mergePolice:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options;
++ (instancetype)createAtUrl:(NSURL *)url mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options;
 
 /*!
  * @brief create managed context
@@ -28,7 +28,7 @@
  * @param options           persistence store options
  * @return managed object context
  */
-+ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolice:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options;
++ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options;
 
 /*!
  * @brief check if managed object context persistence store require migration

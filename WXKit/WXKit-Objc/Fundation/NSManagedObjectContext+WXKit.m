@@ -10,17 +10,17 @@
 
 @implementation NSManagedObjectContext (WXKit)
 
-+ (instancetype)createAtUrl:(NSURL *)url mergePolice:(NSMergePolicyType)mergePoliceType andOptions:(NSDictionary *)options
++ (instancetype)createAtUrl:(NSURL *)url mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options
 {
     // Load Model name
     NSAssert(![[self class] respondsToSelector:@selector(modelName)], @"%@  must implement +modelName", NSStringFromClass(self));
     NSString *modelName = [[self class] performSelector:@selector(modelName)];
     NSAssert(modelName, @"must have valid model name");
 
-    return [self createAtUrl:url modelName:modelName mergePolice:mergePoliceType andOptions:options];
+    return [self createAtUrl:url modelName:modelName mergePolicy:mergePolicyType andOptions:options];
 }
 
-+ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolice:(NSMergePolicyType)mergePoliceType andOptions:(NSDictionary *)options
++ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options
 {
     // Load Managed Object Model
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:modelName withExtension:@"momd"];
@@ -69,7 +69,7 @@
     }
 
     // Create Managed Object Context
-    NSMergePolicy *mergePolice = [[NSMergePolicy alloc] initWithMergeType:mergePoliceType];
+    NSMergePolicy *mergePolice = [[NSMergePolicy alloc] initWithMergeType:mergePolicyType];
     id context = [[self alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [context setPersistentStoreCoordinator:persistentStoreCoordinator];
     [context setMergePolicy: mergePolice];
