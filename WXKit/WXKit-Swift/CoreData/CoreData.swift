@@ -144,6 +144,13 @@ extension NSManagedObjectContext : SwiftManageObjectContext {
 }
 
 extension NSManagedObject : SwfitManagedObject {
+
+    convenience init(context:NSManagedObjectContext) {
+        let name = self.dynamicType.entityName
+        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
+        self.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+
     static var entityName:String {
         return NSStringFromClass(self).componentsSeparatedByString(".").last! as String
     }
