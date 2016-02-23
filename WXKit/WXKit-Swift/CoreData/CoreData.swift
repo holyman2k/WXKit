@@ -103,6 +103,44 @@ extension NSManagedObjectContext : SwiftManageObjectContext {
         let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!.URLByAppendingPathComponent(storeName)
         return self.create(atUrl: url, modelName: modelName, mergePolicy: mergePolicy, options: options)
     }
+
+    static func createPirvateAndMainContextWithModel(modelName:String,
+        storeName:String = "Database.sqlite",
+        mergePolicy:NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType,
+        options:[NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> (mainContext:NSManagedObjectContext?, privateContext:NSManagedObjectContext?, mainContextObserver:NSObjectProtocol?, privateContextObserver:NSObjectProtocol?)  {
+
+            let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!.URLByAppendingPathComponent(storeName)
+            let mainContext = self.create(atUrl: url, modelName: modelName, mergePolicy: mergePolicy, options: options)
+
+            if let mainContext = mainContext {
+                let privateContext = self.init(concurrencyType: .PrivateQueueConcurrencyType)
+                privateContext.persistentStoreCoordinator = mainContext.persistentStoreCoordinator
+                privateContext.undoManager = nil
+
+                let notificationCenter = NSNotificationCenter.defaultCenter()
+
+                let privateContextObserver = notificationCenter.addObserverForName(NSManagedObjectContextDidSaveNotification, object: privateContext, queue: nil, usingBlock: { notification -> Void in
+                    if let notificationObject = notification.object as? NSObject where notificationObject == mainContext {
+                        return
+                    }
+                    mainContext.performBlock({ () -> Void in
+                        mainContext.mergeChangesFromContextDidSaveNotification(notification)
+                    })
+                })
+
+                let mainContextObserver = notificationCenter.addObserverForName(NSManagedObjectContextDidSaveNotification, object: mainContext, queue: nil, usingBlock: { notification -> Void in
+                    if let notificationObject = notification.object as? NSObject where notificationObject == privateContext {
+                        return
+                    }
+                    privateContext.performBlock({ () -> Void in
+                        privateContext.mergeChangesFromContextDidSaveNotification(notification)
+                    })
+                })
+                return (mainContext, privateContext, mainContextObserver, privateContextObserver)
+            }
+            return (nil, nil, nil, nil)
+    }
+
 }
 
 extension NSManagedObject : SwfitManagedObject {
