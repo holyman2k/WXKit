@@ -42,7 +42,6 @@
 		6F0164401C7BD1AF004182E3 /* WXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F01640C1C7BD1AF004182E3 /* WXView.m */; };
 		6F0164411C7BD1AF004182E3 /* WXBlockDebouncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F01640F1C7BD1AF004182E3 /* WXBlockDebouncer.m */; };
 		6F0164421C7BD1AF004182E3 /* WXTuple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0164111C7BD1AF004182E3 /* WXTuple.m */; };
-		6F0164431C7BD1AF004182E3 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0164181C7BD1AF004182E3 /* CoreData.swift */; };
 		6F0164441C7BD1AF004182E3 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01641A1C7BD1AF004182E3 /* Date.swift */; };
 		6F0164451C7BD1AF004182E3 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01641C1C7BD1AF004182E3 /* JSON.swift */; };
 		6F0164461C7BD1AF004182E3 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01641E1C7BD1AF004182E3 /* Label.swift */; };
@@ -72,6 +71,8 @@
 		6F88A6CE18EE2AA500B9F8DA /* WXKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6A918EE1AD600B9F8DA /* WXKit.xcdatamodeld */; };
 		6F88A6D018EE2C7300B9F8DA /* WXManagedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88A6CF18EE2C7300B9F8DA /* WXManagedObjectTests.m */; };
 		6F8B531518F0388D003F62DB /* WXWaitWhileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */; };
+		6F9D16141C7C24F700F02AD6 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D16121C7C24F700F02AD6 /* ManagedObject.swift */; };
+		6F9D16151C7C24F700F02AD6 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D16131C7C24F700F02AD6 /* ManagedObjectContext.swift */; };
 		6FA7BD7C1910D62D0089B741 /* WXUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA7BD7B1910D62D0089B741 /* WXUnitTests.m */; };
 		6FB1937018FB6EF1002820B4 /* WXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1936F18FB6EF1002820B4 /* WXUser.m */; };
 		6FB1937418FB6F4E002820B4 /* WXObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB1937318FB6F4E002820B4 /* WXObjectTests.m */; };
@@ -174,7 +175,6 @@
 		6F0164131C7BD1AF004182E3 /* WXBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXBlocks.h; sourceTree = "<group>"; };
 		6F0164141C7BD1AF004182E3 /* WXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXKit.h; sourceTree = "<group>"; };
 		6F0164151C7BD1AF004182E3 /* WXMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMacros.h; sourceTree = "<group>"; };
-		6F0164181C7BD1AF004182E3 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		6F01641A1C7BD1AF004182E3 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		6F01641C1C7BD1AF004182E3 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		6F01641E1C7BD1AF004182E3 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -213,6 +213,8 @@
 		6F88A6CC18EE283400B9F8DA /* WXCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXCompany.m; path = CoreData/WXCompany.m; sourceTree = "<group>"; };
 		6F88A6CF18EE2C7300B9F8DA /* WXManagedObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXManagedObjectTests.m; sourceTree = "<group>"; };
 		6F8B531418F0388D003F62DB /* WXWaitWhileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWaitWhileTest.m; sourceTree = "<group>"; };
+		6F9D16121C7C24F700F02AD6 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
+		6F9D16131C7C24F700F02AD6 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		6FA7BD7B1910D62D0089B741 /* WXUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUnitTests.m; sourceTree = "<group>"; };
 		6FB1936E18FB6EF1002820B4 /* WXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUser.h; sourceTree = "<group>"; };
 		6FB1936F18FB6EF1002820B4 /* WXUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUser.m; sourceTree = "<group>"; };
@@ -400,7 +402,8 @@
 		6F0164171C7BD1AF004182E3 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				6F0164181C7BD1AF004182E3 /* CoreData.swift */,
+				6F9D16121C7C24F700F02AD6 /* ManagedObject.swift */,
+				6F9D16131C7C24F700F02AD6 /* ManagedObjectContext.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -654,8 +657,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F01642A1C7BD1AF004182E3 /* NSURL+WXKit.m in Sources */,
-				6F0164431C7BD1AF004182E3 /* CoreData.swift in Sources */,
 				6F0164271C7BD1AF004182E3 /* NSNumber+WXKit.m in Sources */,
+				6F9D16141C7C24F700F02AD6 /* ManagedObject.swift in Sources */,
 				6F01643E1C7BD1AF004182E3 /* WXTextInput.m in Sources */,
 				6F0164341C7BD1AF004182E3 /* UILabel+WXKit.m in Sources */,
 				6F0164381C7BD1AF004182E3 /* WXBarButtonItem.m in Sources */,
@@ -666,6 +669,7 @@
 				6F0164391C7BD1AF004182E3 /* WXButton.m in Sources */,
 				6F0164231C7BD1AF004182E3 /* NSManagedObject+WXKit.m in Sources */,
 				6F0164441C7BD1AF004182E3 /* Date.swift in Sources */,
+				6F9D16151C7C24F700F02AD6 /* ManagedObjectContext.swift in Sources */,
 				6F0164491C7BDA33004182E3 /* Color.swift in Sources */,
 				6F0164211C7BD1AF004182E3 /* NSArray+WXKit.m in Sources */,
 				6F0164331C7BD1AF004182E3 /* UIImageView+WXKit.m in Sources */,

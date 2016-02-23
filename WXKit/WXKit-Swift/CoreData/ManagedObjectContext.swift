@@ -10,20 +10,11 @@
 import Foundation
 import CoreData
 
-// MARK: protocols
+protocol ManageObjectContext {
 
-protocol SwfitManagedObject {
-
-    static var entityName:String {get}
 }
 
-protocol SwiftManageObjectContext {
-    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) -> [T]
-}
-
-// MARK: protocol extensions
-
-extension SwiftManageObjectContext where Self : NSManagedObjectContext {
+extension ManageObjectContext where Self : NSManagedObjectContext {
 
     static func create(atUrl url:NSURL?, modelName:String, mergePolicy:NSMergePolicyType, options:[NSObject : AnyObject]?) -> Self? {
 
@@ -47,67 +38,19 @@ extension SwiftManageObjectContext where Self : NSManagedObjectContext {
         return nil
     }
 
-    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) -> [T] {
-        let instances = try! self.executeFetchRequest(request)
-        return (instances as? [T])!
-    }
-}
-
-extension SwfitManagedObject where Self : NSManagedObject {
-
-    static func createInContext(context:NSManagedObjectContext) -> Self? {
-        var instance:Self? = nil
-        context.performBlockAndWait { () -> Void in
-            instance = NSEntityDescription.insertNewObjectForEntityForName(self.entityName, inManagedObjectContext: context) as? Self
-        }
-
-        return instance
-    }
-
-    static func allInstanceInContext(context:NSManagedObjectContext, predicate:NSPredicate? = nil, sortDescriptor:[NSSortDescriptor]? = nil) -> [Self]  {
-        var instances:[Self]? = nil
-
-        context.performBlockAndWait { () -> Void in
-            let request = self.fetchRequest(predicate, sortDescriptors: sortDescriptor)
-            instances = context.fetch(request)
-        }
-
-        if let instances = instances {
-            return instances
-        } else {
-            return [Self]()
-        }
-    }
-
-    static func fetchRequest(predicate:NSPredicate? = nil, sortDescriptors:[NSSortDescriptor]? = nil) -> NSFetchRequest {
-        let request = NSFetchRequest(entityName: self.entityName);
-        request.predicate = predicate
-        request.sortDescriptors = sortDescriptors
-        return request;
-    }
-
-    func deleteInContext(context:NSManagedObjectContext) {
-        context.deleteObject(self)
-    }
-}
-
-// MARK: extensions
-
-extension NSManagedObjectContext : SwiftManageObjectContext {
-
     static func createWithModel(modelName:String,
         storeName:String = "Database.sqlite",
         mergePolicy:NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType,
-        options:[NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> NSManagedObjectContext? {
+        options:[NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> Self? {
 
-        let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!.URLByAppendingPathComponent(storeName)
-        return self.create(atUrl: url, modelName: modelName, mergePolicy: mergePolicy, options: options)
+            let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!.URLByAppendingPathComponent(storeName)
+            return self.create(atUrl: url, modelName: modelName, mergePolicy: mergePolicy, options: options)
     }
 
     static func createPirvateAndMainContextWithModel(modelName:String,
         storeName:String = "Database.sqlite",
         mergePolicy:NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType,
-        options:[NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> (mainContext:NSManagedObjectContext?, privateContext:NSManagedObjectContext?, mainContextObserver:NSObjectProtocol?, privateContextObserver:NSObjectProtocol?)  {
+        options:[NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> (mainContext:Self?, privateContext:Self?, mainContextObserver:NSObjectProtocol?, privateContextObserver:NSObjectProtocol?)  {
 
             let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!.URLByAppendingPathComponent(storeName)
             let mainContext = self.create(atUrl: url, modelName: modelName, mergePolicy: mergePolicy, options: options)
@@ -141,17 +84,12 @@ extension NSManagedObjectContext : SwiftManageObjectContext {
             return (nil, nil, nil, nil)
     }
 
+    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) throws -> [T] {
+        let instances = try self.executeFetchRequest(request)
+        return (instances as? [T])!
+    }
 }
 
-extension NSManagedObject : SwfitManagedObject {
+extension NSManagedObjectContext : ManageObjectContext {
 
-    convenience init(context:NSManagedObjectContext) {
-        let name = self.dynamicType.entityName
-        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
-    }
-
-    static var entityName:String {
-        return NSStringFromClass(self).componentsSeparatedByString(".").last! as String
-    }
 }
