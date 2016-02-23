@@ -47,6 +47,7 @@
 		6F0164451C7BD1AF004182E3 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01641C1C7BD1AF004182E3 /* JSON.swift */; };
 		6F0164461C7BD1AF004182E3 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01641E1C7BD1AF004182E3 /* Label.swift */; };
 		6F0164471C7BD1AF004182E3 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01641F1C7BD1AF004182E3 /* Numbers.swift */; };
+		6F0164491C7BDA33004182E3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0164481C7BDA33004182E3 /* Color.swift */; };
 		6F24169D18EE5DE000507FCE /* WXURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F24169C18EE5DE000507FCE /* WXURLTests.m */; };
 		6F24169F18EE5F4600507FCE /* WXMutableStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F24169E18EE5F4600507FCE /* WXMutableStringTests.m */; };
 		6F2416A118EE5F8500507FCE /* WXDeviceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2416A018EE5F8500507FCE /* WXDeviceTests.m */; };
@@ -179,6 +180,7 @@
 		6F01641E1C7BD1AF004182E3 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		6F01641F1C7BD1AF004182E3 /* Numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		6F0164201C7BD1AF004182E3 /* WXKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXKit-Bridging-Header.h"; sourceTree = "<group>"; };
+		6F0164481C7BDA33004182E3 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		6F24169C18EE5DE000507FCE /* WXURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXURLTests.m; sourceTree = "<group>"; };
 		6F24169E18EE5F4600507FCE /* WXMutableStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMutableStringTests.m; sourceTree = "<group>"; };
 		6F2416A018EE5F8500507FCE /* WXDeviceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDeviceTests.m; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 			children = (
 				6F01641E1C7BD1AF004182E3 /* Label.swift */,
 				6F01641F1C7BD1AF004182E3 /* Numbers.swift */,
+				6F0164481C7BDA33004182E3 /* Color.swift */,
 			);
 			path = UIKitExtension;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				6F0164391C7BD1AF004182E3 /* WXButton.m in Sources */,
 				6F0164231C7BD1AF004182E3 /* NSManagedObject+WXKit.m in Sources */,
 				6F0164441C7BD1AF004182E3 /* Date.swift in Sources */,
+				6F0164491C7BDA33004182E3 /* Color.swift in Sources */,
 				6F0164211C7BD1AF004182E3 /* NSArray+WXKit.m in Sources */,
 				6F0164331C7BD1AF004182E3 /* UIImageView+WXKit.m in Sources */,
 				6F01642C1C7BD1AF004182E3 /* WXTask.m in Sources */,
