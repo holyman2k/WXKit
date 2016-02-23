@@ -12,20 +12,18 @@ import CoreData
 
 // MARK: protocols
 
-protocol ManagedObject {
+protocol SwfitManagedObject {
 
-    static var entityName:String {get};
-
-    func deleteInContext(context:NSManagedObjectContext);
+    static var entityName:String {get}
 }
 
-private protocol ManageObjectContext {
-
+private protocol SwiftManageObjectContext {
+    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) -> [T]
 }
 
 // MARK: protocol extensions
 
-extension ManageObjectContext where Self : NSManagedObjectContext {
+extension SwiftManageObjectContext where Self : NSManagedObjectContext {
 
     static func create(atUrl url:NSURL?, modelName:String, mergePolicy:NSMergePolicyType, options:[NSObject : AnyObject]?) -> Self? {
 
@@ -48,9 +46,14 @@ extension ManageObjectContext where Self : NSManagedObjectContext {
         }
         return nil
     }
+
+    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) -> [T] {
+        let instances = try! self.executeFetchRequest(request)
+        return (instances as? [T])!
+    }
 }
 
-extension ManagedObject where Self : NSManagedObject {
+extension SwfitManagedObject where Self : NSManagedObject {
 
     static func createInContext(context:NSManagedObjectContext) -> Self? {
         var instance:Self? = nil
@@ -90,7 +93,7 @@ extension ManagedObject where Self : NSManagedObject {
 
 // MARK: extensions
 
-extension NSManagedObjectContext : ManageObjectContext {
+extension NSManagedObjectContext : SwiftManageObjectContext {
 
     static func createWithModel(modelName:String,
         storeName:String = "Database.sqlite",
@@ -100,14 +103,9 @@ extension NSManagedObjectContext : ManageObjectContext {
         let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!.URLByAppendingPathComponent(storeName)
         return self.create(atUrl: url, modelName: modelName, mergePolicy: mergePolicy, options: options)
     }
-
-    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) -> [T] {
-        let instances = try! self.executeFetchRequest(request)
-        return (instances as? [T])!
-    }
 }
 
-extension NSManagedObject : ManagedObject {
+extension NSManagedObject : SwfitManagedObject {
     static var entityName:String {
         return NSStringFromClass(self).componentsSeparatedByString(".").last! as String
     }
