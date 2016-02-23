@@ -15,12 +15,6 @@ protocol ManagedObject {
 
 extension ManagedObject where Self : NSManagedObject {
 
-    init(context:NSManagedObjectContext) {
-        let name = self.dynamicType.entityName
-        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
-    }
-
     static func createInContext(context:NSManagedObjectContext) throws -> Self? {
         var instance:Self? = nil
         context.performBlockAndWait { () -> Void in
@@ -53,9 +47,12 @@ extension ManagedObject where Self : NSManagedObject {
         context.deleteObject(self)
     }
 
-
     static var entityName:String {
-        return NSStringFromClass(self).componentsSeparatedByString(".").last! as String
+        return NSStringFromClass(object_getClass(self)).componentsSeparatedByString(".").last! as String
+    }
+
+    static func entityNameString() -> String {
+        return NSStringFromClass(object_getClass(self)).componentsSeparatedByString(".").last! as String
     }
 }
 
@@ -68,5 +65,4 @@ extension NSManagedObjectContext {
 }
 
 extension NSManagedObject : ManagedObject {
-
 }
