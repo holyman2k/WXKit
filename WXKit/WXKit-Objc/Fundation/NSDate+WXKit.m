@@ -68,7 +68,7 @@
     static dispatch_once_t dateFormatOnceToken;
     dispatch_once(&dateFormatOnceToken, ^{
         dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MMM dd, yyyy"];
+        [dateFormat setDateFormat:@"MM dd, yyyy"];
     });
     return [dateFormat stringFromDate:self];
 }
