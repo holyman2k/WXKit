@@ -7,6 +7,7 @@
 //
 
 #import "WXBlockDebouncer.h"
+#import "WXBlocks.h"
 
 @interface WXBlockDebouncer()
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WXTaskProtocol.h"
+#import "WXBlocks.h"
 
 @interface WXTaskKit : NSObject
 

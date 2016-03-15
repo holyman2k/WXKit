@@ -7,6 +7,8 @@
 //
 
 #import "WXTextInput.h"
+#import "WXView.h"
+#import "UIView+WXKit.h"
 
 @interface WXTextInput() <UITextFieldDelegate>
 @property (strong, nonatomic) UILabel *labelValidation;
