@@ -112,6 +112,10 @@ struct JSON {
         return value()
     }
 
+    var boolOrNil:Bool? {
+        return value()
+    }
+
     func hasKey(key:String) -> Bool {
         if let json:NSDictionary  = value() {
             if let _ = json[key] {
