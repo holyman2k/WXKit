@@ -240,7 +240,9 @@ class JSONGenerator : GeneratorType {
         switch self.type {
         case .Array:
             if let o = self.arrayGenerator?.next() {
-                return (String(self.arrayIndex++), JSON(o))
+                let index = self.arrayIndex
+                self.arrayIndex = self.arrayIndex + 1
+                return (String(index), JSON(o))
             } else {
                 return nil
             }
