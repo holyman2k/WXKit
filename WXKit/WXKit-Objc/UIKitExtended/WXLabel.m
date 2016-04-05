@@ -18,9 +18,9 @@
     self.clipsToBounds = YES;
 }
 
-- (CGSize)intrinsicContentSize {
+//- (CGSize)intrinsicContentSize {
 
-    return CGSizeMake([self textWidth] + self.leftRightPadding * 2, [self textHeight] + self.topBottomPadding * 2);
-}
+//    return CGSizeMake([self textWidth] + self.leftRightPadding * 2, [self textHeight] + self.topBottomPadding * 2);
+//}
 
 @end

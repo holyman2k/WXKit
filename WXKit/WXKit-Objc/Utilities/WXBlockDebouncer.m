@@ -28,7 +28,7 @@
         // setup debouncing
         {
             VoidBlock block = ^(){
-                _timer = [NSTimer scheduledTimerWithTimeInterval:throttle target:self selector:@selector(enableInvokation) userInfo:nil repeats:YES];
+                self->_timer = [NSTimer scheduledTimerWithTimeInterval:throttle target:self selector:@selector(enableInvokation) userInfo:nil repeats:YES];
             };
 
             if ([NSThread isMainThread]) {
