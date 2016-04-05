@@ -16,6 +16,10 @@ private extension Array {
     }
 }
 
+enum JsonError : ErrorType {
+    case ParseError(error:String)
+}
+
 struct JSON {
 
     private let jsonObject:AnyObject?
@@ -31,6 +35,11 @@ struct JSON {
         self.errorStack.appendContentsOf(errorStack)
     }
 
+    init(_ json:String) throws {
+        let data = json.dataUsingEncoding(NSUTF8StringEncoding);
+        try self.jsonObject = NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers);
+    }
+
     init(_ json:AnyObject?) {
         self.jsonObject = json
     }
@@ -40,6 +49,26 @@ struct JSON {
             return value
         }
         return nil
+    }
+
+    func optionalValueForKey<T>(key:String) -> T? {
+        return self[key].value()
+    }
+
+    func valueForKey<T>(key:String) throws -> T {
+
+        let json = self[key]
+
+        guard json.jsonObject != nil else {
+            throw JsonError.ParseError(error: json.errorStack.joinWithSeparator("\n"))
+        }
+
+        if let value:T = json.value() {
+            return value
+        } else {
+            throw JsonError.ParseError(error: "Dictionary[\(key) can not infer to type")
+        }
+
     }
 
     var error:[String] {
@@ -80,6 +109,10 @@ struct JSON {
     }
 
     var doubleOrNil:Double? {
+        return value()
+    }
+
+    var boolOrNil:Bool? {
         return value()
     }
 
@@ -207,7 +240,9 @@ class JSONGenerator : GeneratorType {
         switch self.type {
         case .Array:
             if let o = self.arrayGenerator?.next() {
-                return (String(self.arrayIndex++), JSON(o))
+                let index = self.arrayIndex
+                self.arrayIndex = self.arrayIndex + 1
+                return (String(index), JSON(o))
             } else {
                 return nil
             }

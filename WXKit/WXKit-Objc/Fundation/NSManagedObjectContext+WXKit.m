@@ -7,6 +7,7 @@
 //
 
 #import "NSManagedObjectContext+WXKit.h"
+#import "UIDevice+WXKit.h"
 
 @implementation NSManagedObjectContext (WXKit)
 

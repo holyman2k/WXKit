@@ -32,7 +32,7 @@
 
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:url
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     WXAccount *account = [WXAccount createInContext:context];
@@ -55,7 +55,7 @@
     NSURL *url = [WXTestDefaults persistenceStoreUrl];
     NSManagedObjectContext *context;
     @try {
-         context = [NSManagedObjectContext createAtUrl:url modelName:@"a" mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType andOptions:nil];
+         context = [NSManagedObjectContext createAtUrl:url modelName:@"a" mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType andOptions:nil];
     }
     @catch (NSException *exception) {
         XCTAssertNotNil(exception, @"failed");
@@ -73,7 +73,7 @@
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     __block BOOL queueCompleted = NO;
@@ -120,10 +120,12 @@
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     NSUInteger runCount = 100;
+    XCTestExpectation *expectation = [self expectationWithDescription:@""];
+    __block int completion = 0;
     for (NSUInteger i = 0; i < runCount; i++) {
         __block NSError *error;
         __block BOOL saveResult = NO;
@@ -147,27 +149,29 @@
 
             XCTAssert(saveResult, @"saved");
             XCTAssertNil(error, @"test");
-            XCTAssertEqual([WXAccount allInstancesInContext:context].count, i+1, @"1 account");
-            XCTAssertEqual([WXCompany allInstancesInContext:context].count, i+1, @"1 company");
-            XCTAssertNotEqual([WXAccount allInstancesInContext:context].count, i+2, @"1 account");
-            XCTAssertNotEqual([WXCompany allInstancesInContext:context].count, i+3, @"1 company");
-            [self safelyCompleteAsynchronousTask];
+            completion ++;
         });
-
-        [self waitForAsynchronousTask];
     }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        while (completion != runCount) {
+            sleep(1);
+        }
+        [expectation fulfill];
+    });
 
-    XCTAssertEqual([WXAccount allInstancesInContext:context].count, runCount, @"1 account");
-    XCTAssertEqual([WXCompany allInstancesInContext:context].count, runCount, @"1 company");
-    XCTAssertNotEqual([WXAccount allInstancesInContext:context].count, runCount+1, @"1 account");
-    XCTAssertNotEqual([WXCompany allInstancesInContext:context].count, runCount+3, @"1 company");
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        XCTAssertEqual([WXAccount allInstancesInContext:context].count, runCount, @"1 account");
+        XCTAssertEqual([WXCompany allInstancesInContext:context].count, runCount, @"1 company");
+        XCTAssertNotEqual([WXAccount allInstancesInContext:context].count, runCount+1, @"1 account");
+        XCTAssertNotEqual([WXCompany allInstancesInContext:context].count, runCount+3, @"1 company");
+    }];
 }
 
 - (void)testPerformBlockMainThread
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     __block NSError *error;
@@ -192,7 +196,7 @@
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
     __block BOOL queueCompleted = NO;
     __block NSError *error;
@@ -223,7 +227,7 @@
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     __block BOOL saveResult = NO;
@@ -250,7 +254,7 @@
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     NSManagedObjectContext *mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
@@ -290,7 +294,7 @@
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     NSManagedObjectContext *mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
@@ -335,7 +339,7 @@
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     NSManagedObjectContext *mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
@@ -375,7 +379,7 @@
 {
     NSManagedObjectContext *context = [NSManagedObjectContext createAtUrl:nil
                                                                 modelName:@"WXKit"
-                                                              mergePolice:NSMergeByPropertyObjectTrumpMergePolicyType
+                                                              mergePolicy:NSMergeByPropertyObjectTrumpMergePolicyType
                                                                andOptions:nil];
 
     NSManagedObjectContext *mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];

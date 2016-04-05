@@ -7,6 +7,7 @@
 //
 
 #import "UIBarButtonItem+WXKit.h"
+#import "UIDevice+WXKit.h"
 
 @implementation UIBarButtonItem (WXKit)
 

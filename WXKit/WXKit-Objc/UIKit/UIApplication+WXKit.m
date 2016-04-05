@@ -7,6 +7,7 @@
 //
 
 #import "UIApplication+WXKit.h"
+#import "UIDevice+WXKit.h"
 
 @implementation UIApplication (WXKit)
 

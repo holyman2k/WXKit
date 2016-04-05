@@ -18,7 +18,7 @@ extension NSDate {
 
     var dateStringLong:String {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMM, dd, yyyy"
+        formatter.dateFormat = "MMM dd, yyyy"
         return formatter.stringFromDate(self)
     }
 

@@ -7,6 +7,7 @@
 //
 
 #import "WXTextLabel.h"
+#import "UIView+WXKit.h"
 
 @interface WXTextLabel() 
 @property (strong, nonatomic) UILabel *label;

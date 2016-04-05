@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXBlocks.h"
 
 @interface WXBarButtonItem : UIBarButtonItem
 
