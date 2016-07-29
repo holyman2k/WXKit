@@ -15,4 +15,8 @@
 - (instancetype)reverse;
 
 - (id)firstObjectPassTest:(BOOL(^)(id obj))block;
+
+- (NSDictionary *)dictionaryWithKeyPath:(NSString *)keyPath;
+
+- (NSMutableDictionary *)mutableDictionaryWithKeyPath:(NSString *)keyPath;
 @end

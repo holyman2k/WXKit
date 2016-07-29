@@ -33,4 +33,13 @@
 
     return [self objectOrNilAtIndex:index];
 }
+
+- (NSDictionary *)dictionaryWithKeyPath:(NSString *)keyPath {
+    return [NSDictionary dictionaryWithObjects:self forKeys:[self valueForKey:keyPath]];
+}
+
+- (NSMutableDictionary *)mutableDictionaryWithKeyPath:(NSString *)keyPath {
+    return [NSMutableDictionary dictionaryWithObjects:self forKeys:[self valueForKey:keyPath]];
+}
+
 @end
