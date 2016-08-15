@@ -100,7 +100,7 @@
     if (sourceMetadata != nil) {
         compatibile = [destinationModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata];
     } else {
-        NSLog(@"source meta data missing");
+        NSLog(@"%@ - Source meta data missing", [self class]);
     }
 
     return !compatibile;

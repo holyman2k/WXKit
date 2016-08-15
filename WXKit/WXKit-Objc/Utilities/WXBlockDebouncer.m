@@ -42,7 +42,7 @@
     return self;
 }
 
-- (void)performBlockAndWait:(void(^)())block {
+- (void)performBlockAndWait:(VoidBlock)block {
 
     if (!self.canUpdate) return;
 

@@ -12,7 +12,7 @@
 
 - (instancetype)initWithThrottleInSeconds:(float)throttle;
 
-- (void)performBlockAndWait:(void(^)())block;
+- (void)performBlockAndWait:(VoidBlock)block;
 
 - (void)tearDown;
 
