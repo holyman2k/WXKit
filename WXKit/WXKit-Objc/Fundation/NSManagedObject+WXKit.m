@@ -19,7 +19,7 @@
 + (instancetype)createInContext:(NSManagedObjectContext *)context
 {
     __block id instance;
-    [context safelyPerformBlockAndWait:^{
+    [context performBlockAndWait:^{
         instance = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
     }];
     return instance;
@@ -28,7 +28,7 @@
 + (instancetype)createInContext:(NSManagedObjectContext *)context withBuilderBlock:(void(^)(id me))block;
 {
     __block id instance = [self createInContext:context];
-    [context safelyPerformBlockAndWait:^{
+    [context performBlockAndWait:^{
         block(instance);
     }];
     return instance;
@@ -50,7 +50,7 @@
                             inContext:(NSManagedObjectContext *)context
 {
     __block NSArray *instances;
-    [context safelyPerformBlockAndWait:^{
+    [context performBlockAndWait:^{
         NSFetchRequest *request = [self fetchRequestWithPredicate:predicate andSortDescriptors:sortDescriptors];
         instances = [context executeFetchRequest:request error:nil];
     }];
@@ -87,7 +87,7 @@
     id instaceInContext = self.managedObjectContext != context ? [self instanceInContext:context] : self; 
     if (instaceInContext == nil) return;
     
-    [context safelyPerformBlockAndWait:^{
+    [context performBlockAndWait:^{
         [context deleteObject:instaceInContext];
     }];
 }
@@ -97,7 +97,7 @@
     if (self.managedObjectContext == context) return self;
     __block NSError *error;
     __block id instance;
-    [context safelyPerformBlockAndWait:^{
+    [context performBlockAndWait:^{
         instance = [context existingObjectWithID:self.objectID error:&error];
     }];
     if (!error) return instance;
