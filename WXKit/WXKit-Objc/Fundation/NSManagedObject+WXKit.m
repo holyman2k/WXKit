@@ -78,7 +78,11 @@
 + (NSMutableDictionary *)dictionaryWithIdKeyPath:(NSString *)keyPath andPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context
 {
     NSArray *list = [self allInstancesWithPredicate:predicate inContext:context];
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjects:list forKeys:[list valueForKey:keyPath]];
+
+    __block NSMutableDictionary *dictionary;
+    [context performBlockAndWait:^{
+        dictionary = [NSMutableDictionary dictionaryWithObjects:list forKeys:[list valueForKey:keyPath]];
+    }];
     return dictionary;
 }
 
