@@ -20,6 +20,4 @@ typedef id (^WXTaskBlock)(void);
 
 @property (nonatomic, readonly) id result;
 
-- (void)addDependency:(id<WXTask>)task;
-
 @end

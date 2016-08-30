@@ -17,7 +17,7 @@
 @implementation WXTuple
 
 + (instancetype)tupleWithArray:(NSArray *)array {
-    return [[self alloc] initWithArray:array];
+    return [[WXTuple alloc] initWithArray:array];
 }
 
 - (instancetype)initWithArray:(NSArray *)array {
