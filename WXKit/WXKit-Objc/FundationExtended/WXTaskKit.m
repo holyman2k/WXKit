@@ -9,6 +9,7 @@
 #import "WXTaskKit.h"
 #import "WXTask.h"
 #import "WXBackgroundTask.h"
+#import "NSMutableArray+WXKit.h"
 
 /*
  * WXOperationKit

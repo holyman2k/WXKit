@@ -20,7 +20,7 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    self.context = [NSManagedObjectContext createAtUrl:[WXTestDefaults persistenceStoreUrl] modelName:@"WXKit" mergePolice:NSOverwriteMergePolicyType andOptions:nil];
+    self.context = [NSManagedObjectContext createAtUrl:[WXTestDefaults persistenceStoreUrl] modelName:@"WXKit" mergePolicy:NSOverwriteMergePolicyType andOptions:nil];
     XCTAssertNotNil(self.context, @"setup context");
 }
 

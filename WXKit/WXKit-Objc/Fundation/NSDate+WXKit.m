@@ -7,6 +7,7 @@
 //
 
 #import "NSDate+WXKit.h"
+#import "UIDevice+WXKit.h"
 
 @implementation NSDate (WXKit)
 

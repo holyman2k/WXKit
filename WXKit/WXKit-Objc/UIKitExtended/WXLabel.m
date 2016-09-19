@@ -7,6 +7,7 @@
 //
 
 #import "WXLabel.h"
+#import "UILabel+WXKit.h"
 
 @implementation WXLabel
 
@@ -19,8 +20,9 @@
 }
 
 - (CGSize)intrinsicContentSize {
-
-    return CGSizeMake([self textWidth] + self.leftRightPadding * 2, [self textHeight] + self.topBottomPadding * 2);
+    CGSize size = [super intrinsicContentSize];
+    size.width = size.width + self.leftRightPadding * 2;
+    return size;
 }
 
 @end

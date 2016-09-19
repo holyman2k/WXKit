@@ -9,8 +9,6 @@
 #ifndef Documents_WXUIKitExtended_h
 #define Documents_WXUIKitExtended_h
 
-#import "WXAlertView.h"
-#import "WXActionSheet.h"
 #import "WXBarButtonItem.h"
 
 #endif
