@@ -8,6 +8,9 @@
 
 #import "NSManagedObject+WXKit.h"
 #import "NSManagedObjectContext+WXKit.h"
+#import <Foundation/Foundation.h>
+
+#define isIOS10 floor(NSFoundationVersionNumber) >= NSFoundationVersionNumber_iOS_10
 
 @implementation NSManagedObject (WXKit)
 
@@ -57,10 +60,14 @@
     return instances;
 }
 
+#ifndef __AVAILABILITY_INTERNAL__IPHONE_10_0
+
 + (NSFetchRequest *)fetchRequest
 {
     return [self fetchRequestWithPredicate:nil andSortDescriptors:nil];
 }
+
+#endif
 
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate
 {
