@@ -13,13 +13,13 @@ import UIKit
 extension String {
 
     func trim() -> String {
-        let trimCharSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        return self.stringByTrimmingCharactersInSet(trimCharSet)
+        let trimCharSet = CharacterSet.whitespacesAndNewlines
+        return self.trimmingCharacters(in: trimCharSet)
     }
 
-    func height(font:UIFont, andWidth width:CGFloat) -> CGFloat {
+    func height(_ font:UIFont, andWidth width:CGFloat) -> CGFloat {
         let attributes = [NSFontAttributeName: font]
-        let size = CGSizeMake(width, FLT_MAX.f)
-        return self.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).height
+        let size = CGSize(width: width, height: FLT_MAX.f)
+        return self.boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attributes, context: nil).height
     }
 }

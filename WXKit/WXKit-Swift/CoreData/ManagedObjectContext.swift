@@ -16,21 +16,21 @@ protocol ManageObjectContext {
 
 extension ManageObjectContext where Self : NSManagedObjectContext {
 
-    static func create(atUrl url:NSURL?, modelName:String, mergePolicy:NSMergePolicyType, options:[NSObject : AnyObject]?) -> Self? {
+    static func create(atUrl url:URL?, modelName:String, mergePolicy:NSMergePolicyType, options:[AnyHashable: Any]?) -> Self? {
 
         let storeType = url != nil ? NSSQLiteStoreType : NSInMemoryStoreType
 
-        if let modelUrl = NSBundle.mainBundle().URLForResource(modelName, withExtension: "momd"),
-            let managedObjectModel = NSManagedObjectModel(contentsOfURL: modelUrl) {
+        if let modelUrl = Bundle.main.url(forResource: modelName, withExtension: "momd"),
+            let managedObjectModel = NSManagedObjectModel(contentsOf: modelUrl) {
                 let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
                 do {
-                    try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration: nil, URL: url, options: options)
+                    try persistentStoreCoordinator.addPersistentStore(ofType: storeType, configurationName: nil, at: url, options: options)
                 } catch   {
                     abort()
                 }
 
-                let mergePolicy = NSMergePolicy(mergeType:  mergePolicy)
-                let context = Self(concurrencyType: .MainQueueConcurrencyType)
+                let mergePolicy = NSMergePolicy(merge:  mergePolicy)
+                let context = Self(concurrencyType: .mainQueueConcurrencyType)
                 context.persistentStoreCoordinator = persistentStoreCoordinator
                 context.mergePolicy = mergePolicy
                 return context
@@ -38,45 +38,45 @@ extension ManageObjectContext where Self : NSManagedObjectContext {
         return nil
     }
 
-    static func createWithModel(modelName:String,
+    static func createWithModel(_ modelName:String,
         storeName:String = "Database.sqlite",
-        mergePolicy:NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType,
-        options:[NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> Self? {
+        mergePolicy:NSMergePolicyType = .mergeByPropertyObjectTrumpMergePolicyType,
+        options:[AnyHashable: Any]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> Self? {
 
-            let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!.URLByAppendingPathComponent(storeName)
+            let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!.appendingPathComponent(storeName)
             return self.create(atUrl: url, modelName: modelName, mergePolicy: mergePolicy, options: options)
     }
 
-    static func createPirvateAndMainContextWithModel(modelName:String,
+    static func createPirvateAndMainContextWithModel(_ modelName:String,
         storeName:String = "Database.sqlite",
-        mergePolicy:NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType,
-        options:[NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> (mainContext:Self?, privateContext:Self?, mainContextObserver:NSObjectProtocol?, privateContextObserver:NSObjectProtocol?)  {
+        mergePolicy:NSMergePolicyType = .mergeByPropertyObjectTrumpMergePolicyType,
+        options:[AnyHashable: Any]? = [NSMigratePersistentStoresAutomaticallyOption:1, NSInferMappingModelAutomaticallyOption:1]) -> (mainContext:Self?, privateContext:Self?, mainContextObserver:NSObjectProtocol?, privateContextObserver:NSObjectProtocol?)  {
 
-            let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!.URLByAppendingPathComponent(storeName)
+            let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!.appendingPathComponent(storeName)
             let mainContext = self.create(atUrl: url, modelName: modelName, mergePolicy: mergePolicy, options: options)
 
             if let mainContext = mainContext {
-                let privateContext = self.init(concurrencyType: .PrivateQueueConcurrencyType)
+                let privateContext = self.init(concurrencyType: .privateQueueConcurrencyType)
                 privateContext.persistentStoreCoordinator = mainContext.persistentStoreCoordinator
                 privateContext.undoManager = nil
 
-                let notificationCenter = NSNotificationCenter.defaultCenter()
+                let notificationCenter = NotificationCenter.default
 
-                let privateContextObserver = notificationCenter.addObserverForName(NSManagedObjectContextDidSaveNotification, object: privateContext, queue: nil, usingBlock: { notification -> Void in
-                    if let notificationObject = notification.object as? NSObject where notificationObject == mainContext {
+                let privateContextObserver = notificationCenter.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: privateContext, queue: nil, using: { notification -> Void in
+                    if let notificationObject = notification.object as? NSObject , notificationObject == mainContext {
                         return
                     }
-                    mainContext.performBlock({ () -> Void in
-                        mainContext.mergeChangesFromContextDidSaveNotification(notification)
+                    mainContext.perform({ () -> Void in
+                        mainContext.mergeChanges(fromContextDidSave: notification)
                     })
                 })
 
-                let mainContextObserver = notificationCenter.addObserverForName(NSManagedObjectContextDidSaveNotification, object: mainContext, queue: nil, usingBlock: { notification -> Void in
-                    if let notificationObject = notification.object as? NSObject where notificationObject == privateContext {
+                let mainContextObserver = notificationCenter.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: mainContext, queue: nil, using: { notification -> Void in
+                    if let notificationObject = notification.object as? NSObject , notificationObject == privateContext {
                         return
                     }
-                    privateContext.performBlock({ () -> Void in
-                        privateContext.mergeChangesFromContextDidSaveNotification(notification)
+                    privateContext.perform({ () -> Void in
+                        privateContext.mergeChanges(fromContextDidSave: notification)
                     })
                 })
                 return (mainContext, privateContext, mainContextObserver, privateContextObserver)

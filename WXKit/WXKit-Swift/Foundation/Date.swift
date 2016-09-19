@@ -8,36 +8,36 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
 
-    func dateStringWithFormat(format:String) -> String {
-        let formatter = NSDateFormatter()
+    func dateStringWithFormat(_ format:String) -> String {
+        let formatter = DateFormatter()
         formatter.dateFormat = format
-        return formatter.stringFromDate(self)
+        return formatter.string(from: self)
     }
 
     var dateStringLong:String {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "MMM, dd, yyyy"
-        return formatter.stringFromDate(self)
+        return formatter.string(from: self)
     }
 
     var dateStringShort:String {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd"
-        return formatter.stringFromDate(self)
+        return formatter.string(from: self)
     }
 
-    var dateWithoutTime:NSDate {
+    var dateWithoutTime:Date {
 
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: self)
-        return calendar.dateFromComponents(components)!
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([NSCalendar.Unit.year, NSCalendar.Unit.month, NSCalendar.Unit.day], from: self)
+        return calendar.date(from: components)!
     }
 
-    static func dateWithString(dateString:String, andFormat format:String) -> NSDate? {
-        let formatter = NSDateFormatter()
+    static func dateWithString(_ dateString:String, andFormat format:String) -> Date? {
+        let formatter = DateFormatter()
         formatter.dateFormat = format
-        return formatter.dateFromString(dateString)
+        return formatter.date(from: dateString)
     }
 }
