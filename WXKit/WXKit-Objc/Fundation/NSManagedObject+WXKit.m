@@ -60,14 +60,10 @@
     return instances;
 }
 
-#ifndef __AVAILABILITY_INTERNAL__IPHONE_10_0
-
 + (NSFetchRequest *)fetchRequest
 {
     return [self fetchRequestWithPredicate:nil andSortDescriptors:nil];
 }
-
-#endif
 
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate
 {

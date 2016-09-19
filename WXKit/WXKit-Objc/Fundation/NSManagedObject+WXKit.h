@@ -28,15 +28,11 @@
  */
 + (instancetype)createInContext:(NSManagedObjectContext *)context withBuilderBlock:(void(^)(id me))block;
 
-#ifndef __AVAILABILITY_INTERNAL__IPHONE_10_0
-
 /*!
  * @brief create basic fetch request
  * @return NSFetchRequest for this Entity Class
  */
 + (NSFetchRequest *)fetchRequest;
-
-#endif
 
 /*!
  * @brief create basic fetch request with predicate
