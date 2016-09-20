@@ -52,6 +52,18 @@ extension Date {
         let components = (calendar as NSCalendar).components([NSCalendar.Unit.year, NSCalendar.Unit.month, NSCalendar.Unit.day], from: self)
         return calendar.date(from: components)!
     }
+    
+    var hour:Int? {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: self)
+        return components.hour
+    }
+    
+    var minute:Int? {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: self)
+        return components.minute
+    }
 
     static func dateWithString(_ dateString:String, andFormat format:String) -> Date? {
         let formatter = DateFormatter()
