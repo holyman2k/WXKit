@@ -9,22 +9,18 @@
 import Foundation
 
 private extension Array {
-    func arrayByAppend(element:Element) -> Array {
+    func arrayByAppend(_ element:Element) -> Array {
         var arr = self
         arr.append(element)
         return arr
     }
 }
 
-enum JsonError : ErrorType {
-    case ParseError(error:String)
-}
-
 struct JSON {
 
-    private let jsonObject:AnyObject?
+    fileprivate let jsonObject:AnyObject?
 
-    private var errorStack:[String] = []
+    fileprivate var errorStack:[String] = []
 
     init() {
         self.jsonObject = nil
@@ -32,12 +28,7 @@ struct JSON {
 
     init(errorStack:[String]) {
         self.jsonObject = nil
-        self.errorStack.appendContentsOf(errorStack)
-    }
-
-    init(_ json:String) throws {
-        let data = json.dataUsingEncoding(NSUTF8StringEncoding);
-        try self.jsonObject = NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers);
+        self.errorStack.append(contentsOf: errorStack)
     }
 
     init(_ json:AnyObject?) {
@@ -49,26 +40,6 @@ struct JSON {
             return value
         }
         return nil
-    }
-
-    func optionalValueForKey<T>(key:String) -> T? {
-        return self[key].value()
-    }
-
-    func valueForKey<T>(key:String) throws -> T {
-
-        let json = self[key]
-
-        guard json.jsonObject != nil else {
-            throw JsonError.ParseError(error: json.errorStack.joinWithSeparator("\n"))
-        }
-
-        if let value:T = json.value() {
-            return value
-        } else {
-            throw JsonError.ParseError(error: "Dictionary[\(key) can not infer to type")
-        }
-
     }
 
     var error:[String] {
@@ -112,11 +83,7 @@ struct JSON {
         return value()
     }
 
-    var boolOrNil:Bool? {
-        return value()
-    }
-
-    func hasKey(key:String) -> Bool {
+    func hasKey(_ key:String) -> Bool {
         if let json:NSDictionary  = value() {
             if let _ = json[key] {
                 return true
@@ -146,7 +113,7 @@ struct JSON {
             var json = Dictionary<String, JSON>()
             for obj in items.allKeys {
                 let key = obj as! String;
-                json[key] = JSON(items[key]!)
+                json[key] = JSON(items[key]! as AnyObject?)
             }
             return json
         }
@@ -159,7 +126,7 @@ struct JSON {
             if let arr:NSArray = value() {
                 if index < arr.count {
                     let json = arr[index]
-                    return JSON(json)
+                    return JSON(json as AnyObject?)
                 } else {
                     return JSON(errorStack: errorStack.arrayByAppend("Array[\(index)] is out of bound" ))
                 }
@@ -172,8 +139,8 @@ struct JSON {
     subscript(key: String) -> JSON {
         get {
             if let dictionary:NSDictionary = value() {
-                if let json = dictionary.objectForKey(key) {
-                    return JSON(json)
+                if let json = dictionary.object(forKey: key) {
+                    return JSON(json as AnyObject?)
                 } else {
                     return JSON(errorStack:  errorStack.arrayByAppend("Dictionary[\(key)] does not exist"))
                 }
@@ -187,68 +154,66 @@ struct JSON {
         return JSONGenerator(json: self)
     }
 
-    func enumerateJson(enumerator: (key:String, json:JSON)->()) {
+    func enumerateJson(_ enumerator: (_ key:String, _ json:JSON)->()) {
         if let json:NSDictionary = value() {
             for (index, dictionary) in json {
-                let json = JSON(dictionary)
+                let json = JSON(dictionary as AnyObject?)
                 if let index = index as? String {
-                    enumerator(key: index, json: json)
+                    enumerator(index, json)
                 }
             }
         }
     }
 
-    func enumerateArray(enumerator: (key:Int, json:JSON)->()) {
+    func enumerateArray(_ enumerator: (_ key:Int, _ json:JSON)->()) {
         if let array:Array<NSDictionary> = value() {
-            for (index, dictionary) in array.enumerate() {
+            for (index, dictionary) in array.enumerated() {
                 let json = JSON(dictionary)
-                enumerator(key: index, json: json)
+                enumerator(index, json)
             }
         }
     }
 }
 
 enum JSONGeneratorType {
-    case Array, Dictionary, Others
+    case array, dictionary, others
 }
 
-class JSONGenerator : GeneratorType {
+class JSONGenerator : IteratorProtocol {
 
     typealias Element = (String, JSON)
 
-    private var arrayIndex: Int = 0
+    fileprivate var arrayIndex: Int = 0
 
-    private let type:JSONGeneratorType
+    fileprivate let type:JSONGeneratorType
 
-    private var arrayGenerator:IndexingGenerator<[AnyObject]>?
+    fileprivate var arrayGenerator:IndexingIterator<[AnyObject]>?
 
-    private var dictionaryGenerator:NSDictionary.Generator?
+    fileprivate var dictionaryGenerator:NSDictionary.Iterator?
 
     init(json:JSON) {
         if let arr:[AnyObject] = json.value() {
-            arrayGenerator = arr.generate()
-            type = .Array
+            arrayGenerator = arr.makeIterator()
+            type = .array
         } else if let dic:NSDictionary = json.value() {
-            dictionaryGenerator = dic.generate()
-            type = .Dictionary
+            dictionaryGenerator = dic.makeIterator()
+            type = .dictionary
         } else {
-            type = .Others
+            type = .others
         }
     }
 
     func next() -> JSONGenerator.Element? {
         switch self.type {
-        case .Array:
+        case .array:
             if let o = self.arrayGenerator?.next() {
-                let index = self.arrayIndex
-                self.arrayIndex = self.arrayIndex + 1
-                return (String(index), JSON(o))
+                return (String(self.arrayIndex + 1), JSON(o))
             } else {
                 return nil
             }
-        case .Dictionary:
+        case .dictionary:
             if let d = self.dictionaryGenerator?.next() {
-                return (d.key as! String, JSON(d.value))
+                return (d.key as! String, JSON(d.value as AnyObject?))
             } else {
                 return nil
             }

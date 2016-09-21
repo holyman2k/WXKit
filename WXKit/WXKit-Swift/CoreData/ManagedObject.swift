@@ -13,18 +13,37 @@ protocol ManagedObject {
 
 }
 
+
+//extension NSManagedObject {
+//    
+//    static func fetchRequest(_ predicate:NSPredicate? = nil, sortDescriptors:[NSSortDescriptor]? = nil) -> NSFetchRequest<NSFetchRequestResult> {
+//        let request = self.fetchRequest()
+//        request.predicate = predicate
+//        request.sortDescriptors = sortDescriptors
+//        return request
+//    }
+//    
+//    static func createInContext(_ context:NSManagedObjectContext) throws -> Self? {
+//        let managedObject = self.init(context: context)
+//        return managedObject
+//    }
+//    
+//    static fetchIn
+//}
+
+
 extension ManagedObject where Self : NSManagedObject {
 
-    static func createInContext(context:NSManagedObjectContext) throws -> Self? {
+    static func createInContext(_ context:NSManagedObjectContext) throws -> Self? {
         var instance:Self? = nil
-        context.performBlockAndWait { () -> Void in
-            instance = NSEntityDescription.insertNewObjectForEntityForName(self.entityName, inManagedObjectContext: context) as? Self
+        context.performAndWait { () -> Void in
+            instance = NSEntityDescription.insertNewObject(forEntityName: self.entityName, into: context) as? Self
         }
 
         return instance
     }
 
-    static func fetchInContext(context:NSManagedObjectContext, predicate:NSPredicate? = nil, sortDescriptor:[NSSortDescriptor]? = nil) throws -> [Self]  {
+    static func fetchInContext(_ context:NSManagedObjectContext, predicate:NSPredicate? = nil, sortDescriptor:[NSSortDescriptor]? = nil) throws -> [Self]  {
         var instances:[Self]? = nil
         let request = self.fetchRequest(predicate, sortDescriptors: sortDescriptor)
         instances = try context.fetch(request)
@@ -36,30 +55,30 @@ extension ManagedObject where Self : NSManagedObject {
         }
     }
 
-    static func fetchRequest(predicate:NSPredicate? = nil, sortDescriptors:[NSSortDescriptor]? = nil) -> NSFetchRequest {
-        let request = NSFetchRequest(entityName: self.entityName);
+    static func fetchRequest(_ predicate:NSPredicate? = nil, sortDescriptors:[NSSortDescriptor]? = nil) -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName);
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
         return request;
     }
 
-    func deleteInContext(context:NSManagedObjectContext) {
-        context.deleteObject(self)
+    func deleteInContext(_ context:NSManagedObjectContext) {
+        context.delete(self)
     }
 
     static var entityName:String {
-        return NSStringFromClass(object_getClass(self)).componentsSeparatedByString(".").last! as String
+        return NSStringFromClass(object_getClass(self)).components(separatedBy: ".").last! as String
     }
 
     static func entityNameString() -> String {
-        return NSStringFromClass(object_getClass(self)).componentsSeparatedByString(".").last! as String
+        return NSStringFromClass(object_getClass(self)).components(separatedBy: ".").last! as String
     }
 }
 
 extension NSManagedObjectContext {
 
-    func fetch<T where T : NSManagedObject>(request : NSFetchRequest) throws -> [T] {
-        let instances = try self.executeFetchRequest(request)
+    func fetch<T>(_ request : NSFetchRequest<NSFetchRequestResult>) throws -> [T] where T : NSManagedObject {
+        let instances = try self.fetch(request)
         return (instances as? [T])!
     }
 }
