@@ -10,8 +10,6 @@
 #import "NSManagedObjectContext+WXKit.h"
 #import <Foundation/Foundation.h>
 
-#define isIOS10 floor(NSFoundationVersionNumber) >= NSFoundationVersionNumber_iOS_10
-
 @implementation NSManagedObject (WXKit)
 
 + (NSString *)entityName
