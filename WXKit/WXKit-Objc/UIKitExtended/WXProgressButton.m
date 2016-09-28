@@ -100,13 +100,11 @@
 
 - (void)setupStartButton {
     if (!self.startButton) {
-        CGRect frame = self.frame;
-        frame.origin.x = 0;
-        frame.origin.y = 0;
-        self.startButton = [[WXButton alloc] initWithFrame:frame];
-
+        self.startButton = [[WXButton alloc] init];
         [self addSubview:self.startButton];
     }
+    CGRect frame = self.bounds;
+    self.startButton.frame = frame;
 
     [self.startButton setTitleColor:self.tintColor forState:UIControlStateNormal];
     [self.startButton setImage:self.startButtonImage forState:UIControlStateNormal];
