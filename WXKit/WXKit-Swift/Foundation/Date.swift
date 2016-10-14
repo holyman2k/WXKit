@@ -95,6 +95,6 @@ extension Date {
 
         let firstWeekday = NSLocale.current.calendar.firstWeekday
         let day = DayName(rawValue: firstWeekday)
-        return self.get(direction:.Previous, day!);
+        return self.get(direction:.Previous, day!, considerToday: true);
     }
 }
