@@ -14,9 +14,12 @@
 
 - (instancetype)reverse;
 
+- (instancetype)arrayByRemovingObject:(id)object;
+
 - (id)firstObjectPassTest:(BOOL(^)(id obj))block;
 
 - (NSDictionary *)dictionaryWithKeyPath:(NSString *)keyPath;
 
 - (NSMutableDictionary *)mutableDictionaryWithKeyPath:(NSString *)keyPath;
+
 @end
