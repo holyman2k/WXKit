@@ -58,10 +58,10 @@
     return instances;
 }
 
-+ (NSFetchRequest *)fetchRequest
-{
-    return [self fetchRequestWithPredicate:nil andSortDescriptors:nil];
-}
+//+ (NSFetchRequest *)fetchRequest
+//{
+//    return [self fetchRequestWithPredicate:nil andSortDescriptors:nil];
+//}
 
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate
 {
