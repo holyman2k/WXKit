@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WXBlocks.h"
 
 @interface WXBlockDebouncer : NSObject
 
 - (instancetype)initWithThrottleInSeconds:(float)throttle;
 
-- (void)performBlockAndWait:(void(^)())block;
+- (void)performBlockAndWait:(VoidBlock)block;
 
 - (void)tearDown;
 

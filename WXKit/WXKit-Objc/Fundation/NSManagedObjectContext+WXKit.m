@@ -11,8 +11,7 @@
 
 @implementation NSManagedObjectContext (WXKit)
 
-+ (instancetype)createAtUrl:(NSURL *)url mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options
-{
++ (instancetype)createAtUrl:(NSURL *)url mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options {
     // Load Model name
     NSAssert(![[self class] respondsToSelector:@selector(modelName)], @"%@  must implement +modelName", NSStringFromClass(self));
     NSString *modelName = [[self class] performSelector:@selector(modelName)];
@@ -21,8 +20,7 @@
     return [self createAtUrl:url modelName:modelName mergePolicy:mergePolicyType andOptions:options];
 }
 
-+ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options
-{
++ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options  {
     // Load Managed Object Model
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:modelName withExtension:@"momd"];
     NSAssert(modelURL != nil, @"could not find model name %@", modelName);
@@ -80,8 +78,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-+ (BOOL)storeNeedsMigrationAtURL:(NSURL *)sourceStoreUrl modelName:(NSString *)modelName
-{
++ (BOOL)storeNeedsMigrationAtURL:(NSURL *)sourceStoreUrl modelName:(NSString *)modelName {
     BOOL compatibile = NO;
     NSError *error = nil;
 
@@ -100,7 +97,7 @@
     if (sourceMetadata != nil) {
         compatibile = [destinationModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata];
     } else {
-        NSLog(@"source meta data missing");
+        NSLog(@"%@ - Source meta data missing", [self class]);
     }
 
     return !compatibile;
@@ -112,24 +109,9 @@
     return nil;
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-- (void)safelyPerformBlockAndWait:(void (^)())block
-{
-    if (self.concurrencyType == NSConfinementConcurrencyType) {
-        if ([NSThread isMainThread]) {
-            block();
-        } else {
-            dispatch_sync(dispatch_get_main_queue(), block);
-        }
-    } else {
-        [self performBlockAndWait:block];
-    }
-}
 #pragma clang diagnostic pop
 
-- (instancetype)privateContextWithObserver:(__autoreleasing id *)observer
-{
+- (instancetype)privateContextWithObserver:(__autoreleasing id *)observer {
     NSAssert(![NSThread isMainThread], @"must not be in main thread");
     NSManagedObjectContext *privateContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     privateContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
@@ -146,8 +128,7 @@
     return privateContext;
 }
 
-- (void)removeObserver:(id)observer
-{
+- (void)removeObserver:(id)observer {
     [[NSNotificationCenter defaultCenter] removeObserver:observer];
 }
 
