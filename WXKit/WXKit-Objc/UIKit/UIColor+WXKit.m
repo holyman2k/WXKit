@@ -10,7 +10,7 @@
 
 @implementation UIColor (WXKit)
 
-+ (instancetype)colorWithHexString:(NSString *)hexString withAlpha:(float)alpha
++ (instancetype)colorWithHexString:(NSString *)hexString alpha:(float)alpha
 {
     if (hexString.length > 0 && [hexString characterAtIndex:0] == '#') hexString = [hexString substringFromIndex:1];
     if (hexString.length != 6) {
