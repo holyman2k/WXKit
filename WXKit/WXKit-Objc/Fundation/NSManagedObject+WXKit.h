@@ -28,11 +28,11 @@
  */
 + (instancetype)createInContext:(NSManagedObjectContext *)context withBuilderBlock:(void(^)(id me))block;
 
-/*!
- * @brief create basic fetch request (required for ios 9 or below)
- * @return NSFetchRequest for this Entity Class
- */
-+ (NSFetchRequest *)fetchRequest;
+///*!
+// * @brief create basic fetch request (required for ios 9 or below)
+// * @return NSFetchRequest for this Entity Class
+// */
+//+ (NSFetchRequest *)fetchRequest;
 
 /*!
  * @brief create basic fetch request with predicate
