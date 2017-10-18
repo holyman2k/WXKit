@@ -10,4 +10,6 @@
 
 @interface UIColor (WXKit)
 + (instancetype)colorWithHexString:(NSString *)hexString alpha:(float)alpha;
+
+- (NSString *)hexColor;
 @end
