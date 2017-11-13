@@ -58,10 +58,10 @@
     return instances;
 }
 
-//+ (NSFetchRequest *)fetchRequest
-//{
-//    return [self fetchRequestWithPredicate:nil andSortDescriptors:nil];
-//}
++ (NSFetchRequest *)wx_fetchRequest
+{
+    return [self fetchRequestWithPredicate:nil andSortDescriptors:nil];
+}
 
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate
 {
@@ -70,8 +70,8 @@
 
 + (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescriptors:(NSArray *)sortDescriptors
 {
-//    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
-    NSFetchRequest * request = self.fetchRequest;
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
+//    NSFetchRequest *request = self.fetchRequest;
     request.predicate = predicate;
     request.sortDescriptors = sortDescriptors;
     return request;
