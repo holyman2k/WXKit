@@ -9,6 +9,11 @@
 #import "WXProgressButton.h"
 #import "WXButton.h"
 
+typedef NS_ENUM(NSUInteger, WXProgressButonState) {
+    WXProgressButtonStateStopped,
+    WXProgressButtonStateStarted,
+};
+
 @interface WXProgressButton()
 
 @property (nonatomic, strong) WXButton *startButton;
@@ -51,7 +56,7 @@
 
 - (void)setStarted:(BOOL)started {
     _started = started;
-    self.buttonState = started ? WXProgressButonStateStarted : WXProgressButonStateStopped;
+    self.buttonState = started ? WXProgressButtonStateStarted : WXProgressButtonStateStopped;
     [self updateProgress];
 }
 
@@ -114,7 +119,7 @@
 
 - (void)updateProgress {
 
-    BOOL started = self.buttonState == WXProgressButonStateStarted;
+    BOOL started = self.buttonState == WXProgressButtonStateStarted;
 
     self.progressLayer.hidden = !started;
     self.paddingLayer.hidden  = self.progressLayer.hidden;
