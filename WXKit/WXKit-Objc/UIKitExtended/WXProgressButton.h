@@ -10,11 +10,6 @@
 
 @class WXButton;
 
-typedef NS_ENUM(NSUInteger, WXProgressButonState) {
-    WXProgressButonStateStopped,
-    WXProgressButonStateStarted,
-};
-
 @interface WXProgressButton : WXProgressView
 
 @property (nonatomic) IBInspectable CGFloat cancelButtonRatio;
