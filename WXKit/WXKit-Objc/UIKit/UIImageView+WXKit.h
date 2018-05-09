@@ -14,4 +14,6 @@
 
 - (void)fitIntoSize:(CGSize)size;
 
+- (void)setImageAsync:(UIImage *(^)())loadingBlock;
+
 @end
