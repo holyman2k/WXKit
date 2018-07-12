@@ -57,6 +57,12 @@
     return constraint;
 }
 
+- (NSLayoutConstraint *)constraintWithIdentifier:(NSString *)identifier {
+    return [self.constraints firstObjectPassTest:^BOOL(NSLayoutConstraint *constraint) {
+        return [constraint.identifier isEqualToString:identifier];
+    }];
+}
+
 - (NSLayoutConstraint *)addConstraint:(NSLayoutAttribute)attr
                               contant:(CGFloat)c
 {

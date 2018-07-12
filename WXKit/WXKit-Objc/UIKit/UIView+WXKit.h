@@ -12,6 +12,8 @@
 
 - (UIImage *)screenshot;
 
+- (NSLayoutConstraint *)constraintWithIdentifier:(NSString *)identifier;
+
 - (NSLayoutConstraint *)addConstraintWithItem:(id)view1
                                    attribute:(NSLayoutAttribute)attr1
                                    relatedBy:(NSLayoutRelation)relation
