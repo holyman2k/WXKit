@@ -6,9 +6,6 @@
 //  Copyright © 2015 WebFM Pty Ltd. All rights reserved.
 //
 
-#import "UIApplication+WXKit.h"
-#import "UIDevice+WXKit.h"
-
 @implementation UIApplication (WXKit)
 
 + (BOOL)isSmallDisplayMode {

@@ -8,10 +8,10 @@
 
 #import "WXProgressView.h"
 
-@interface WXProgressView()
+@interface WXProgressView ()
 
-@property (nonatomic, strong) CAShapeLayer *paddingLayer;
-@property (nonatomic, strong) CAShapeLayer *progressLayer;
+@property(nonatomic, strong) CAShapeLayer *paddingLayer;
+@property(nonatomic, strong) CAShapeLayer *progressLayer;
 
 @end
 

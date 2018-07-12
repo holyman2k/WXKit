@@ -6,19 +6,13 @@
 //  Copyright (c) 2014 WebFM Pty Ltd. All rights reserved.
 //
 
-#import "NSManagedObject+WXKit.h"
-#import "NSManagedObjectContext+WXKit.h"
-#import <Foundation/Foundation.h>
-
 @implementation NSManagedObject (WXKit)
 
-+ (NSString *)entityName
-{
++ (NSString *)entityName {
     return NSStringFromClass(self);
 }
 
-+ (instancetype)createInContext:(NSManagedObjectContext *)context
-{
++ (instancetype)createInContext:(NSManagedObjectContext *)context {
     __block id instance;
     [context performBlockAndWait:^{
         instance = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
@@ -26,8 +20,7 @@
     return instance;
 }
 
-+ (instancetype)createInContext:(NSManagedObjectContext *)context withBuilderBlock:(void(^)(id me))block;
-{
++ (instancetype)createInContext:(NSManagedObjectContext *)context withBuilderBlock:(void (^)(id me))block; {
     __block id instance = [self createInContext:context];
     [context performBlockAndWait:^{
         block(instance);
@@ -35,21 +28,18 @@
     return instance;
 }
 
-+ (NSArray *)allInstancesInContext:(NSManagedObjectContext *)context
-{
++ (NSArray *)allInstancesInContext:(NSManagedObjectContext *)context {
     return [self allInstancesWithPredicate:nil andSortDescriptors:nil inContext:context];
 }
 
 + (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate
-                             inContext:(NSManagedObjectContext *)context
-{
+                             inContext:(NSManagedObjectContext *)context {
     return [self allInstancesWithPredicate:predicate andSortDescriptors:nil inContext:context];
 }
 
 + (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate
-                     andSortDescriptors:(NSArray *)sortDescriptors
-                            inContext:(NSManagedObjectContext *)context
-{
+                    andSortDescriptors:(NSArray *)sortDescriptors
+                             inContext:(NSManagedObjectContext *)context {
     __block NSArray *instances;
     [context performBlockAndWait:^{
         NSFetchRequest *request = [self fetchRequestWithPredicate:predicate andSortDescriptors:sortDescriptors];
@@ -58,18 +48,15 @@
     return instances;
 }
 
-+ (NSFetchRequest *)wx_fetchRequest
-{
++ (NSFetchRequest *)wx_fetchRequest {
     return [self fetchRequestWithPredicate:nil andSortDescriptors:nil];
 }
 
-+ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate
-{
++ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate {
     return [self fetchRequestWithPredicate:predicate andSortDescriptors:@[]];
 }
 
-+ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescriptors:(NSArray *)sortDescriptors
-{
++ (NSFetchRequest *)fetchRequestWithPredicate:(NSPredicate *)predicate andSortDescriptors:(NSArray *)sortDescriptors {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
 //    NSFetchRequest *request = self.fetchRequest;
     request.predicate = predicate;
@@ -77,8 +64,7 @@
     return request;
 }
 
-+ (NSMutableDictionary *)dictionaryWithIdKeyPath:(NSString *)keyPath andPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context
-{
++ (NSMutableDictionary *)dictionaryWithIdKeyPath:(NSString *)keyPath andPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context {
     NSArray *list = [self allInstancesWithPredicate:predicate inContext:context];
 
     __block NSMutableDictionary *dictionary;
@@ -88,18 +74,16 @@
     return dictionary;
 }
 
-- (void)deleteInContext:(NSManagedObjectContext *)context
-{
-    id instaceInContext = self.managedObjectContext != context ? [self instanceInContext:context] : self; 
+- (void)deleteInContext:(NSManagedObjectContext *)context {
+    id instaceInContext = self.managedObjectContext != context ? [self instanceInContext:context] : self;
     if (instaceInContext == nil) return;
-    
+
     [context performBlockAndWait:^{
         [context deleteObject:instaceInContext];
     }];
 }
 
-- (instancetype)instanceInContext:(NSManagedObjectContext *)context
-{
+- (instancetype)instanceInContext:(NSManagedObjectContext *)context {
     if (self.managedObjectContext == context) return self;
     __block NSError *error;
     __block id instance;
@@ -110,8 +94,7 @@
     return nil;
 }
 
-- (BOOL)isDeletedOrNilContext
-{
+- (BOOL)isDeletedOrNilContext {
     return self.isDeleted || self.managedObjectContext == nil;
 }
 @end

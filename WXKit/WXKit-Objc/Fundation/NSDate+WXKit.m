@@ -6,20 +6,15 @@
 //  Copyright (c) 2013 Charlie Wu. All rights reserved.
 //
 
-#import "NSDate+WXKit.h"
-#import "UIDevice+WXKit.h"
-
 @implementation NSDate (WXKit)
 
-+ (instancetype)dateFromString:(NSString *)string withFormat:(NSString *)format
-{
++ (instancetype)dateFromString:(NSString *)string withFormat:(NSString *)format {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:format];
     return [dateFormat dateFromString:string];
 }
 
-+ (instancetype)dateFromJsonString:(NSString *)json
-{
++ (instancetype)dateFromJsonString:(NSString *)json {
     static NSDateFormatter *dateFormat;
     static dispatch_once_t dateFormatOnceToken;
     dispatch_once(&dateFormatOnceToken, ^{
@@ -29,8 +24,7 @@
     return [dateFormat dateFromString:json];
 }
 
-- (NSString *)jsonDateTimeString
-{
+- (NSString *)jsonDateTimeString {
     static NSDateFormatter *dateFormat;
     static dispatch_once_t dateFormatOnceToken;
     dispatch_once(&dateFormatOnceToken, ^{
@@ -40,8 +34,7 @@
     return [dateFormat stringFromDate:self];
 }
 
-- (NSString *)jsonDateString
-{
+- (NSString *)jsonDateString {
     static NSDateFormatter *dateFormat;
     static dispatch_once_t dateFormatOnceToken;
     dispatch_once(&dateFormatOnceToken, ^{
@@ -52,8 +45,7 @@
 }
 
 
-- (NSString *)dateStringShort
-{
+- (NSString *)dateStringShort {
     static NSDateFormatter *dateFormat;
     static dispatch_once_t dateFormatOnceToken;
     dispatch_once(&dateFormatOnceToken, ^{
@@ -63,8 +55,7 @@
     return [dateFormat stringFromDate:self];
 }
 
-- (NSString *)dateStringLong
-{
+- (NSString *)dateStringLong {
     static NSDateFormatter *dateFormat;
     static dispatch_once_t dateFormatOnceToken;
     dispatch_once(&dateFormatOnceToken, ^{
@@ -74,8 +65,7 @@
     return [dateFormat stringFromDate:self];
 }
 
-- (NSString *)dateTimeString
-{
+- (NSString *)dateTimeString {
     static NSDateFormatter *dateFormat;
     static dispatch_once_t dateFormatOnceToken;
     dispatch_once(&dateFormatOnceToken, ^{
@@ -85,19 +75,17 @@
     return [dateFormat stringFromDate:self];
 }
 
-- (NSString *)dateStringWithFormat:(NSString *)format
-{
+- (NSString *)dateStringWithFormat:(NSString *)format {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:format];
     return [dateFormat stringFromDate:self];
 }
 
-- (instancetype)dateWithoutTime
-{
+- (instancetype)dateWithoutTime {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    NSCalendarUnit unit = [UIDevice currentDeviceSystemVersion] < 8 ? NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit : NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
-    NSDateComponents* comps = [[NSCalendar currentCalendar] components:unit fromDate:self];
+    NSCalendarUnit unit = [UIDevice currentDeviceSystemVersion] < 8 ? NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit : NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *comps = [[NSCalendar currentCalendar] components:unit fromDate:self];
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 #pragma clang diagnostic pop
 }

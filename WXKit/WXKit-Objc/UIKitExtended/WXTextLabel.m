@@ -7,17 +7,15 @@
 //
 
 #import "WXTextLabel.h"
-#import "UIView+WXKit.h"
 
-@interface WXTextLabel() 
-@property (strong, nonatomic) UILabel *label;
-@property (strong, nonatomic) UILabel *textField;
+@interface WXTextLabel ()
+@property(strong, nonatomic) UILabel *label;
+@property(strong, nonatomic) UILabel *textField;
 @end
 
 @implementation WXTextLabel
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self initialize];
@@ -25,16 +23,14 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         [self initialize];
     }
     return self;
 }
 
-- (void)initialize
-{
+- (void)initialize {
     _label = [[UILabel alloc] init];
     _label.textColor = [self tintColor];
     _label.font = [UIFont systemFontOfSize:10.0f];
@@ -107,34 +103,29 @@
 
 }
 
-- (void)textFieldDidChange:(NSNotification *)notification
-{
+- (void)textFieldDidChange:(NSNotification *)notification {
     self.textField.text = self.textField.text;
     [self updateViewLayout];
 }
 
-- (NSString *)labelText
-{
+- (NSString *)labelText {
     return self.label.text;
 }
 
-- (void)setText:(NSString *)text
-{
+- (void)setText:(NSString *)text {
     _text = text;
     self.textField.text = text;
     [self updateViewLayout];
 }
 
-- (void)setLabelText:(NSString *)labelText
-{
+- (void)setLabelText:(NSString *)labelText {
     self.label.text = labelText;
     [self updateViewLayout];
 }
 
-- (void)updateViewLayout
-{
+- (void)updateViewLayout {
     [self.label.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint *constrain, NSUInteger idx, BOOL *stop) {
-        if (constrain.firstItem == self.label && constrain.firstAttribute == NSLayoutAttributeHeight){
+        if (constrain.firstItem == self.label && constrain.firstAttribute == NSLayoutAttributeHeight) {
             constrain.constant = self.text.length > 0 ? 10.0f : 2.0f;
             [self.label updateConstraints];
         }
@@ -150,33 +141,27 @@
     }
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.label.textColor = self.tintColor;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     self.label.textColor = [UIColor colorWithWhite:0.66f alpha:1.0f];
 }
 
-+ (CGFloat)leftRightPadding
-{
++ (CGFloat)leftRightPadding {
     return 16;
 }
 
-+ (CGFloat)topBottomPadding
-{
++ (CGFloat)topBottomPadding {
     return 16;
 }
 
-+ (CGFloat)labelHeight
-{
++ (CGFloat)labelHeight {
     return 10;
 }
 
-+ (CGFloat)defaultHeight
-{
++ (CGFloat)defaultHeight {
     return 46;
 }
 @end

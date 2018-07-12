@@ -6,30 +6,24 @@
 //  Copyright (c) 2014 WebFM Pty Ltd. All rights reserved.
 //
 
-#import "NSMutableArray+WXKit.h"
-
 @implementation NSMutableArray (WXKit)
 
-- (id)pop
-{
+- (id)pop {
     id object = self.lastObject;
     [self removeObject:object];
     return object;
 }
 
-- (id)push:(id)object
-{
+- (id)push:(id)object {
     [self addObject:object];
     return object;
 }
 
-- (id)peek
-{
+- (id)peek {
     return self.lastObject;
 }
 
-- (void)empty
-{
+- (void)empty {
     [self removeAllObjects];
 }
 

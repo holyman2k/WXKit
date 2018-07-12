@@ -6,9 +6,6 @@
 //  Copyright (c) 2014 WebFM Pty Ltd. All rights reserved.
 //
 
-#import "NSManagedObjectContext+WXKit.h"
-#import "UIDevice+WXKit.h"
-
 @implementation NSManagedObjectContext (WXKit)
 
 + (instancetype)createAtUrl:(NSURL *)url mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options {
@@ -20,7 +17,7 @@
     return [self createAtUrl:url modelName:modelName mergePolicy:mergePolicyType andOptions:options];
 }
 
-+ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options  {
++ (instancetype)createAtUrl:(NSURL *)url modelName:(NSString *)modelName mergePolicy:(NSMergePolicyType)mergePolicyType andOptions:(NSDictionary *)options {
     // Load Managed Object Model
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:modelName withExtension:@"momd"];
     NSAssert(modelURL != nil, @"could not find model name %@", modelName);
@@ -71,13 +68,14 @@
     NSMergePolicy *mergePolice = [[NSMergePolicy alloc] initWithMergeType:mergePolicyType];
     id context = [[self alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [context setPersistentStoreCoordinator:persistentStoreCoordinator];
-    [context setMergePolicy: mergePolice];
+    [context setMergePolicy:mergePolice];
 
     return context;
 }
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 + (BOOL)storeNeedsMigrationAtURL:(NSURL *)sourceStoreUrl modelName:(NSString *)modelName {
     BOOL compatibile = NO;
     NSError *error = nil;
@@ -102,10 +100,10 @@
 
     return !compatibile;
 }
+
 #pragma clang diagnostic pop
 
-+ (NSString *)modelName
-{
++ (NSString *)modelName {
     return nil;
 }
 
@@ -117,14 +115,14 @@
     privateContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
 
     *observer = [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification
-                                                      object:nil
-                                                       queue:[NSOperationQueue mainQueue]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      NSManagedObjectContext *moc = self;
-                                                      if (note.object != moc) {
-                                                          [moc mergeChangesFromContextDidSaveNotification:note];
-                                                      }
-                                                  }];
+                                                                  object:nil
+                                                                   queue:[NSOperationQueue mainQueue]
+                                                              usingBlock:^(NSNotification *note) {
+                                                                  NSManagedObjectContext *moc = self;
+                                                                  if (note.object != moc) {
+                                                                      [moc mergeChangesFromContextDidSaveNotification:note];
+                                                                  }
+                                                              }];
     return privateContext;
 }
 

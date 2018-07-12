@@ -6,19 +6,16 @@
 //  Copyright (c) 2014 WebFM Pty Ltd. All rights reserved.
 //
 
-#import "UIView+WXKit.h"
-
 @implementation UIView (WXKit)
 
-- (UIImage *)screenshot
-{
+- (UIImage *)screenshot {
     UIGraphicsBeginImageContext(self.bounds.size);
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [[UIScreen mainScreen] scale]);
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     [self.layer renderInContext:context];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
+    UIGraphicsEndImageContext();
 
     return image;
 }
@@ -43,9 +40,8 @@
 
 - (NSLayoutConstraint *)addEqualConstraint:(NSLayoutAttribute)attr
                                toChildView:(UIView *)childView
-                                   contant:(CGFloat)c
-{
-    NSAssert(![(UIView *)childView translatesAutoresizingMaskIntoConstraints], @"translate autoresizing mask into constrains must be turned off");
+                                   contant:(CGFloat)c {
+    NSAssert(![(UIView *) childView translatesAutoresizingMaskIntoConstraints], @"translate autoresizing mask into constrains must be turned off");
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
                                                                   attribute:attr
                                                                   relatedBy:NSLayoutRelationEqual
@@ -64,8 +60,7 @@
 }
 
 - (NSLayoutConstraint *)addConstraint:(NSLayoutAttribute)attr
-                              contant:(CGFloat)c
-{
+                              contant:(CGFloat)c {
     NSAssert(attr == NSLayoutAttributeWidth || attr == NSLayoutAttributeHeight, @"only can add with or height layout attribute");
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
                                                                   attribute:attr
@@ -83,8 +78,7 @@
                                  withAttribute:(NSLayoutAttribute)attr2
                                      relatedBy:(NSLayoutRelation)relation
                                       constant:(CGFloat)constant
-                                      priority:(UILayoutPriority)priority
-{
+                                      priority:(UILayoutPriority)priority {
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:childView attribute:attr2 relatedBy:relation toItem:self attribute:attr1 multiplier:1 constant:constant];
     constraint.priority = priority;
     [self addConstraint:constraint];
@@ -92,12 +86,11 @@
 }
 
 - (NSLayoutConstraint *)addConstraintWithItem:(id)view1
-                                   attribute:(NSLayoutAttribute)attr1
-                                   relatedBy:(NSLayoutRelation)relation
-                                      toItem:(id)view2
-                                   attribute:(NSLayoutAttribute)attr2
-                                    constant:(CGFloat)c
-{
+                                    attribute:(NSLayoutAttribute)attr1
+                                    relatedBy:(NSLayoutRelation)relation
+                                       toItem:(id)view2
+                                    attribute:(NSLayoutAttribute)attr2
+                                     constant:(CGFloat)c {
     NSLayoutConstraint *constrain = [NSLayoutConstraint constraintWithItem:view1 attribute:attr1 relatedBy:relation toItem:view2 attribute:attr2 multiplier:1 constant:c];
     [self addConstraint:constrain];
     return constrain;
@@ -107,9 +100,8 @@
                                             toItem:(id)view1
                                          attribute:(NSLayoutAttribute)attr1
                                          relatedBy:(NSLayoutRelation)relation
-                                          constant:(CGFloat)c
-{
-    NSAssert(![(UIView *)view1 translatesAutoresizingMaskIntoConstraints], @"translate autoresizing mask into constrains must be turned off");
+                                          constant:(CGFloat)c {
+    NSAssert(![(UIView *) view1 translatesAutoresizingMaskIntoConstraints], @"translate autoresizing mask into constrains must be turned off");
     NSLayoutConstraint *constrain = [NSLayoutConstraint constraintWithItem:self attribute:attr relatedBy:relation toItem:view1 attribute:attr1 multiplier:1 constant:c];
     [self addConstraint:constrain];
     return constrain;
@@ -121,8 +113,7 @@
                                        toItem:(id)view2
                                     attribute:(NSLayoutAttribute)attr2
                                      constant:(CGFloat)c
-                                     priority:(UILayoutPriority)priority
-{
+                                     priority:(UILayoutPriority)priority {
     NSLayoutConstraint *constrain = [NSLayoutConstraint constraintWithItem:view1 attribute:attr1 relatedBy:relation toItem:view2 attribute:attr2 multiplier:1 constant:c];
     constrain.priority = priority;
     [self addConstraint:constrain];

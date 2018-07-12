@@ -7,35 +7,29 @@
 //
 
 #import <sys/utsname.h>
-#import "UIDevice+WXKit.h"
 
 @implementation UIDevice (WXKit)
 
-- (NSString *)deviceModel
-{
+- (NSString *)deviceModel {
     struct utsname systemInfo;
     uname(&systemInfo);
     return [NSString stringWithCString:systemInfo.machine
                               encoding:NSUTF8StringEncoding];
 }
 
-+ (NSString *)currentDeviceModel
-{
++ (NSString *)currentDeviceModel {
     return [[self currentDevice] deviceModel];
 }
 
-+ (CGFloat)currentDeviceSystemVersion
-{
++ (CGFloat)currentDeviceSystemVersion {
     return [[self currentDevice] systemVersion].floatValue;
 }
 
-+ (BOOL)isCurrentDeviceIpad
-{
++ (BOOL)isCurrentDeviceIpad {
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
 }
 
-+ (BOOL)isCurrentDeviceIphone
-{
++ (BOOL)isCurrentDeviceIphone {
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
 }
 @end

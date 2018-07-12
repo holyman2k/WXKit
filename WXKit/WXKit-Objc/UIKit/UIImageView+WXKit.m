@@ -6,12 +6,9 @@
 //  Copyright (c) 2014 Charlie Wu. All rights reserved.
 //
 
-#import "UIImageView+WXKit.h"
-
 @implementation UIImageView (WXKit)
 
-- (CGSize)sizeThatFitInSize:(CGSize)size
-{
+- (CGSize)sizeThatFitInSize:(CGSize)size {
     double newWidth;
     double newHeight;
 
@@ -19,15 +16,14 @@
 
     if (image.size.height >= image.size.width) {
         newHeight = size.height;
-        newWidth = (image.size.width / image.size.height ) * newHeight;
+        newWidth = (image.size.width / image.size.height) * newHeight;
 
-        if (newWidth > size.width){
+        if (newWidth > size.width) {
             CGFloat diff = (newWidth - size.width) / newWidth;
             newHeight = newHeight - diff * newHeight;
-            newWidth= size.width;
+            newWidth = size.width;
         }
-    }
-    else {
+    } else {
         newWidth = size.width;
         newHeight = size.width / image.size.width * image.size.height;
         if (newHeight > size.height) {
@@ -39,8 +35,7 @@
     return CGSizeMake(newWidth, newHeight);
 }
 
-- (void)fitIntoSize:(CGSize)size
-{
+- (void)fitIntoSize:(CGSize)size {
     CGSize fitSize = [self sizeThatFitInSize:size];
     CGRect frame = self.frame;
     frame.size = fitSize;

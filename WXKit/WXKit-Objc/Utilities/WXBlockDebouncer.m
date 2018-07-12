@@ -6,15 +6,12 @@
 //  Copyright (c) 2015 Charlie Wu. All rights reserved.
 //
 
-#import "WXBlockDebouncer.h"
-#import "WXBlocks.h"
+@interface WXBlockDebouncer ()
 
-@interface WXBlockDebouncer()
+@property(nonatomic) float throttle;
 
-@property (nonatomic) float throttle;
-
-@property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic) BOOL canUpdate;
+@property(nonatomic, strong) NSTimer *timer;
+@property(nonatomic) BOOL canUpdate;
 
 @end
 
@@ -28,8 +25,8 @@
 
         // setup debouncing
         {
-            VoidBlock block = ^(){
-                self->_timer = [NSTimer scheduledTimerWithTimeInterval:throttle target:self selector:@selector(enableInvokation) userInfo:nil repeats:YES];
+            VoidBlock block = ^() {
+                self->_timer = [NSTimer scheduledTimerWithTimeInterval:throttle target:self selector:@selector(enableInvocation) userInfo:nil repeats:YES];
             };
 
             if ([NSThread isMainThread]) {
@@ -50,7 +47,7 @@
     self.canUpdate = NO;
 }
 
-- (void)enableInvokation {
+- (void)enableInvocation {
     if (!self.canUpdate) self.canUpdate = YES;
 }
 

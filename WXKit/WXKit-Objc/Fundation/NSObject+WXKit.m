@@ -6,12 +6,9 @@
 //  Copyright (c) 2014 Charlie Wu. All rights reserved.
 //
 
-#import "NSObject+WXKit.h"
-
 @implementation NSObject (WXKit)
 
-+ (id)initWithBuilderBlock:(void(^)(id))block;
-{
++ (id)initWithBuilderBlock:(void (^)(id))block; {
     id instance = [[self alloc] init];
     block(instance);
     return instance;

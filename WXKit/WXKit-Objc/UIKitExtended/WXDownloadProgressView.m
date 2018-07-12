@@ -7,12 +7,11 @@
 //
 
 #import "WXDownloadProgressView.h"
-#import <QuartzCore/QuartzCore.h>
 
-@interface WXDownloadProgressView()
+@interface WXDownloadProgressView ()
 
-@property (nonatomic, strong) UIButton *cancelButton;
-@property (nonatomic, strong) UIButton *startButton;
+@property(nonatomic, strong) UIButton *cancelButton;
+@property(nonatomic, strong) UIButton *startButton;
 @end
 
 @implementation WXDownloadProgressView
@@ -56,10 +55,10 @@
     if (!self.cancelButton) {
         CGFloat buttonRatio = self.cancelButtonRatio <= 0 ? .3 : self.cancelButtonRatio;
 
-        CGRect frame = CGRectMake((1-buttonRatio) * self.frame.size.width / 2,
-                                  (1-buttonRatio) * self.frame.size.height / 2,
-                                  self.frame.size.width * buttonRatio,
-                                  self.frame.size.height * buttonRatio);
+        CGRect frame = CGRectMake((1 - buttonRatio) * self.frame.size.width / 2,
+                (1 - buttonRatio) * self.frame.size.height / 2,
+                self.frame.size.width * buttonRatio,
+                self.frame.size.height * buttonRatio);
         self.cancelButton = [[UIButton alloc] initWithFrame:frame];
         self.cancelButton.backgroundColor = self.tintColor;
         self.cancelButton.layer.borderColor = self.tintColor.CGColor;
@@ -91,7 +90,7 @@
 - (void)updateProgress {
 
     if (self.progressLayer.hidden != !self.isStarted) self.progressLayer.hidden = !self.progressLayer.hidden;
-    if (self.paddingLayer.hidden != !self.isStarted) self.paddingLayer.hidden  = !self.paddingLayer.hidden;
+    if (self.paddingLayer.hidden != !self.isStarted) self.paddingLayer.hidden = !self.paddingLayer.hidden;
     if (self.startButton.hidden != self.isStarted) self.startButton.hidden = !self.startButton.hidden;
 
     if (self.cancelButton.hidden != !self.isStarted || (self.isStarted && !self.isCancellable)) {

@@ -7,7 +7,6 @@
 //
 
 #import "WXLabel.h"
-#import "UILabel+WXKit.h"
 
 @implementation WXLabel
 

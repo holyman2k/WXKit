@@ -10,23 +10,19 @@
 
 @implementation NSNumber (WXKit)
 
-- (instancetype)addNumber:(NSNumber *)number
-{
+- (instancetype)addNumber:(NSNumber *)number {
     return @(self.doubleValue + number.doubleValue);
 }
 
-- (instancetype)multiplyNumber:(NSNumber *)number
-{
+- (instancetype)multiplyNumber:(NSNumber *)number {
     return @(self.doubleValue * number.doubleValue);
 }
 
-- (instancetype)divideNumber:(NSNumber *)number
-{
+- (instancetype)divideNumber:(NSNumber *)number {
     return @(self.doubleValue / number.doubleValue);
 }
 
-- (instancetype)dividedByNumber:(NSNumber *)number
-{
+- (instancetype)dividedByNumber:(NSNumber *)number {
     return @(number.doubleValue / self.doubleValue);
 }
 

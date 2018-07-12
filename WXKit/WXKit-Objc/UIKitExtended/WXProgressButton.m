@@ -14,12 +14,12 @@ typedef NS_ENUM(NSUInteger, WXProgressButonState) {
     WXProgressButtonStateStarted,
 };
 
-@interface WXProgressButton()
+@interface WXProgressButton ()
 
-@property (nonatomic, strong) WXButton *startButton;
-@property (nonatomic, strong) WXButton *cancelButton;
+@property(nonatomic, strong) WXButton *startButton;
+@property(nonatomic, strong) WXButton *cancelButton;
 
-@property (nonatomic) WXProgressButonState buttonState;
+@property(nonatomic) WXProgressButonState buttonState;
 
 @end
 
@@ -93,10 +93,10 @@ typedef NS_ENUM(NSUInteger, WXProgressButonState) {
     }
 
     CGFloat buttonRatio = self.cancelButtonRatio <= 0 ? .3 : self.cancelButtonRatio;
-    CGRect frame = CGRectMake((1-buttonRatio) * self.frame.size.width / 2,
-                              (1-buttonRatio) * self.frame.size.height / 2,
-                              self.frame.size.width * buttonRatio,
-                              self.frame.size.height * buttonRatio);
+    CGRect frame = CGRectMake((1 - buttonRatio) * self.frame.size.width / 2,
+            (1 - buttonRatio) * self.frame.size.height / 2,
+            self.frame.size.width * buttonRatio,
+            self.frame.size.height * buttonRatio);
     self.cancelButton.frame = frame;
     self.cancelButton.backgroundColor = self.tintColor;
     self.cancelButton.layer.borderColor = self.tintColor.CGColor;
@@ -122,7 +122,7 @@ typedef NS_ENUM(NSUInteger, WXProgressButonState) {
     BOOL started = self.buttonState == WXProgressButtonStateStarted;
 
     self.progressLayer.hidden = !started;
-    self.paddingLayer.hidden  = self.progressLayer.hidden;
+    self.paddingLayer.hidden = self.progressLayer.hidden;
 
     self.startButton.hidden = started;
     self.cancelButton.hidden = !self.startButton.hidden;

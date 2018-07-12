@@ -6,22 +6,17 @@
 //  Copyright (c) 2014 Charlie Wu. All rights reserved.
 //
 
-#import "NSURL+WXKit.h"
-
 @implementation NSURL (WXKit)
 
-+ (instancetype)applicationDocumentsDirectory
-{
++ (instancetype)applicationDocumentsDirectory {
     return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
 }
 
-+ (instancetype)applicationLibraryDirectory
-{
++ (instancetype)applicationLibraryDirectory {
     return [[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask].firstObject;
 }
 
-+ (instancetype)applicationTemporaryDirectory
-{
++ (instancetype)applicationTemporaryDirectory {
     return [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
 }
 

@@ -9,9 +9,9 @@
 #import "WXButton.h"
 @import QuartzCore;
 
-@interface WXButton()
+@interface WXButton ()
 
-@property (nonatomic, strong) ActionBlock actionBlock;
+@property(nonatomic, strong) ActionBlock actionBlock;
 
 @end
 

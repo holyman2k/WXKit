@@ -6,18 +6,15 @@
 //  Copyright (c) 2014 Charlie Wu. All rights reserved.
 //
 
-#import "WXBarButtonItem.h"
+@interface WXBarButtonItem ()
 
-@interface WXBarButtonItem()
-
-@property (nonatomic, strong) ActionBlock actionBlock;
+@property(nonatomic, strong) ActionBlock actionBlock;
 
 @end
 
 @implementation WXBarButtonItem
 
-- (instancetype)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style actionBlock:(ActionBlock)actionBlock
-{
+- (instancetype)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style actionBlock:(ActionBlock)actionBlock {
     if (self = [self initWithTitle:title style:style target:self action:@selector(action:)]) {
         _actionBlock = actionBlock;
     }
@@ -33,8 +30,7 @@
     return self;
 }
 
-- (void)action:(id)sender
-{
+- (void)action:(id)sender {
     if (self.actionBlock) self.actionBlock(sender);
 }
 
