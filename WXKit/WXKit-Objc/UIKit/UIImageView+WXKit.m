@@ -45,10 +45,23 @@
 
 - (void)setImageAsync:(UIImage *(^)())loadingBlock {
     __block UIImage *image;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_queue_t queue = dispatch_queue_create("Loading Image Queue", NULL);
+    dispatch_async(queue, ^{
         image = loadingBlock();
         dispatch_async(dispatch_get_main_queue(), ^{
             self.image = image;
+        });
+    });
+}
+
+- (void)setImageAsync:(UIImage *(^)())loadingBlock completion:(void(^)())completion {
+    __block UIImage *image;
+    dispatch_queue_t queue = dispatch_queue_create("Loading Image Queue", NULL);
+    dispatch_async(queue, ^{
+        image = loadingBlock();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.image = image;
+            completion();
         });
     });
 }

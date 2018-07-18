@@ -16,4 +16,6 @@
 
 - (void)setImageAsync:(UIImage *(^)())loadingBlock;
 
+- (void)setImageAsync:(UIImage *(^)())loadingBlock completion:(void(^)())completion;
+
 @end
