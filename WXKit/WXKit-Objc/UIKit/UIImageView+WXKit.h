@@ -18,4 +18,8 @@
 
 - (void)setImageAsync:(UIImage *(^)())loadingBlock completion:(void(^)())completion;
 
+- (void)setImageAsyncOnQueue:(dispatch_queue_t) queue loader:(UIImage *(^)())loadingBlock;
+
+- (void)setImageAsyncOnQueue:(dispatch_queue_t) queue loader:(UIImage *(^)())loadingBlock completion:(void(^)())completion;
+
 @end

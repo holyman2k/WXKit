@@ -42,7 +42,6 @@
     self.frame = frame;
 }
 
-
 - (void)setImageAsync:(UIImage *(^)())loadingBlock {
     __block UIImage *image;
     dispatch_queue_t queue = dispatch_queue_create("Loading Image Queue", NULL);
@@ -57,6 +56,28 @@
 - (void)setImageAsync:(UIImage *(^)())loadingBlock completion:(void(^)())completion {
     __block UIImage *image;
     dispatch_queue_t queue = dispatch_queue_create("Loading Image Queue", NULL);
+    dispatch_async(queue, ^{
+        image = loadingBlock();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.image = image;
+            completion();
+        });
+    });
+}
+
+
+- (void)setImageAsyncOnQueue:(dispatch_queue_t) queue loader:(UIImage *(^)())loadingBlock {
+    __block UIImage *image;
+    dispatch_async(queue, ^{
+        image = loadingBlock();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.image = image;
+        });
+    });
+}
+
+- (void)setImageAsyncOnQueue:(dispatch_queue_t) queue loader:(UIImage *(^)())loadingBlock completion:(void(^)())completion {
+    __block UIImage *image;
     dispatch_async(queue, ^{
         image = loadingBlock();
         dispatch_async(dispatch_get_main_queue(), ^{
