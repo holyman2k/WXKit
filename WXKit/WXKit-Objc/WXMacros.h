@@ -23,8 +23,8 @@
 
 #define WXLocalizedString(x) NSLocalizedString(x, x)
 
-#define isPhoneTraitCollection(x) x.userInterfaceIdiom == UIUserInterfaceIdiomPhone
-#define isTraitCollectionHorizontalCompact(x) x.horizontalSizeClass == UIUserInterfaceSizeClassCompact
-#define isTraitCollectionHorizontalRegular(x) x.horizontalSizeClass == UIUserInterfaceSizeClassRegular
-#define isPadTraitCollection(x) x.userInterfaceIdiom == UIUserInterfaceIdiomPad
+#define isPhoneTraitCollection(x) x.traitCollection.userInterfaceIdiom == UIUserInterfaceIdiomPhone
+#define isTraitCollectionHorizontalCompact(x) x.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact
+#define isTraitCollectionHorizontalRegular(x) x.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular
+#define isPadTraitCollection(x) x.traitCollection.userInterfaceIdiom == UIUserInterfaceIdiomPad
 #endif
