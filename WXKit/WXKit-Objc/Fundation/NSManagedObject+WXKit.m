@@ -75,11 +75,11 @@
 }
 
 - (void)deleteInContext:(NSManagedObjectContext *)context {
-    id instaceInContext = self.managedObjectContext != context ? [self instanceInContext:context] : self;
-    if (instaceInContext == nil) return;
+    id instanceInContext = self.managedObjectContext != context ? [self instanceInContext:context] : self;
+    if (instanceInContext == nil) return;
 
     [context performBlockAndWait:^{
-        [context deleteObject:instaceInContext];
+        [context deleteObject:instanceInContext];
     }];
 }
 
