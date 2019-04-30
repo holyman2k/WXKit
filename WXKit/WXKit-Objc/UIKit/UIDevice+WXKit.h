@@ -16,8 +16,12 @@
 
 + (CGFloat)currentDeviceSystemVersion;
 
++ (NSString *)currentDeviceSystemVersionLabel;
+
 + (BOOL)isCurrentDeviceIpad;
 
 + (BOOL)isCurrentDeviceIphone;
+
++ (NSString *)currentDeviceModelName;
 
 @end
