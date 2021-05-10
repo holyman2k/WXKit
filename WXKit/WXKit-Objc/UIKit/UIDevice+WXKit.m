@@ -29,11 +29,11 @@
 }
 
 + (BOOL)isCurrentDeviceIpad {
-    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+    return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
 }
 
 + (BOOL)isCurrentDeviceIphone {
-    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone;
 }
 
 + (NSString *)currentDeviceModelName {
